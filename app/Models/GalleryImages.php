@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class GalleryImages extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'image',
+        'title',
+        'caption',
+        // 'album_id' // If you re-introduce album relationships later
+    ];
 }

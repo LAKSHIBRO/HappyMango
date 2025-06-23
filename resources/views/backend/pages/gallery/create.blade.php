@@ -43,7 +43,26 @@
                             Drag & Drop your file or
                             <span><u>Browse</u></span>
                         </label>
-                        <div class="selectedImages" id="selectedGalleryImages"></div>
+                        <div class="selectedImages" id="selectedGalleryImages">
+                            <!--
+                                Developer Note: The JavaScript function 'previewImage' needs to be updated.
+                                For each selected image, it should generate a preview here that includes:
+                                1. The image preview (e.g., <img> tag).
+                                2. An input field for the title: <input type="text" name="titles[]" class="form-control mb-1" placeholder="Title">
+                                3. A textarea for the caption: <textarea name="captions[]" class="form-control" placeholder="Caption"></textarea>
+                                4. A button to remove the individual image preview and its associated file from the selection.
+
+                                Example structure for each item:
+                                <div class="image-preview-container d-flex flex-column p-2 border rounded mb-2">
+                                    <img src="[image_src]" class="mb-2" style="max-width: 100px; max-height: 100px; object-fit: cover;">
+                                    <input type="text" name="titles[]" class="form-control form-control-sm mb-1" placeholder="Enter title (optional)">
+                                    <textarea name="captions[]" class="form-control form-control-sm" placeholder="Enter caption (optional)" rows="2"></textarea>
+                                    <button type="button" class="btn btn-sm btn-danger mt-1 remove-btn">Remove</button>
+                                </div>
+                                The 'createAlbum()' JavaScript function also needs to be updated to collect
+                                'titles[]' and 'captions[]' and send them along with the 'images[]' files.
+                            -->
+                        </div>
                         <input type="file" id="galleryImages"
                             onchange="previewImage('galleryImages', 'fileChooserTitleGalleryImages')" multiple
                             accept="image/*" />

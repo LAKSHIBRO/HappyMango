@@ -17,11 +17,13 @@
                 @if(count($galleries) == 1)
                     <div class="w-full flex justify-center">
                         <div class="relative group w-full max-w-4xl">
-                            <div class="absolute opacity-0 duration-300 group-hover:opacity-100 bg-[#00000077] w-full h-full flex justify-center text-white items-center font-medium flex-col gap-10">
+                            <div class="absolute opacity-0 duration-300 group-hover:opacity-100 bg-[#00000077] w-full h-full flex justify-center text-white items-center font-medium flex-col gap-10 text-center">
                                 <div class="text-2xl sm:text-5xl">{{ $galleries[0]->title }}</div>
-                                <div class="px-10 sm:text-md text-xs text-wrap">{{ $galleries[0]->description }}</div>
+                                @if($galleries[0]->caption)
+                                <div class="px-10 sm:text-md text-xs text-wrap">{{ $galleries[0]->caption }}</div>
+                                @endif
                             </div>
-                            <img src="{{ asset('uploads/album/'.$galleries[0]->image) }}" alt="{{ $galleries[0]->title }}" class="w-full h-[400px] object-cover">
+                            <img src="{{ asset('uploads/album/'.$galleries[0]->image) }}" alt="{{ $galleries[0]->title ?? 'Gallery Image' }}" class="w-full h-[400px] object-cover">
                         </div>
                     </div>
                 @else
@@ -30,11 +32,13 @@
                             <div class="w-full flex gap-2 mb-2">
                                 @foreach($row as $index => $gallery)
                                     <div class="relative group {{ $index == 0 ? 'w-1/4' : 'w-3/4' }}">
-                                        <div class="absolute opacity-0 duration-300 group-hover:opacity-100 bg-[#00000077] w-full h-full flex justify-center text-white items-center font-medium flex-col gap-10">
+                                        <div class="absolute opacity-0 duration-300 group-hover:opacity-100 bg-[#00000077] w-full h-full flex justify-center text-white items-center font-medium flex-col gap-10 text-center">
                                             <div class="text-2xl sm:text-5xl">{{ $gallery->title }}</div>
-                                            <div class="px-10 sm:text-md text-xs text-wrap">{{ $gallery->description }}</div>
+                                            @if($gallery->caption)
+                                            <div class="px-10 sm:text-md text-xs text-wrap">{{ $gallery->caption }}</div>
+                                            @endif
                                         </div>
-                                        <img src="{{ asset('uploads/album/'.$gallery->image) }}" alt="{{ $gallery->title }}" class="w-full h-[300px] object-cover">
+                                        <img src="{{ asset('uploads/album/'.$gallery->image) }}" alt="{{ $gallery->title ?? 'Gallery Image' }}" class="w-full h-[300px] object-cover">
                                     </div>
                                 @endforeach
                             </div>

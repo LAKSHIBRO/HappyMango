@@ -47,58 +47,51 @@ class GalleryController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            // 'title' => 'required',
-            // 'slug' => 'required|unique:albums,slug',
-            // 'cover' => 'image|mimes:jpeg,png,jpg,gif',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif',
+            'images' => 'required|array',
+            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048', // Max 2MB per image
+            'titles' => 'required|array',
+            'titles.*' => 'nullable|string|max:255',
+            'captions' => 'nullable|array',
+            'captions.*' => 'nullable|string',
         ];
 
         $messages = [
-            'title.required' => 'The title field is required.',
-            'slug.required' => 'The slug field is required.',
-            'slug.unique' => 'The slug has already been taken.',
-            'cover.image' => 'The logo must be an image file.',
-            'cover.mimes' => 'The logo must be a jpeg, png, jpg, or gif file.',
-            'cover.max' => 'The logo file must not exceed 2048 kilobytes.',
-            'images.*.image' => 'Gallery images must be image files.',
-            'images.*.mimes' => 'Gallery images must be jpeg, png, jpg, or gif files.',
-            'images.*.max' => 'Each gallery image must not exceed 2048 kilobytes.',
+            'images.required' => 'Please select at least one image.',
+            'images.*.required' => 'An image file is required.',
+            'images.*.image' => 'Uploaded files must be images.',
+            'images.*.mimes' => 'Images must be jpeg, png, jpg, gif, or webp files.',
+            'images.*.max' => 'Each image must not exceed 2048 kilobytes.',
+            'titles.required' => 'Titles array is required.',
+            'titles.*.string' => 'Title must be a string.',
+            'titles.*.max' => 'Title may not be greater than 255 characters.',
+            'captions.*.string' => 'Caption must be a string.',
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
 
         if ($validator->fails()) {
-            return response()->json(['success' => false, 'message' => $validator->errors()->first()]);
+            // Return all validation errors, not just the first one.
+            return response()->json(['success' => false, 'errors' => $validator->errors()]);
         }
 
-        // $coverFilename = null;
+        $uploadedImages = $request->file('images');
+        $titles = $request->input('titles');
+        $captions = $request->input('captions', []); // Default to empty array if not provided
 
-        // if ($request->hasFile('cover')) {
-        //     $cover = $request->file('cover');
-        //     $coverFilename = hash('sha256', uniqid() . '_' . $cover->getClientOriginalName()) . '.' . $cover->getClientOriginalExtension();
-        //     $cover->move(public_path('uploads/album/'), $coverFilename);
-        // }
+        foreach ($uploadedImages as $key => $galleryImageFile) {
+            if ($galleryImageFile->isValid()) {
+                $galleryImageFilename = hash('sha256', uniqid() . '_' . $galleryImageFile->getClientOriginalName()) . '.' . $galleryImageFile->getClientOriginalExtension();
+                $galleryImageFile->move(public_path('uploads/album/'), $galleryImageFilename);
 
-        // $album = new Album();
-        // $album->title = $request->input('title');
-        // $album->slug = Str::slug($request->input('slug'), '_');
-        // $album->category_id = $request->input('category');
-        // $album->image = $coverFilename;
-        // $album->status_id = $request->input('visibility');
-        // $album->save();
-
-        $galleryImages = $request->file('images');
-
-        foreach ($galleryImages as $galleryImage) {
-            $galleryImageFilename = hash('sha256', uniqid() . '_' . $galleryImage->getClientOriginalName()) . '.' . $galleryImage->getClientOriginalExtension();
-            $galleryImage->move(public_path('uploads/album/'), $galleryImageFilename);
-
-            $galleryImageModel = new GalleryImages();
-            $galleryImageModel->image = $galleryImageFilename;
-            $galleryImageModel->save();
+                $galleryImageModel = new GalleryImages();
+                $galleryImageModel->image = $galleryImageFilename;
+                $galleryImageModel->title = $titles[$key] ?? null; // Use null if title for this key isn't set
+                $galleryImageModel->caption = $captions[$key] ?? null; // Use null if caption for this key isn't set
+                $galleryImageModel->save();
+            }
         }
 
-        return response()->json(['success' => true, 'message' => 'Images uploaded successfully.']);
+        return response()->json(['success' => true, 'message' => 'Images uploaded successfully with titles and captions.']);
     }
 
     public function update(Request $request, $id)

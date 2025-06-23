@@ -534,31 +534,9 @@
     document.addEventListener('DOMContentLoaded', function() {
         // Check if gallery slider elements exist
         const gallerySlider = document.querySelector(".tour-gallery-swiper");
-        const thumbsSlider = document.querySelector(".tour-thumbs-swiper");
+        // const thumbsSlider = document.querySelector(".tour-thumbs-swiper"); // Thumbs slider HTML is missing
 
-        if (gallerySlider && thumbsSlider) {
-            // Initialize thumbnail slider
-            var tourThumbsSwiper = new Swiper(".tour-thumbs-swiper", {
-                spaceBetween: 10,
-                slidesPerView: 4,
-                freeMode: true,
-                watchSlidesProgress: true,
-                breakpoints: {
-                    320: {
-                        slidesPerView: 3,
-                        spaceBetween: 5
-                    },
-                    480: {
-                        slidesPerView: 4,
-                        spaceBetween: 8
-                    },
-                    768: {
-                        slidesPerView: 4,
-                        spaceBetween: 10
-                    }
-                }
-            });
-
+        if (gallerySlider) { // Initialize if only the main gallery slider exists
             // Initialize main gallery slider
             var tourGallerySwiper = new Swiper(".tour-gallery-swiper", {
                 spaceBetween: 10,
@@ -570,9 +548,9 @@
                     el: ".swiper-pagination",
                     clickable: true,
                 },
-                thumbs: {
-                    swiper: tourThumbsSwiper,
-                },
+                // thumbs: { // Thumbs configuration removed as .tour-thumbs-swiper is not in HTML
+                //     swiper: tourThumbsSwiper,
+                // },
                 autoplay: {
                     delay: 5000,
                     disableOnInteraction: false,
