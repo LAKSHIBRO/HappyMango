@@ -225,12 +225,14 @@
                             </div>
                             <div class="text-nowrap text-gray-800">{{ $tourPackage->duration }}</div>
                         </div>
+                        @if($tourPackage->category)
                         <div class="flex text-lg sm:text-2xl gap-6 items-center">
                             <div class="p-3 rounded-full">
-                                <img src="{{ asset('new_frontend/Assets/type.png') }}" alt="Tour Type" class="w-8 h-8 object-contain">
+                                <img src="{{ asset('new_frontend/Assets/type.png') }}" alt="Category" class="w-8 h-8 object-contain"> {{-- Using type.png as placeholder --}}
                             </div>
-                            <div class="text-nowrap  text-gray-800">{{ ucfirst(str_replace('-', ' ', $tourPackage->type)) }}</div>
+                            <div class="text-nowrap text-gray-800">{{ $tourPackage->category->name }}</div>
                         </div>
+                        @endif
                         <div class="flex text-lg sm:text-2xl gap-6 items-center">
                             <div class="p-3 rounded-full">
                                 <img src="{{ asset('new_frontend/Assets/numb.png') }}" alt="Group Size" class="w-8 h-8 object-contain">
@@ -243,14 +245,7 @@
                                 @endif
                             </div>
                         </div>
-                        @if($tourPackage->category)
-                        <div class="flex text-lg sm:text-2xl gap-6 items-center">
-                            <div class="p-3 rounded-full">
-                                <img src="{{ asset('new_frontend/Assets/type.png') }}" alt="Category" class="w-8 h-8 object-contain"> {{-- Using type.png as placeholder --}}
-                            </div>
-                            <div class="text-nowrap text-gray-800">{{ $tourPackage->category->name }}</div>
-                        </div>
-                        @endif
+                        
                     </div>
 
                     <hr class="my-2 border-[#8A8A8A] border-dashed"/>

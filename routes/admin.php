@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\Auth\RegisterController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\GalleryController;
+use App\Http\Controllers\Backend\InquiryController;
 use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\VideoController;
@@ -66,6 +67,16 @@ Route::middleware(['AlreadyLoggedIn'])->group(function () {
     Route::get('/admin/tour-package/edit/{id}', [App\Http\Controllers\Backend\TourPackageController::class, 'edit'])->name('admin.tour_package.edit');
     Route::post('/admin/update-tour-package/{id}', [App\Http\Controllers\Backend\TourPackageController::class, 'update'])->name('admin.tour_package.update');
     Route::get('/admin/tour-package/delete/{id}', [App\Http\Controllers\Backend\TourPackageController::class, 'delete'])->name('admin.tour_package.delete');
+
+    // INQUIRY ROUTES
+    Route::get('/admin/inquiries', [InquiryController::class, 'index'])->name('admin.inquiries');
+    Route::get('/admin/inquiry/create', [InquiryController::class, 'create'])->name('admin.inquiry.create');
+    Route::post('/admin/inquiry', [InquiryController::class, 'store'])->name('admin.inquiry.store');
+    Route::get('/admin/inquiry/{id}', [InquiryController::class, 'show'])->name('admin.inquiry.show');
+    Route::get('/admin/inquiry/{id}/edit', [InquiryController::class, 'edit'])->name('admin.inquiry.edit');
+    Route::post('/admin/inquiry/{id}/update', [InquiryController::class, 'update'])->name('admin.inquiry.update');
+    Route::post('/admin/inquiry/{id}/delete', [InquiryController::class, 'destroy'])->name('admin.inquiry.destroy');
+    Route::post('/admin/inquiry/{id}/status', [InquiryController::class, 'updateStatus'])->name('admin.inquiry.status');
 
 
     Route::get('/admin/profile', [ProfileController::class, 'edit']);

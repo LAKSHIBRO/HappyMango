@@ -52,6 +52,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress/nprogress.css" />
     <script src="https://cdn.jsdelivr.net/npm/nprogress/nprogress.js"></script>
 
+    @stack('styles')
 </head>
 
 <body>

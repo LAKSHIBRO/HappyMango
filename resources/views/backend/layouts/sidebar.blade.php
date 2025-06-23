@@ -79,6 +79,13 @@
                         </a>
                     </li>
 
+                    <li class="slide">
+                        <a href="/admin/inquiries" id="inquiries" class="side-menu__item">
+                            <i class="fi fi-rr-envelope side-menu__icon"></i>
+                            <span class="side-menu__label">Inquiries</span>
+                        </a>
+                    </li>
+
                     <!--
                     <div class="sidebar-menu-header">SITE SETTINGS</div>
 
