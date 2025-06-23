@@ -229,6 +229,24 @@
                         <!-- Add Pagination -->
                         <div class="swiper-pagination"></div>
                     </div>
+
+                    <!-- Thumbnail Slider -->
+                    @if(is_array($tourPackage->gallery_images) && count($tourPackage->gallery_images) > 0)
+                    <div class="swiper tour-thumbs-swiper mt-4">
+                        <div class="swiper-wrapper">
+                            <!-- Feature image as first thumb -->
+                            <div class="swiper-slide">
+                                <img src="{{ asset('storage/' . $tourPackage->image) }}" alt="{{ $tourPackage->name }} - Thumbnail" />
+                            </div>
+                            <!-- Gallery images for thumbs -->
+                            @foreach($tourPackage->gallery_images as $imagePathString)
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('storage/' . $imagePathString) }}" alt="{{ $tourPackage->name }} - Gallery Thumbnail" />
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>

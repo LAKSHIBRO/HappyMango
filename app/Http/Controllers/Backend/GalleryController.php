@@ -18,8 +18,9 @@ class GalleryController extends Controller
 
         $rows = $request->input('rows');
 
-        $albums = GalleryImages::orderby('created_at', 'desc')->paginate($rows ?? 10);
-        $totalAlbums = GalleryImages::count();
+        // Changed GalleryImages to Album to list actual albums
+        $albums = Album::with('category')->orderBy('created_at', 'desc')->paginate($rows ?? 10);
+        $totalAlbums = Album::count();
 
         return view('backend.pages.gallery.index')->with('datas', $albums)
             ->with('totalAlbums', $totalAlbums);
@@ -47,170 +48,126 @@ class GalleryController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            // 'title' => 'required',
-            // 'slug' => 'required|unique:albums,slug',
-            // 'cover' => 'image|mimes:jpeg,png,jpg,gif',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif',
+            'title' => 'required|string|max:255',
+            'caption' => 'nullable|string',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'category_id' => 'required|exists:categories,id',
+            'status_id' => 'required|in:0,1',
         ];
 
         $messages = [
             'title.required' => 'The title field is required.',
-            'slug.required' => 'The slug field is required.',
-            'slug.unique' => 'The slug has already been taken.',
-            'cover.image' => 'The logo must be an image file.',
-            'cover.mimes' => 'The logo must be a jpeg, png, jpg, or gif file.',
-            'cover.max' => 'The logo file must not exceed 2048 kilobytes.',
-            'images.*.image' => 'Gallery images must be image files.',
-            'images.*.mimes' => 'Gallery images must be jpeg, png, jpg, or gif files.',
-            'images.*.max' => 'Each gallery image must not exceed 2048 kilobytes.',
+            'image.required' => 'The image field is required.',
+            'image.image' => 'The file must be an image.',
+            'image.mimes' => 'The image must be a jpeg, png, jpg, gif, or webp file.',
+            'category_id.required' => 'The category field is required.',
+            'status_id.required' => 'The visibility field is required.',
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
 
         if ($validator->fails()) {
-            return response()->json(['success' => false, 'message' => $validator->errors()->first()]);
+            return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        // $coverFilename = null;
-
-        // if ($request->hasFile('cover')) {
-        //     $cover = $request->file('cover');
-        //     $coverFilename = hash('sha256', uniqid() . '_' . $cover->getClientOriginalName()) . '.' . $cover->getClientOriginalExtension();
-        //     $cover->move(public_path('uploads/album/'), $coverFilename);
-        // }
-
-        // $album = new Album();
-        // $album->title = $request->input('title');
-        // $album->slug = Str::slug($request->input('slug'), '_');
-        // $album->category_id = $request->input('category');
-        // $album->image = $coverFilename;
-        // $album->status_id = $request->input('visibility');
-        // $album->save();
-
-        $galleryImages = $request->file('images');
-
-        foreach ($galleryImages as $galleryImage) {
-            $galleryImageFilename = hash('sha256', uniqid() . '_' . $galleryImage->getClientOriginalName()) . '.' . $galleryImage->getClientOriginalExtension();
-            $galleryImage->move(public_path('uploads/album/'), $galleryImageFilename);
-
-            $galleryImageModel = new GalleryImages();
-            $galleryImageModel->image = $galleryImageFilename;
-            $galleryImageModel->save();
+        $imageFilename = null;
+        if ($request->hasFile('image')) {
+            $imageFile = $request->file('image');
+            $imageFilename = hash('sha256', uniqid() . '_' . $imageFile->getClientOriginalName()) . '.' . $imageFile->getClientOriginalExtension();
+            $imageFile->move(public_path('uploads/album/'), $imageFilename);
         }
 
-        return response()->json(['success' => true, 'message' => 'Images uploaded successfully.']);
+        Album::create([
+            'title' => $request->input('title'),
+            'slug' => Str::slug($request->input('title')), // Auto-generate slug
+            'caption' => $request->input('caption'),
+            'image' => $imageFilename,
+            'category_id' => $request->input('category_id'),
+            'status_id' => $request->input('status_id'),
+        ]);
+
+        return redirect()->route('admin.gallery')->with('success', 'Gallery item created successfully.');
     }
 
     public function update(Request $request, $id)
     {
-        // $validator = Validator::make($request->all(), [
-        //     'title' => 'required',
-        //     'slug' => 'required|unique:albums,slug,' . $id . '',
-        // ], [
-        //     'title.required' => 'The title field is required.',
-        //     'slug.required' => 'The slug field is required.',
-        //     'slug.unique' => 'The slug has already been taken.',
-        // ]);
+        $album = Album::findOrFail($id);
 
-        // if ($validator->fails()) {
-        //     return response()->json(['success' => false, 'message' => $validator->errors()->first()]);
-        // }
+        $rules = [
+            'title' => 'required|string|max:255',
+            'slug' => 'required|string|max:255|unique:albums,slug,' . $album->id,
+            'caption' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048', // Image is not required on update
+            'category_id' => 'required|exists:categories,id',
+            'status_id' => 'required|in:0,1',
+        ];
 
-        // $album = Album::findOrFail($id);
+        $validator = Validator::make($request->all(), $rules);
 
-        // if ($request->albumImageStatus == 'deleted' && !empty($album->image)) {
-        //     $filePath = public_path('uploads/album/' . $album->image);
-        //     if (file_exists($filePath)) {
-        //         File::delete($filePath);
-        //     }
-        //     $album->image = null;
-        // }
+        if ($validator->fails()) {
+            // For AJAX response, which the original JS might expect
+            // return response()->json(['success' => false, 'message' => $validator->errors()->first()]);
+            // For standard form submission:
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
-        // if ($request->hasFile('cover')) {
-        //     $coverValidator = Validator::make($request->all(), [
-        //         'cover' => 'image|mimes:jpeg,png,jpg,gif|max:12048',
-        //     ], [
-        //         'cover.image' => 'The logo must be an image file.',
-        //         'cover.mimes' => 'The logo must be a jpeg, png, jpg, or gif file.',
-        //         'cover.max' => 'The logo file must not exceed 2048 kilobytes.',
-        //     ]);
+        $imageFilename = $album->image;
+        if ($request->hasFile('image')) {
+            // Delete old image if it exists
+            if ($album->image) {
+                $oldImagePath = public_path('uploads/album/' . $album->image);
+                if (File::exists($oldImagePath)) {
+                    File::delete($oldImagePath);
+                }
+            }
+            // Upload new image
+            $imageFile = $request->file('image');
+            $imageFilename = hash('sha256', uniqid() . '_' . $imageFile->getClientOriginalName()) . '.' . $imageFile->getClientOriginalExtension();
+            $imageFile->move(public_path('uploads/album/'), $imageFilename);
+        } elseif ($request->input('remove_existing_image') == '1' && $album->image) {
+            // Handle explicit image removal if a checkbox `remove_existing_image` is added to the form
+            $oldImagePath = public_path('uploads/album/' . $album->image);
+            if (File::exists($oldImagePath)) {
+                File::delete($oldImagePath);
+            }
+            $imageFilename = null;
+        }
 
-        //     if ($coverValidator->fails()) {
-        //         return response()->json(['success' => false, 'message' => $coverValidator->errors()->first()]);
-        //     }
 
-        //     $cover = $request->file('cover');
-        //     $coverFilename = hash('sha256', uniqid() . '_' . $cover->getClientOriginalName()) . '.' . $cover->getClientOriginalExtension();
-        //     $cover->move(public_path('uploads/album/'), $coverFilename);
-        //     $album->image = $coverFilename;
-        // }
+        $album->update([
+            'title' => $request->input('title'),
+            'slug' => Str::slug($request->input('slug')), // Ensure slug is updated if title/slug changes
+            'caption' => $request->input('caption'),
+            'image' => $imageFilename,
+            'category_id' => $request->input('category_id'),
+            'status_id' => $request->input('status_id'),
+        ]);
 
-        // $album->title = $request->input('title');
-        // $album->slug = Str::slug($request->input('slug'), '_');
-        // $album->category_id = $request->input('category');
-        // $album->status_id = $request->input('visibility');
-        // $album->save();
-
-        // if ($request->has('length')) {
-        //     for ($i = 0; $i < $request->input('length'); $i++) {
-        //         if ($request->has('image' . $i)) {
-        //             if ($request->input('status' . $i) == 'newset') {
-        //                 $galleryImage = $request->file('image' . $i);
-
-        //                 if ($galleryImage->isValid()) {
-        //                     $galleryImageFilename = hash('sha256', uniqid() . '_' . $galleryImage->getClientOriginalName()) . '.' . $galleryImage->getClientOriginalExtension();
-        //                     $galleryImage->move(public_path('uploads/album/'), $galleryImageFilename);
-
-        //                     $newGalleryImage = new GalleryImages();
-        //                     $newGalleryImage->image = $galleryImageFilename;
-        //                     $newGalleryImage->album_id = $album->id;
-        //                     $newGalleryImage->save();
-        //                 }
-        //             } elseif ($request->input('status' . $i) == 'deleted') {
-        //                 $imageName = $request->input('image' . $i);
-        //                 $galleryImage = GalleryImages::where('image', $imageName)->first();
-
-        //                 if ($galleryImage) {
-        //                     $filePath = public_path('uploads/album/' . $imageName);
-
-        //                     if (file_exists($filePath)) {
-        //                         File::delete($filePath);
-        //                     }
-
-        //                     $galleryImage->delete();
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
-
+        // The original edit form used JavaScript `updateAlbum(id)` which implies AJAX.
+        // If sticking to AJAX, this response is fine.
         // return response()->json(['success' => true, 'message' => 'Album updated successfully.']);
+        // For standard form submission:
+        return redirect()->route('admin.gallery')->with('success', 'Gallery item updated successfully.');
     }
 
     public function delete($id)
     {
+        // This delete method was deleting GalleryImages, not Albums.
+        // It should be changed to delete an Album and its associated image.
+        $album = Album::find($id);
 
-        $galleryImages = GalleryImages::where('id', $id)->get();
-        foreach ($galleryImages as $galleryImage) {
-            if (!empty($galleryImage->image)) {
-                $filePath = public_path('uploads/album/' . $galleryImage->image);
-                if (file_exists($filePath)) {
+        if ($album) {
+            if (!empty($album->image)) {
+                $filePath = public_path('uploads/album/' . $album->image);
+                if (File::exists($filePath)) {
                     File::delete($filePath);
                 }
             }
-            $galleryImage->delete();
+            $album->delete();
+            return redirect()->route('admin.gallery')->with('success', 'Gallery item deleted successfully.');
+            // return response()->json(['success' => true, 'message' => 'Gallery item deleted successfully.']);
         }
-
-        // $album = Album::find($id);
-
-        // if (!empty($album->image)) {
-        //     $filePath = public_path('uploads/album/' . $album->image);
-        //     if (file_exists($filePath)) {
-        //         File::delete($filePath);
-        //     }
-        // }
-
-        // $album->delete();
-        return response()->json(['success' => true, 'message' => 'Image deleted successfully.']);
+        return redirect()->route('admin.gallery')->with('error', 'Gallery item not found.');
+        // return response()->json(['success' => false, 'message' => 'Gallery item not found.']);
     }
 }

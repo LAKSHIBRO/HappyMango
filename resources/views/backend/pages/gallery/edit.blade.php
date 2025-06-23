@@ -22,11 +22,15 @@
                     <div class="row">
                         <div class="col-xl-12 mb-3">
                             <label for="albumTitle" class="form-label">Title</label>
-                            <input type="text" class="form-control" id="albumTitle" value="{{ $album->title }}">
+                            <input type="text" class="form-control" id="albumTitle" name="title" value="{{ old('title', $album->title) }}">
                         </div>
                         <div class="col-xl-12 mb-3">
-                            <label for="albumSlug" class="form-label">Slug (Slug Message)</label>
-                            <input type="text" class="form-control" id="albumSlug" value="{{ $album->slug }}">
+                            <label for="albumCaption" class="form-label">Caption</label>
+                            <textarea class="form-control" id="albumCaption" name="caption" rows="3">{{ old('caption', $album->caption) }}</textarea>
+                        </div>
+                        <div class="col-xl-12 mb-3">
+                            <label for="albumSlug" class="form-label">Slug</label>
+                            <input type="text" class="form-control" id="albumSlug" name="slug" value="{{ old('slug', $album->slug) }}">
                         </div>
                     </div>
                 </div>

@@ -62,10 +62,17 @@ class FrontendController extends Controller
     }
     public function gallery()
     {
-        $galleries = GalleryImages::limit(10)->get();
-        $allGalleries = GalleryImages::all();
-        return view('frontend.pages.new_gallery', compact('galleries', 'allGalleries'));
+        // Changed to use Album model and paginate
+        $galleries = \App\Models\Album::where('status_id', 1) // Assuming status_id 1 is visible
+            ->orderBy('created_at', 'desc')
+            ->paginate(9); // Paginate by 9 items per page, adjust as needed
+
+        // The view name was 'frontend.pages.new_gallery', assuming 'frontend.pages.gallery' is the one we are targeting.
+        // If 'new_gallery' is different, changes need to be applied there too.
+        // For now, proceeding with 'frontend.pages.gallery' as the target based on previous edits.
+        return view('frontend.pages.gallery', compact('galleries'));
     }
+
     public function blog(Request $request)
     {
 
