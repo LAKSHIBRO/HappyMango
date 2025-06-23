@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Mansalva&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Palanquin:wght@100;200;300;400;500;600;700&display=swap');
+
+@font-face {
+    font-family: 'Palanquin Dark';
+    src: url('../fonts/palanquin-dark-regular.woff2') format('woff2'),
+         url('../fonts/palanquin-dark-regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+.font-pri{
+    font-family: "Palanquin", sans-serif !important;
+}
+
+.font-sec{
+    font-family: "Mansalva", sans-serif !important;
+}
+
+body {
+    font-family: "Palanquin Dark", "Montserrat", sans-serif; /* Apply Palanquin Dark, fallback to Montserrat */
+}
+
+/* Ensure elements specifically wanting Montserrat still get it.
+   This might need to be adjusted if there are many elements
+   that should remain Montserrat but don't have a specific class.
+   The user request was "change all the font to that except for the ones that are Montserrat"
+   This implies that if something is not specifically Montserrat, it should become Palanquin Dark.
+   If an element *is* Montserrat, it should stay Montserrat.
+   The fallback in body handles cases where Palanquin Dark might not load.
+   We need to ensure that if an element was *intended* to be Montserrat, it remains so.
+   A common way is to have a specific class or ensure component-level styling.
+   For now, the change to `body` and having Montserrat as a fallback is a good first step.
+   If specific elements that *should* be Montserrat are changing, we might need more targeted rules.
+*/
+
+/* Example of how to keep specific elements as Montserrat if needed: */
+/* .montserrat-text { font-family: "Montserrat", sans-serif; } */
+
+
+.crsl-cont{
+/* UI Properties */
+background: transparent linear-gradient(180deg, var(--unnamed-color-02515a00) 0%, #02515A 100%) 0% 0% no-repeat padding-box;
+background: transparent linear-gradient(180deg, #02515A00 0%, #02515A 100%) 0% 0% no-repeat padding-box;
+}
