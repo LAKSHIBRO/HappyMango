@@ -9,13 +9,9 @@
     /* Tour Gallery Swiper Styles */
     .tour-gallery-swiper {
         width: 100%;
-        height: 500px;
-        margin-left: auto;
-        margin-right: auto;
-        border-radius: 8px;
+        border-radius: 12px;
         overflow: hidden;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
     }
 
     .tour-gallery-swiper .swiper-slide {
@@ -26,6 +22,11 @@
         justify-content: center;
         align-items: center;
         cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+
+    .tour-gallery-swiper .swiper-slide:hover {
+        transform: scale(1.02);
     }
 
     .tour-gallery-swiper .swiper-slide img {
@@ -35,102 +36,67 @@
         transition: transform 0.3s ease;
     }
 
-    .tour-gallery-swiper .swiper-slide:hover img {
-        transform: scale(1.03);
-    }
-
-    .caption-overlay {
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        font-weight: 500;
-        letter-spacing: 0.5px;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-    }
-
-    .swiper-slide:hover .caption-overlay {
-        opacity: 1;
-    }
-
-    .tour-thumbs-swiper {
-        width: 100%;
-        box-sizing: border-box;
-        padding: 10px 0;
-    }
-
-    .tour-thumbs-swiper .swiper-slide {
-        width: 25%;
-        height: 100%;
-        opacity: 0.6;
-        transition: all 0.3s ease;
-        border-radius: 4px;
-        overflow: hidden;
-        cursor: pointer;
-        /* display: none; */ /* Thumbnails should be visible */
-    }
-
-    .tour-thumbs-swiper .swiper-slide-thumb-active {
-        opacity: 1;
-        border: 2px solid #FF9933;
-        transform: translateY(-3px);
-        box-shadow: 0 3px 10px rgba(255, 153, 51, 0.3);
-    }
-
-    /* Navigation buttons customization */
+    /* Navigation buttons customization - Smaller size */
     .swiper-button-next,
     .swiper-button-prev {
-        color: #FF9933;
-        background: rgba(255, 255, 255, 0.8);
-        width: 45px;
-        height: 45px;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: all 0.2s ease;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        color: white !important;
+        background: #FF9933 !important;
+        width: 36px !important;
+        height: 36px !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        transition: all 0.3s ease !important;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+        border: 2px solid white !important;
+        z-index: 10 !important;
     }
 
     .swiper-button-next:hover,
     .swiper-button-prev:hover {
-        background: rgba(255, 255, 255, 0.95);
-        transform: scale(1.1);
-        box-shadow: 0 3px 15px rgba(0,0,0,0.15);
+        background: #e68a2e !important;
+        transform: scale(1.1) !important;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.3) !important;
     }
 
     .swiper-button-next:after,
     .swiper-button-prev:after {
-        font-size: 18px;
-        font-weight: bold;
+        font-size: 14px !important;
+        font-weight: bold !important;
+        color: white !important;
     }
 
-    .swiper-pagination-bullet {
-        transition: all 0.2s ease;
+    /* Pagination customization */
+    .tour-gallery-swiper .swiper-pagination-bullet {
+        width: 12px;
+        height: 12px;
+        background: rgba(255, 255, 255, 0.5);
+        opacity: 1;
+        transition: all 0.3s ease;
     }
 
-    .swiper-pagination-bullet-active {
+    .tour-gallery-swiper .swiper-pagination-bullet-active {
         background: #FF9933;
         transform: scale(1.2);
+        box-shadow: 0 2px 8px rgba(255, 153, 51, 0.4);
     }
 
     /* Make gallery responsive */
     @media (max-width: 768px) {
-        .tour-gallery-swiper {
+        .tour-gallery-swiper .swiper-slide img {
             height: 300px;
-        }
-
-        .tour-thumbs-swiper .swiper-slide {
-            width: 25%;
         }
 
         .swiper-button-next,
         .swiper-button-prev {
-            width: 35px;
-            height: 35px;
+            width: 28px !important;
+            height: 28px !important;
         }
 
         .swiper-button-next:after,
         .swiper-button-prev:after {
-            font-size: 14px;
+            font-size: 11px !important;
         }
     }
 
@@ -204,30 +170,32 @@
 
                 <!-- Right Main Image with Gallery Slider -->
                 <div class="sm:w-2/3 sm:p-20">
-                    <!-- Single Gallery Slider with feature image first -->
-                    <div class="swiper tour-gallery-swiper">
-                        <div class="swiper-wrapper">
-                            <!-- Feature image as first slide -->
-                            <div class="swiper-slide">
-                                <img class="w-full h-auto object-cover rounded-lg" src="{{ asset('storage/' . $tourPackage->image) }}" alt="{{ $tourPackage->name }}">
+                    <!-- Main Gallery Slider -->
+                    <div class="relative">
+                        <div class="swiper tour-gallery-swiper">
+                            <div class="swiper-wrapper">
+                                <!-- Feature image as first slide -->
+                                <div class="swiper-slide">
+                                    <img class="w-full h-[400px] sm:h-[500px] object-cover rounded-lg" src="{{ asset('storage/' . $tourPackage->image) }}" alt="{{ $tourPackage->name }}">
+                                </div>
+
+                                <!-- Gallery images (if available) -->
+                                @if(is_array($tourPackage->gallery_images) && count($tourPackage->gallery_images) > 0)
+                                    @foreach($tourPackage->gallery_images as $imagePathString)
+                                        <div class="swiper-slide">
+                                            <img class="w-full h-[400px] sm:h-[500px] object-cover rounded-lg" src="{{ asset('storage/' . $imagePathString) }}" alt="{{ $tourPackage->name }} - Gallery Image">
+                                        </div>
+                                    @endforeach
+                                @endif
                             </div>
 
-                            <!-- Gallery images (if available) -->
-                            @if(is_array($tourPackage->gallery_images) && count($tourPackage->gallery_images) > 0)
-                                @foreach($tourPackage->gallery_images as $imagePathString)
-                                    <div class="swiper-slide">
-                                        <img class="w-full h-auto object-cover rounded-lg" src="{{ asset('storage/' . $imagePathString) }}" alt="{{ $tourPackage->name }} - Gallery Image">
-                                    </div>
-                                @endforeach
-                            @endif
+                            <!-- Pagination -->
+                            <div class="swiper-pagination"></div>
                         </div>
 
-                        <!-- Add Navigation -->
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
-
-                        <!-- Add Pagination -->
-                        <div class="swiper-pagination"></div>
+                        <!-- Navigation arrows outside the image -->
+                        <div class="swiper-button-next !absolute !-right-4 !top-1/2 !-translate-y-1/2 !w-12 !h-12 !bg-[#FF9933] !text-white !rounded-full !border-2 !border-white !shadow-lg hover:!bg-[#e68a2e] transition-colors duration-200"></div>
+                        <div class="swiper-button-prev !absolute !-left-4 !top-1/2 !-translate-y-1/2 !w-12 !h-12 !bg-[#FF9933] !text-white !rounded-full !border-2 !border-white !shadow-lg hover:!bg-[#e68a2e] transition-colors duration-200"></div>
                     </div>
                 </div>
             </div>
@@ -425,6 +393,54 @@
     <!-- JavaScript for Smooth Scroll, Notifications, and Map -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Tour Package Gallery Slider
+            initializeTourGallery();
+            
+            // Initialize other functionality
+            initializeSmoothScroll();
+            initializeNotifications();
+        });
+
+        function initializeTourGallery() {
+            const gallerySlider = document.querySelector(".tour-gallery-swiper");
+
+            if (!gallerySlider) return;
+
+            // Initialize main gallery slider
+            const galleryConfig = {
+                spaceBetween: 0,
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                    dynamicBullets: true,
+                },
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                },
+                effect: "slide",
+                speed: 600,
+                loop: false,
+                grabCursor: true,
+            };
+
+            const gallerySwiper = new Swiper(".tour-gallery-swiper", galleryConfig);
+
+            // Add click to zoom functionality
+            const galleryImages = document.querySelectorAll('.tour-gallery-swiper .swiper-slide img');
+            galleryImages.forEach(function(img) {
+                img.addEventListener('click', function() {
+                    openLightbox(this.src, this.alt);
+                });
+            });
+        }
+
+        function initializeSmoothScroll() {
             // Smooth scroll for navigation links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
@@ -441,7 +457,9 @@
                     }
                 });
             });
+        }
 
+        function initializeNotifications() {
             // Auto-hide success notification after 5 seconds
             const successAlert = document.querySelector('.bg-green-600');
             if (successAlert) {
@@ -458,16 +476,44 @@
                     fadeOut(successAlert);
                 }, 5000);
             }
+        }
 
-            // Function to fade out elements
-            function fadeOut(element) {
-                element.style.transition = 'opacity 0.5s ease';
-                element.style.opacity = '0';
-                setTimeout(() => {
-                    element.style.display = 'none';
-                }, 500);
-            }
-        });
+        function openLightbox(imgSrc, imgAlt) {
+            // Create lightbox element
+            const lightbox = document.createElement('div');
+            lightbox.className = 'fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center p-4';
+            lightbox.innerHTML = `
+                <div class="relative max-w-5xl w-full">
+                    <button class="absolute top-4 right-4 text-white text-4xl hover:text-yellow-500 z-10 transition-colors duration-200">&times;</button>
+                    <img src="${imgSrc}" alt="${imgAlt}" class="max-w-full max-h-[90vh] mx-auto rounded-lg shadow-2xl">
+                </div>
+            `;
+
+            // Add click event to close lightbox
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox || e.target.tagName === 'BUTTON') {
+                    this.remove();
+                }
+            });
+
+            // Add escape key to close lightbox
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    lightbox.remove();
+                }
+            });
+
+            // Add lightbox to body
+            document.body.appendChild(lightbox);
+        }
+
+        function fadeOut(element) {
+            element.style.transition = 'opacity 0.5s ease';
+            element.style.opacity = '0';
+            setTimeout(() => {
+                element.style.display = 'none';
+            }, 500);
+        }
     </script>
 
     <!-- Google Maps Script -->
@@ -532,85 +578,126 @@
 @section('scripts')
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Check if gallery slider elements exist
-        const gallerySlider = document.querySelector(".tour-gallery-swiper");
-        const thumbsSlider = document.querySelector(".tour-thumbs-swiper");
-
-        if (gallerySlider && thumbsSlider) {
-            // Initialize thumbnail slider
-            var tourThumbsSwiper = new Swiper(".tour-thumbs-swiper", {
-                spaceBetween: 10,
-                slidesPerView: 4,
-                freeMode: true,
-                watchSlidesProgress: true,
-                breakpoints: {
-                    320: {
-                        slidesPerView: 3,
-                        spaceBetween: 5
-                    },
-                    480: {
-                        slidesPerView: 4,
-                        spaceBetween: 8
-                    },
-                    768: {
-                        slidesPerView: 4,
-                        spaceBetween: 10
-                    }
-                }
-            });
-
-            // Initialize main gallery slider
-            var tourGallerySwiper = new Swiper(".tour-gallery-swiper", {
-                spaceBetween: 10,
-                navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev",
-                },
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true,
-                },
-                thumbs: {
-                    swiper: tourThumbsSwiper,
-                },
-                autoplay: {
-                    delay: 5000,
-                    disableOnInteraction: false,
-                },
-                effect: "fade",
-                fadeEffect: {
-                    crossFade: true
-                }
-            });
-
-            // Add lightbox functionality
-            const gallerySlides = document.querySelectorAll('.tour-gallery-swiper .swiper-slide img');
-            gallerySlides.forEach(function(slide) {
-                slide.addEventListener('click', function() {
-                    // Open image in lightbox or modal
-                    const imgSrc = this.getAttribute('src');
-                    const imgAlt = this.getAttribute('alt');
-
-                    // Create lightbox element
-                    const lightbox = document.createElement('div');
-                    lightbox.className = 'fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4';
-                    lightbox.innerHTML = `
-                        <div class="relative max-w-4xl w-full">
-                            <button class="absolute top-3 right-3 text-white text-3xl hover:text-yellow-500 z-10">&times;</button>
-                            <img src="${imgSrc}" alt="${imgAlt}" class="max-w-full max-h-[90vh] mx-auto">
-                        </div>
-                    `;
-
-                    // Add click event to close lightbox
-                    lightbox.addEventListener('click', function() {
-                        this.remove();
-                    });
-
-                    // Add lightbox to body
-                    document.body.appendChild(lightbox);
-                });
-            });
-        }
+        // Initialize Tour Package Gallery Slider
+        initializeTourGallery();
+        
+        // Initialize other functionality
+        initializeSmoothScroll();
+        initializeNotifications();
     });
+
+    function initializeTourGallery() {
+        const gallerySlider = document.querySelector(".tour-gallery-swiper");
+
+        if (!gallerySlider) return;
+
+        // Initialize main gallery slider
+        const galleryConfig = {
+            spaceBetween: 0,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+                dynamicBullets: true,
+            },
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+            },
+            effect: "slide",
+            speed: 600,
+            loop: false,
+            grabCursor: true,
+        };
+
+        const gallerySwiper = new Swiper(".tour-gallery-swiper", galleryConfig);
+
+        // Add click to zoom functionality
+        const galleryImages = document.querySelectorAll('.tour-gallery-swiper .swiper-slide img');
+        galleryImages.forEach(function(img) {
+            img.addEventListener('click', function() {
+                openLightbox(this.src, this.alt);
+            });
+        });
+    }
+
+    function initializeSmoothScroll() {
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    }
+
+    function initializeNotifications() {
+        // Auto-hide success notification after 5 seconds
+        const successAlert = document.querySelector('.bg-green-600');
+        if (successAlert) {
+            // Scroll to the notification
+            successAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            // Add click handler to dismiss
+            successAlert.addEventListener('click', function() {
+                fadeOut(successAlert);
+            });
+
+            // Auto hide after 5 seconds
+            setTimeout(() => {
+                fadeOut(successAlert);
+            }, 5000);
+        }
+    }
+
+    function openLightbox(imgSrc, imgAlt) {
+        // Create lightbox element
+        const lightbox = document.createElement('div');
+        lightbox.className = 'fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center p-4';
+        lightbox.innerHTML = `
+            <div class="relative max-w-5xl w-full">
+                <button class="absolute top-4 right-4 text-white text-4xl hover:text-yellow-500 z-10 transition-colors duration-200">&times;</button>
+                <img src="${imgSrc}" alt="${imgAlt}" class="max-w-full max-h-[90vh] mx-auto rounded-lg shadow-2xl">
+            </div>
+        `;
+
+        // Add click event to close lightbox
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox || e.target.tagName === 'BUTTON') {
+                this.remove();
+            }
+        });
+
+        // Add escape key to close lightbox
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                lightbox.remove();
+            }
+        });
+
+        // Add lightbox to body
+        document.body.appendChild(lightbox);
+    }
+
+    function fadeOut(element) {
+        element.style.transition = 'opacity 0.5s ease';
+        element.style.opacity = '0';
+        setTimeout(() => {
+            element.style.display = 'none';
+        }, 500);
+    }
 </script>
 @endsection
