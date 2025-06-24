@@ -21,7 +21,11 @@ class TourPackageController extends Controller
 
     public function create()
     {
-        $categories = Category::orderBy('name')->get();
+        // Fetch 'Tour' categories (ID 1) that are active (status_id 1), ordered by name
+        $categories = Category::where('category_type_id', 1)
+                                ->where('status_id', 1) // Assuming 1 is for active status
+                                ->orderBy('name')
+                                ->get();
         return view('backend.pages.tour_package.create', compact('categories'));
     }
 
@@ -103,7 +107,11 @@ class TourPackageController extends Controller
     public function edit($id)
     {
         $tourPackage = TourPackage::with('itinerary')->findOrFail($id);
-        $categories = Category::orderBy('name')->get();
+        // Fetch 'Tour' categories (ID 1) that are active (status_id 1), ordered by name
+        $categories = Category::where('category_type_id', 1)
+                                ->where('status_id', 1) // Assuming 1 is for active status
+                                ->orderBy('name')
+                                ->get();
         return view('backend.pages.tour_package.edit', compact('tourPackage', 'categories'));
     }
 
