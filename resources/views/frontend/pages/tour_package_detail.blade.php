@@ -37,35 +37,10 @@
     }
 
     /* Navigation buttons customization - Smaller size */
-    .swiper-button-next,
-    .swiper-button-prev {
-        color: white !important;
-        background: #FF9933 !important;
-        width: 36px !important;
-        height: 36px !important;
-        border-radius: 50% !important;
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        transition: all 0.3s ease !important;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
-        border: 2px solid white !important;
-        z-index: 10 !important;
-    }
+   
 
-    .swiper-button-next:hover,
-    .swiper-button-prev:hover {
-        background: #e68a2e !important;
-        transform: scale(1.1) !important;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.3) !important;
-    }
-
-    .swiper-button-next:after,
-    .swiper-button-prev:after {
-        font-size: 14px !important;
-        font-weight: bold !important;
-        color: white !important;
-    }
+    /* Remove all hover and box-shadow styles for swiper navigation buttons, so only the image is visible */
+    
 
     /* Pagination customization */
     .tour-gallery-swiper .swiper-pagination-bullet {
@@ -88,16 +63,6 @@
             height: 300px;
         }
 
-        .swiper-button-next,
-        .swiper-button-prev {
-            width: 28px !important;
-            height: 28px !important;
-        }
-
-        .swiper-button-next:after,
-        .swiper-button-prev:after {
-            font-size: 11px !important;
-        }
     }
 
     /* Lightbox styling */
@@ -120,6 +85,8 @@
     .sm\:w-2\/3 > img.w-full:hover { /* Escaped colon */
         transform: scale(1.01);
     }
+
+    
 </style>
 @endsection
 
@@ -194,8 +161,12 @@
                         </div>
 
                         <!-- Navigation arrows outside the image -->
-                        <div class="swiper-button-next !absolute !-right-4 !top-1/2 !-translate-y-1/2 !w-12 !h-12 !bg-[#FF9933] !text-white !rounded-full !border-2 !border-white !shadow-lg hover:!bg-[#e68a2e] transition-colors duration-200"></div>
-                        <div class="swiper-button-prev !absolute !-left-4 !top-1/2 !-translate-y-1/2 !w-12 !h-12 !bg-[#FF9933] !text-white !rounded-full !border-2 !border-white !shadow-lg hover:!bg-[#e68a2e] transition-colors duration-200"></div>
+                        <button class="custom-swiper-next !absolute !-right-4 !top-1/2 !-translate-y-1/2 z-10 p-0 bg-transparent border-none shadow-none focus:outline-none" style="width:56px;height:56px;display:flex;align-items:center;justify-content:center;">
+                            <img src="{{ asset('new_frontend/Assets/right.png') }}" alt="Next" class="w-14 h-14 pointer-events-none">
+                        </button>
+                        <button class="custom-swiper-prev !absolute !-left-4 !top-1/2 !-translate-y-1/2 z-10 p-0 bg-transparent border-none shadow-none focus:outline-none" style="width:56px;height:56px;display:flex;align-items:center;justify-content:center;">
+                            <img src="{{ asset('new_frontend/Assets/left.png') }}" alt="Prev" class="w-14 h-14 pointer-events-none">
+                        </button>
                     </div>
                 </div>
             </div>
@@ -384,6 +355,81 @@
             </div>
         </div>
     </div>
+    <!-- Gallery Section -->
+    <section class="pb-4 bg-white" id="gallery">
+            <div class="w-full flex-wrap sm:flex-nowrap flex">
+                <div class="h-auto max-w-1/2 sm:max-w-1/7 sm:w-1/7 grow p-[1px] sm:p-1 group cursor-pointer">
+                    <div class="relative overflow-hidden">
+                        <img src="{{ asset('new_frontend/Assets/img(10).png') }}" class="w-full h-auto transition-all duration-500 transform group-hover:scale-110" alt="Beach view">
+                        <div class="w-full opacity-0 group-hover:opacity-100 duration-300 h-full top-0 absolute flex justify-center items-center p-5">
+                            <div class="w-full h-full absolute flex justify-center items-center bg-black/50">
+                                <img src="{{ asset('new_frontend/Assets/Group 23469.png') }}" alt="View image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="h-auto max-w-1/2 sm:max-w-1/7 sm:w-1/7 grow p-[1px] sm:p-1 group cursor-pointer">
+                    <div class="relative overflow-hidden">
+                        <img src="{{ asset('new_frontend/Assets/img(11).png') }}" class="w-full h-auto transition-all duration-500 transform group-hover:scale-110" alt="Mountain view">
+                        <div class="w-full opacity-0 group-hover:opacity-100 duration-300 h-full top-0 absolute flex justify-center items-center p-5">
+                            <div class="w-full h-full absolute flex justify-center items-center bg-black/50">
+                                <img src="{{ asset('new_frontend/Assets/Group 23469.png') }}" alt="View image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="h-auto max-w-1/2 sm:max-w-1/7 sm:w-1/7 grow p-[1px] sm:p-1 group cursor-pointer">
+                    <div class="relative overflow-hidden">
+                        <img src="{{ asset('new_frontend/Assets/img(12).png') }}" class="w-full h-auto transition-all duration-500 transform group-hover:scale-110" alt="Temple view">
+                        <div class="w-full opacity-0 group-hover:opacity-100 duration-300 h-full top-0 absolute flex justify-center items-center p-5">
+                            <div class="w-full h-full absolute flex justify-center items-center bg-black/50">
+                                <img src="{{ asset('new_frontend/Assets/Group 23469.png') }}" alt="View image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="h-auto max-w-1/2 sm:max-w-1/7 sm:w-1/7 grow p-[1px] sm:p-1 group cursor-pointer">
+                    <div class="relative overflow-hidden">
+                        <img src="{{ asset('new_frontend/Assets/img(13).png') }}" class="w-full h-auto transition-all duration-500 transform group-hover:scale-110" alt="Wildlife view">
+                        <div class="w-full opacity-0 group-hover:opacity-100 duration-300 h-full top-0 absolute flex justify-center items-center p-5">
+                            <div class="w-full h-full absolute flex justify-center items-center bg-black/50">
+                                <img src="{{ asset('new_frontend/Assets/Group 23469.png') }}" alt="View image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="h-auto max-w-1/2 sm:max-w-1/7 sm:w-1/7 grow p-[1px] sm:p-1 group cursor-pointer">
+                    <div class="relative overflow-hidden">
+                        <img src="{{ asset('new_frontend/Assets/img(14).png') }}" class="w-full h-auto transition-all duration-500 transform group-hover:scale-110" alt="Cultural view">
+                        <div class="w-full opacity-0 group-hover:opacity-100 duration-300 h-full top-0 absolute flex justify-center items-center p-5">
+                            <div class="w-full h-full absolute flex justify-center items-center bg-black/50">
+                                <img src="{{ asset('new_frontend/Assets/Group 23469.png') }}" alt="View image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="h-auto max-w-1/2 sm:max-w-1/7 sm:w-1/7 grow p-[1px] sm:p-1 group cursor-pointer">
+                    <div class="relative overflow-hidden">
+                        <img src="{{ asset('new_frontend/Assets/img(15).png') }}" class="w-full h-auto transition-all duration-500 transform group-hover:scale-110" alt="Resort view">
+                        <div class="w-full opacity-0 group-hover:opacity-100 duration-300 h-full top-0 absolute flex justify-center items-center p-5">
+                            <div class="w-full h-full absolute flex justify-center items-center bg-black/50">
+                                <img src="{{ asset('new_frontend/Assets/Group 23469.png') }}" alt="View image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="h-auto max-w-1/2 sm:max-w-1/7 sm:w-1/7 grow p-[1px] sm:p-1 group cursor-pointer">
+                    <div class="relative overflow-hidden">
+                        <img src="{{ asset('new_frontend/Assets/img(15).png') }}" class="w-full h-auto transition-all duration-500 transform group-hover:scale-110" alt="Resort view">
+                        <div class="w-full opacity-0 group-hover:opacity-100 duration-300 h-full top-0 absolute flex justify-center items-center p-5">
+                            <div class="w-full h-full absolute flex justify-center items-center bg-black/50">
+                                <img src="{{ asset('new_frontend/Assets/Group 23469.png') }}" alt="View image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
     <!-- JavaScript for Smooth Scroll, Notifications, and Map -->
     <script>
@@ -405,8 +451,8 @@
             const galleryConfig = {
                 spaceBetween: 0,
                 navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev",
+                    nextEl: ".custom-swiper-next",
+                    prevEl: ".custom-swiper-prev",
                 },
                 pagination: {
                     el: ".swiper-pagination",
@@ -590,8 +636,8 @@
         const galleryConfig = {
             spaceBetween: 0,
             navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
+                nextEl: ".custom-swiper-next",
+                prevEl: ".custom-swiper-prev",
             },
             pagination: {
                 el: ".swiper-pagination",
