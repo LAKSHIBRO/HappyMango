@@ -5,11 +5,11 @@
 @section('keywords', 'Happy Mango Tours, Sri Lanka tours, travel agency, adventure tours, beach tours, cultural tours')
 
 @section('content')
-    <section class="w-full h-screen flex sm:gap-10 justify-center items-center flex-col" style="background-image: url({{ asset('new_frontend/Assets/mainbg.png') }}); background-size: cover; background-position: center;">
+    <section class="w-full h-[80vh] flex sm:gap-10 justify-center items-center flex-col" style="background-image: url({{ asset('new_frontend/Assets/mainbg.png') }}); background-size: cover; background-position: center;">
         <div class="text-3xl sm:text-6xl font-sec">Explore the World With</div>
         <div class="relative flex flex-col items-center gap-10 sm:gap-20">
             <div class="text-6xl text-center sm:text-9xl font-black font-pri">Happy Mango Tours!</div>
-            <div class="w-1/3 top-28 sm:top-24 absolute"><img src="{{ asset('new_frontend/Assets/Search Bar Container.png') }}" class="w-full" alt=""></div>
+            <div class="w-1/3 top-28 sm:top-24 absolute mt-12"><img src="{{ asset('new_frontend/Assets/Search Bar Container.png') }}" class="w-full" alt=""></div>
             <div class="text-md sm:text-2xl w-4/5 sm:w-2/3 text-center">Unforgettable journeys, breathtaking destinations, and personalized experiences await you!</div>
         </div>
     </section>

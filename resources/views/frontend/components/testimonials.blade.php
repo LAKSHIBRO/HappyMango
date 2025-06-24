@@ -3,9 +3,9 @@
     <!-- Left Content -->
     <div class="w-full sm:w-1/2 sm:px-44 px-10 py-10 sm:py-44 flex justify-center items-center bg-[#02515A] text-white">
       <div class="w-full min-h-[300px]" id="testimonialContent">
-        <div class="text-3xl font-bold">Naduni Pramodya</div>
-        <div class="text-xl">Amazing Traveller</div>
-        <div class="text-md mt-10">
+        <div class="text-3xl font-bold" id="testimonialName">Naduni Pramodya</div>
+        <div class="text-xl" id="testimonialTitle">Amazing Traveller</div>
+        <div class="text-md mt-10" id="testimonialQuote">
           Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum.
         </div>
       </div>
@@ -21,7 +21,7 @@
         <div class="swiper-wrapper">
           <!-- Slide 1 -->
           <div class="swiper-slide flex flex-col items-center" data-name="Naduni Pramodya" data-title="Amazing Traveller" data-quote="Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of 'de Finibus Bonorum et Malorum.">
-            <img src="https://randomuser.me/api/portraits/women/1.jpg" class="rounded-full border-4 border-orange-400 w-24 h-24 md:w-32 md:h-auto object-cover" />
+            <img src="https://randomuser.me/api/portraits/women/1.jpg" class="testimonial-img rounded-full object-cover" />
             <h4 class="text-xl font-bold mt-4">Naduni Pramodya</h4>
             <p class="text-gray-500">Amazing Traveller</p>
             <div class="text-orange-400 mt-2 text-lg">★★★★★</div>
@@ -29,7 +29,7 @@
 
           <!-- Slide 2 -->
           <div class="swiper-slide flex flex-col items-center" data-name="John Doe" data-title="Adventure Seeker" data-quote="Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature.">
-            <img src="https://randomuser.me/api/portraits/men/2.jpg" class="rounded-full border-4 border-orange-400 w-24 h-24 md:w-32 md:h-auto object-cover" />
+            <img src="https://randomuser.me/api/portraits/men/2.jpg" class="testimonial-img rounded-full object-cover" />
             <h4 class="text-xl font-bold mt-4">John Doe</h4>
             <p class="text-gray-500">Adventure Seeker</p>
             <div class="text-orange-400 mt-2 text-lg">★★★★★</div>
@@ -37,7 +37,7 @@
 
           <!-- Slide 3 -->
           <div class="swiper-slide flex flex-col items-center" data-name="Sarah Lee" data-title="Nature Lover" data-quote="Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage.">
-            <img src="https://randomuser.me/api/portraits/women/3.jpg" class="rounded-full border-4 border-orange-400 w-24 h-24 md:w-32 md:h-auto object-cover" />
+            <img src="https://randomuser.me/api/portraits/women/3.jpg" class="testimonial-img rounded-full object-cover" />
             <h4 class="text-xl font-bold mt-4">Sarah Lee</h4>
             <p class="text-gray-500">Nature Lover</p>
             <div class="text-orange-400 mt-2 text-lg">★★★★★</div>
@@ -45,7 +45,7 @@
 
           <!-- Slide 4 -->
           <div class="swiper-slide flex flex-col items-center" data-name="Mike Ross" data-title="Explorer" data-quote="Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur.">
-            <img src="https://randomuser.me/api/portraits/men/4.jpg" class="rounded-full border-4 border-orange-400 w-24 h-24 md:w-32 md:h-auto object-cover" />
+            <img src="https://randomuser.me/api/portraits/men/4.jpg" class="testimonial-img rounded-full object-cover" />
             <h4 class="text-xl font-bold mt-4">Mike Ross</h4>
             <p class="text-gray-500">Explorer</p>
             <div class="text-orange-400 mt-2 text-lg">★★★★★</div>
@@ -53,7 +53,7 @@
 
           <!-- Slide 5 -->
           <div class="swiper-slide flex flex-col items-center" data-name="Emily Clark" data-title="Beach Lover" data-quote="Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words.">
-            <img src="https://randomuser.me/api/portraits/women/5.jpg" class="rounded-full border-4 border-orange-400 w-24 h-24 md:w-32 md:h-auto object-cover" />
+            <img src="https://randomuser.me/api/portraits/women/5.jpg" class="testimonial-img rounded-full object-cover" />
             <h4 class="text-xl font-bold mt-4">Emily Clark</h4>
             <p class="text-gray-500">Beach Lover</p>
             <div class="text-orange-400 mt-2 text-lg">★★★★★</div>
@@ -72,7 +72,9 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script>
-  const testimonialText = document.getElementById("testimonialContent");
+  const testimonialName = document.getElementById("testimonialName");
+  const testimonialTitle = document.getElementById("testimonialTitle");
+  const testimonialQuote = document.getElementById("testimonialQuote");
 
   const swiper = new Swiper(".mySwipertest", {
     loop: true,
@@ -81,7 +83,7 @@
       disableOnInteraction: false,
     },
     centeredSlides: true,
-    spaceBetween: 30,
+    spaceBetween: 0,
     navigation: {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
@@ -114,11 +116,36 @@
     const name = slide.dataset.name;
     const title = slide.dataset.title;
     const quote = slide.dataset.quote;
-
-    testimonialText.innerHTML = `
-      <div class="text-3xl font-bold">${name}</div>
-      <div class="text-xl">${title}</div>
-      <div class="text-md mt-10">${quote}</div>
-    `;
+    testimonialName.textContent = name;
+    testimonialTitle.textContent = title;
+    testimonialQuote.textContent = quote;
   }
 </script>
+
+<style>
+  .mySwipertest .swiper-slide {
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 0.5;
+    /* Smaller by default */
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+  }
+  .mySwipertest .swiper-slide .testimonial-img {
+    width: 72px;
+    height: 72px;
+    transition: width 0.3s, height 0.3s, box-shadow 0.3s, border 0.3s;
+    box-shadow: none;
+    border: none;
+  }
+  .mySwipertest .swiper-slide-active {
+    opacity: 1;
+    z-index: 2;
+    /* Bring to front */
+  }
+  .mySwipertest .swiper-slide-active .testimonial-img {
+    width: 128px;
+    height: 128px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    border: 4px solid #fb923c; /* orange-400 */
+  }
+</style>
