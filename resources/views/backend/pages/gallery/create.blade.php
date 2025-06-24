@@ -39,14 +39,20 @@
                 <div class="row">
                     <div class="fileChooser" ondragover="handleDragOver(event)" ondragleave="handleDragLeave()"
                         ondrop="handleDrop(event)">
-                        <label id="fileChooserTitleGalleryImages" for="galleryImages">
+                        <label id="fileChooserTitleGalleryImage" for="galleryImage">
                             Drag & Drop your file or
                             <span><u>Browse</u></span>
                         </label>
-                        <div class="selectedImages" id="selectedGalleryImages"></div>
-                        <input type="file" id="galleryImages"
-                            onchange="previewImage('galleryImages', 'fileChooserTitleGalleryImages')" multiple
+                        <div class="selectedImages" id="selectedGalleryImage"></div>
+                        <input type="file" id="galleryImage" name="image"
+                            onchange="previewImage('galleryImage', 'fileChooserTitleGalleryImage')"
                             accept="image/*" />
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-xl-12 mb-3">
+                        <label for="caption" class="form-label">Caption</label>
+                        <input type="text" class="form-control" id="caption" name="caption" placeholder="Enter image caption">
                     </div>
                 </div>
             </div>
@@ -124,8 +130,8 @@
         </div>
     </div>
     <div class="card-footer d-flex justify-content-end gap-3 mt-4 mt-xl-5">
-        <button class="btn btn-secondary" onclick="window.location='/admin/gallery';">Cancel</button>
-        <button id="albumSaveBtn" class="btn btn-primary" onclick="createAlbum();">Upload</button>
+        <button type="button" class="btn btn-secondary" onclick="window.location='/admin/gallery';">Cancel</button>
+        <button type="button" id="albumSaveBtn" class="btn btn-primary" onclick="createAlbum();">Upload</button>
     </div>
 </div>
 @endsection

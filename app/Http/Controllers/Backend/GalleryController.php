@@ -47,22 +47,17 @@ class GalleryController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            // 'title' => 'required',
-            // 'slug' => 'required|unique:albums,slug',
-            // 'cover' => 'image|mimes:jpeg,png,jpg,gif',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Max 2MB
+            'caption' => 'nullable|string|max:255',
         ];
 
         $messages = [
-            'title.required' => 'The title field is required.',
-            'slug.required' => 'The slug field is required.',
-            'slug.unique' => 'The slug has already been taken.',
-            'cover.image' => 'The logo must be an image file.',
-            'cover.mimes' => 'The logo must be a jpeg, png, jpg, or gif file.',
-            'cover.max' => 'The logo file must not exceed 2048 kilobytes.',
-            'images.*.image' => 'Gallery images must be image files.',
-            'images.*.mimes' => 'Gallery images must be jpeg, png, jpg, or gif files.',
-            'images.*.max' => 'Each gallery image must not exceed 2048 kilobytes.',
+            'image.required' => 'An image file is required.',
+            'image.image' => 'The file must be an image.',
+            'image.mimes' => 'The image must be a jpeg, png, jpg, or gif file.',
+            'image.max' => 'The image file must not exceed 2048 kilobytes.',
+            'caption.string' => 'The caption must be a string.',
+            'caption.max' => 'The caption may not be greater than 255 characters.',
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
@@ -71,34 +66,20 @@ class GalleryController extends Controller
             return response()->json(['success' => false, 'message' => $validator->errors()->first()]);
         }
 
-        // $coverFilename = null;
-
-        // if ($request->hasFile('cover')) {
-        //     $cover = $request->file('cover');
-        //     $coverFilename = hash('sha256', uniqid() . '_' . $cover->getClientOriginalName()) . '.' . $cover->getClientOriginalExtension();
-        //     $cover->move(public_path('uploads/album/'), $coverFilename);
-        // }
-
-        // $album = new Album();
-        // $album->title = $request->input('title');
-        // $album->slug = Str::slug($request->input('slug'), '_');
-        // $album->category_id = $request->input('category');
-        // $album->image = $coverFilename;
-        // $album->status_id = $request->input('visibility');
-        // $album->save();
-
-        $galleryImages = $request->file('images');
-
-        foreach ($galleryImages as $galleryImage) {
+        if ($request->hasFile('image')) {
+            $galleryImage = $request->file('image');
             $galleryImageFilename = hash('sha256', uniqid() . '_' . $galleryImage->getClientOriginalName()) . '.' . $galleryImage->getClientOriginalExtension();
             $galleryImage->move(public_path('uploads/album/'), $galleryImageFilename);
 
             $galleryImageModel = new GalleryImages();
             $galleryImageModel->image = $galleryImageFilename;
+            $galleryImageModel->caption = $request->input('caption');
             $galleryImageModel->save();
+
+            return response()->json(['success' => true, 'message' => 'Image uploaded successfully.']);
         }
 
-        return response()->json(['success' => true, 'message' => 'Images uploaded successfully.']);
+        return response()->json(['success' => false, 'message' => 'Image upload failed.']);
     }
 
     public function update(Request $request, $id)

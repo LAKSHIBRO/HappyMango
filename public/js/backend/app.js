@@ -840,9 +840,26 @@ function createAlbum() {
 
     // formData.append('title', albumTitle);
     // formData.append('slug', albumSlug);
-    for (let i = 0; i < imageArray.length; i++) {
-        formData.append('images[]', imageArray[i].image);
+    // for (let i = 0; i < imageArray.length; i++) {
+    //     formData.append('images[]', imageArray[i].image);
+    // }
+
+    const galleryImageInput = document.getElementById('galleryImage');
+    if (galleryImageInput && galleryImageInput.files.length > 0) {
+        formData.append('image', galleryImageInput.files[0]);
+    } else {
+        // Handle case where no image is selected, though backend validation should catch this.
+        Toastify({ text: "Please select an image.", duration: 3000, gravity: "top", position: "right" }).showToast();
+        albumSaveBtn.disabled = false;
+        albumSaveBtn.innerHTML = 'Upload'; // Reset button text
+        return;
     }
+
+    const captionInput = document.getElementById('caption');
+    if (captionInput) {
+        formData.append('caption', captionInput.value);
+    }
+
     // formData.append('cover', albumCover.files[0]);
     // formData.append('category', albumCategory);
     // formData.append('visibility', albumShow);
