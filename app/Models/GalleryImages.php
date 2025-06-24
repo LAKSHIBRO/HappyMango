@@ -12,6 +12,6 @@ class GalleryImages extends Model
     protected $fillable = [
         'image',
         'caption',
-        // 'album_id', // If you ever re-enable album_id, add it here
+        'description',
     ];
 }

@@ -860,6 +860,11 @@ function createAlbum() {
         formData.append('caption', captionInput.value);
     }
 
+    const descriptionInput = document.getElementById('description'); // Get description input
+    if (descriptionInput) {
+        formData.append('description', descriptionInput.value); // Add description to formData
+    }
+
     // formData.append('cover', albumCover.files[0]);
     // formData.append('category', albumCategory);
     // formData.append('visibility', albumShow);
