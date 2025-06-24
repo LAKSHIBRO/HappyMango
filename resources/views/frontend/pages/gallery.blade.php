@@ -22,9 +22,10 @@
             <div class="row mx-auto" id="imageContainer">
                 @foreach ($galleries as $gallery)
                     <div class="col-lg-4">
-                        <div class="card">
-                            <a href="{{ asset('uploads/album/' . $gallery->image) }}" data-fancybox="images">
+                        <div class="card gallery-item"> {{-- Added gallery-item class --}}
+                            <a href="{{ asset('uploads/album/' . $gallery->image) }}" data-fancybox="images" data-caption="{{ $gallery->caption ?? '' }}">
                                 <div class="card-body">
+                                    {{-- The existing SVG icon seems to be an overlay or placeholder, keeping it --}}
                                     <div class="icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="79.22" height="63.374"
                                             viewBox="0 0 79.22 63.374">
@@ -41,9 +42,14 @@
                                             </g>
                                         </svg>
                                     </div>
-                                    <img src="{{ asset('uploads/album/' . $gallery->image) }}" alt="Gallery Image">
+                                    <img src="{{ asset('uploads/album/' . $gallery->image) }}" alt="{{ $gallery->caption ?? 'Gallery Image' }}">
                                 </div>
                             </a>
+                            @if($gallery->caption)
+                            <div class="caption-overlay">
+                                <p>{{ $gallery->caption }}</p>
+                            </div>
+                            @endif
                         </div>
                     </div>
                 @endforeach

@@ -867,6 +867,42 @@ header .menu-btn svg path {
     transition: opacity 0.5s ease-in-out;
 }
 
+.gallery-item {
+    position: relative; /* For positioning the overlay */
+}
+
+.caption-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.75); /* Dark semi-transparent background */
+    color: white;
+    padding: 8px;
+    text-align: center;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease-in-out;
+    z-index: 100; /* Ensure it's above the image but below fancybox icon if any */
+    border-bottom-left-radius: 8px; /* Match card's border radius */
+    border-bottom-right-radius: 8px; /* Match card's border radius */
+}
+
+.gallery-item:hover .caption-overlay {
+    opacity: 1; /* Show on hover */
+}
+
+.caption-overlay p {
+    margin: 0;
+    font-size: 0.9em;
+    line-height: 1.2;
+    max-height: 3.6em; /* Approx 3 lines of text */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limit to 3 lines */
+    -webkit-box-orient: vertical;
+}
+
 
 /* BLOG SECTION CSS HERE */
 
