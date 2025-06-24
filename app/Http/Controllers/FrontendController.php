@@ -74,17 +74,17 @@ class FrontendController extends Controller
         if ($type) {
             $category = Category::where('name', $type)->first();
 
-            $categoryIds = Category::where('category_type_id', '1')->where('id', $category->id)->pluck('id');
+            $categoryIds = Category::where('category_type_id', 2)->where('id', $category->id)->pluck('id'); // Changed to 2
             $posts = Post::whereIn('category_id', $categoryIds)->limit(10)->get();
             $allPosts = Post::whereIn('category_id', $categoryIds)->get();
         } else {
-            $categoryIds = Category::where('category_type_id', '1')->pluck('id');
+            $categoryIds = Category::where('category_type_id', 2)->pluck('id'); // Changed to 2
             $posts = Post::whereIn('category_id', $categoryIds)->limit(10)->get();
             $allPosts = Post::whereIn('category_id', $categoryIds)->get();
         }
 
 
-        $types = Category::where('category_type_id', 1)->get();
+        $types = Category::where('category_type_id', 2)->get(); // Changed to 2
         return view('frontend.pages.new_blog', compact('posts', 'types', 'allPosts'));
     }
 
@@ -102,11 +102,11 @@ class FrontendController extends Controller
                 return redirect('/');
             }
 
-            $categoryIds = Category::where('category_type_id', '1')->where('id', $category->id)->pluck('id');
+            $categoryIds = Category::where('category_type_id', 2)->where('id', $category->id)->pluck('id'); // Changed to 2
             $posts = Post::whereIn('category_id', $categoryIds);
             $allPosts = Post::whereIn('category_id', $categoryIds)->get();
         } else {
-            $categoryIds = Category::where('category_type_id', '1')->pluck('id');
+            $categoryIds = Category::where('category_type_id', 2)->pluck('id'); // Changed to 2
             $posts = Post::whereIn('category_id', $categoryIds);
             $allPosts = Post::whereIn('category_id', $categoryIds)->get();
         }
@@ -149,7 +149,7 @@ class FrontendController extends Controller
     {
         $post = Post::where('slug', $slug)->firstOrFail();
         $recentPosts = Post::where('id', '!=', $post->id)->latest()->limit(3)->get();
-        $categories = Category::where('category_type_id', 1)->get();
+        $categories = Category::where('category_type_id', 2)->get(); // Changed to 2
 
         return view('frontend.pages.new_blog_detail', compact('post', 'recentPosts', 'categories'));
     }

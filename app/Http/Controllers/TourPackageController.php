@@ -2,18 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\TourPackage;
 use App\Models\Inquiry;
 use Illuminate\Http\Request;
+
+use App\Models\Category; // Added this line
 
 class TourPackageController extends Controller
 {
     public function index()
     {
-        // Assuming 'Tour' category type has ID 4
-        $tourCategories = Category::where('category_type_id', 4)->where('status_id', 1)->get();
+        // Fetch active tours
         $tours = TourPackage::where('active', true)->orderBy('created_at', 'desc')->get();
+
+        // Fetch 'Tour' categories (ID 1) that are active (status_id 1)
+        $tourCategories = Category::where('category_type_id', 1)
+                                  ->where('status_id', 1) // Assuming 1 is for active status
+                                  ->get();
 
         return view('frontend.pages.tpd', compact('tours', 'tourCategories'));
     }

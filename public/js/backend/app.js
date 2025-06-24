@@ -407,9 +407,7 @@ function editCategory(categoryId) {
                     }
 
                     // Robustly select category status
-                    // Assuming status is 0 for inactive, 1 for active, and option values match this.
-                    // Or, if status_id is used directly from the model and matches option values:
-                    const statusId = categoryResponce.data.status_id; // Assuming status_id is available
+                    const statusId = categoryResponce.data.status_id; // Prefer status_id if available
                     const categoryUpdateStatusSelect = document.getElementById("categoryUpdateStatus");
                     if (categoryUpdateStatusSelect && statusId !== null && statusId !== undefined) {
                         for (let i = 0; i < categoryUpdateStatusSelect.options.length; i++) {
@@ -419,8 +417,9 @@ function editCategory(categoryId) {
                             }
                         }
                     } else if (categoryUpdateStatusSelect && categoryResponce.data.status !== null && categoryResponce.data.status !== undefined) {
-                        // Fallback to old logic if status_id is not directly available and `status` is 0 or 1
+                        // Fallback to `status` (0 or 1) if status_id is not available or not what's used in options
                          for (let i = 0; i < categoryUpdateStatusSelect.options.length; i++) {
+                            // Assuming option values for status are '0' and '1'
                             if (categoryUpdateStatusSelect.options[i].value == categoryResponce.data.status) {
                                 categoryUpdateStatusSelect.options[i].selected = true;
                                 break;
