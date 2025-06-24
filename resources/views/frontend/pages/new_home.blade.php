@@ -26,8 +26,8 @@
             <div class="w-full flex-col sm:flex-row flex justify-center items-center gap-10">
                 <div class="flex flex-col items-center justify-center sm:w-1/5 gap-3 sm:gap-10 group/item">
                     <div class="sm:p-10 px-10 py-5">
-                        <div class="w-full rounded-full group-hover/item:border-[#FF9933] border-8 border-[#00000000] duration-300">
-                            <img src="{{ asset('new_frontend/Assets/av1.png') }}" class="" alt="">
+                        <div class="w-full rounded-full group-hover/item:border-[#FF9933] border-8 border-[#00000000] duration-300 group relative overflow-hidden">
+                            <img src="{{ asset('new_frontend/Assets/av1.png') }}" class="transition-all duration-500 transform group-hover:scale-110" alt="">
                         </div>
                     </div>
                     <div class="w-fit text-2xl text-center duration-200 cursor-pointer group-hover/item:text-[#FF9933] font-bold">Beach & Island</div>
@@ -35,8 +35,8 @@
                 </div>
                 <div class="flex flex-col items-center justify-center sm:w-1/5 gap-3 sm:gap-10 group/item">
                     <div class="sm:p-10 px-10 py-5">
-                        <div class="w-full rounded-full group-hover/item:border-[#FF9933] border-8 border-[#00000000] duration-300">
-                            <img src="{{ asset('new_frontend/Assets/img(3).png') }}" class="" alt="">
+                        <div class="w-full rounded-full group-hover/item:border-[#FF9933] border-8 border-[#00000000] duration-300 group relative overflow-hidden">
+                            <img src="{{ asset('new_frontend/Assets/img(3).png') }}" class="transition-all duration-500 transform group-hover:scale-110" alt="">
                         </div>
                     </div>
                     <div class="w-fit text-2xl text-center duration-200 cursor-pointer group-hover/item:text-[#FF9933] font-bold">Adventure & Wildlife</div>
@@ -44,8 +44,8 @@
                 </div>
                 <div class="flex flex-col items-center justify-center sm:w-1/5 gap-3 sm:gap-10 group/item">
                     <div class="sm:p-10 px-10 py-5">
-                        <div class="w-full rounded-full group-hover/item:border-[#FF9933] border-8 border-[#00000000] duration-300">
-                            <img src="{{ asset('new_frontend/Assets/img(4).png') }}" class="" alt="">
+                        <div class="w-full rounded-full group-hover/item:border-[#FF9933] border-8 border-[#00000000] duration-300 group relative overflow-hidden">
+                            <img src="{{ asset('new_frontend/Assets/img(4).png') }}" class="transition-all duration-500 transform group-hover:scale-110" alt="">
                         </div>
                     </div>
                     <div class="w-fit text-2xl text-center duration-200 cursor-pointer group-hover/item:text-[#FF9933] font-bold">Cultural & Heritage</div>
@@ -53,8 +53,8 @@
                 </div>
                 <div class="flex flex-col items-center justify-center sm:w-1/5 gap-3 sm:gap-10 group/item">
                     <div class="sm:p-10 px-10 py-5">
-                        <div class="w-full rounded-full group-hover/item:border-[#FF9933] border-8 border-[#00000000] duration-300">
-                            <img src="{{ asset('new_frontend/Assets/img(5).png') }}" class="" alt="">
+                        <div class="w-full rounded-full group-hover/item:border-[#FF9933] border-8 border-[#00000000] duration-300 group relative overflow-hidden">
+                            <img src="{{ asset('new_frontend/Assets/img(5).png') }}" class="transition-all duration-500 transform group-hover:scale-110" alt="">
                         </div>
                     </div>
                     <div class="w-fit text-2xl text-center duration-200 cursor-pointer group-hover/item:text-[#FF9933] font-bold">Ayurvedic & Spa</div>
@@ -66,14 +66,14 @@
         <!-- Why Choose Us Section -->
         <section class="w-full bg-[#02515A] flex flex-col sm:flex-row" id="why-choose-us">
             <div class="w-full sm:w-1/2 text-white py-20 px-10 sm:px-20">
-                <div class="w-full flex flex-col gap-10">
+                <div class="w-full flex flex-col gap-2">
                     <div class="text-xl sm:text-3xl font-sec">Unforgettable Journeys</div>
                     <div class="text-4xl sm:text-6xl font-extrabold font-pri">Why Choose Us?</div>
                     <div class="my-5 sm:my-10 flex flex-col gap-5 sm:gap-10">
-                        <div class="flex sm:flex-row flex-col gap-4 sm:gap-10 py-5 px-3 border border-white/0 hover:border-white/25">
+                        <div class="flex sm:flex-row flex-col gap-4 sm:gap-10 py-5 px-3 border border-white/0">
                             <div class="">
-                                <div class="w-[112px] h-[112px] bg-[#FF9933] rounded-full flex justify-center items-center">
-                                    <img class="w-auto " src="{{ asset('new_frontend/Assets/guide.png') }}" alt="">
+                                <div class="w-[112px] h-[112px] bg-[#FF9933] rounded-full flex justify-center items-center group relative overflow-hidden">
+                                    <img class="w-auto transition-all duration-500 transform group-hover:scale-110" src="{{ asset('new_frontend/Assets/guide.png') }}" alt="">
                                 </div>
                             </div>
                             <div class="flex flex-col justify-center">
@@ -81,10 +81,10 @@
                                 <div class="text-sm sm:text-md">Knowledgeable guides to ensure an immersive and hassle-free journey.</div>
                             </div>
                         </div>
-                        <div class="flex sm:flex-row flex-col gap-4 sm:gap-10 py-5 px-3 border border-white/0 hover:border-white/25">
+                        <div class="flex sm:flex-row flex-col gap-4 sm:gap-10 py-5 px-3 border border-white/0">
                             <div class="">
-                                <div class="w-[112px] h-[112px] bg-[#FF9933] rounded-full flex justify-center items-center">
-                                    <img class="w-auto " src="{{ asset('new_frontend/Assets/tags.png') }}" alt="">
+                                <div class="w-[112px] h-[112px] bg-[#FF9933] rounded-full flex justify-center items-center group relative overflow-hidden">
+                                    <img class="w-auto transition-all duration-500 transform group-hover:scale-110" src="{{ asset('new_frontend/Assets/tags.png') }}" alt="">
                                 </div>
                             </div>
                             <div class="flex flex-col justify-center">
@@ -92,10 +92,10 @@
                                 <div class="text-sm sm:text-md">Customizable packages to suit every budget and preference.</div>
                             </div>
                         </div>
-                        <div class="flex sm:flex-row flex-col gap-4 sm:gap-10 py-5 px-3 border border-white/0 hover:border-white/25">
+                        <div class="flex sm:flex-row flex-col gap-4 sm:gap-10 py-5 px-3 border border-white/0">
                             <div class="">
-                                <div class="w-[112px] h-[112px] bg-[#FF9933] rounded-full flex justify-center items-center">
-                                    <img class="w-auto " src="{{ asset('new_frontend/Assets/user-headset.png') }}" alt="">
+                                <div class="w-[112px] h-[112px] bg-[#FF9933] rounded-full flex justify-center items-center group relative overflow-hidden">
+                                    <img class="w-auto transition-all duration-500 transform group-hover:scale-110" src="{{ asset('new_frontend/Assets/user-headset.png') }}" alt="">
                                 </div>
                             </div>
                             <div class="flex flex-col justify-center">
@@ -116,12 +116,12 @@
         <!-- Your Dream Vacation Section -->
         <section class="w-full bg-[#02515A]" id="dream-vacation">
             <div class="py-20 flex sm:flex-row flex-col">
-                <div class="w-[278px] h-[754px] hidden sm:flex">
-                    <img src="{{ asset('new_frontend/Assets/2.png') }}" class="w-full h-full object-fill" alt="">
+                <div class="w-[278px] h-[754px] hidden sm:flex group relative overflow-hidden">
+                    <img src="{{ asset('new_frontend/Assets/2.png') }}" class="w-full h-full object-fill transition-all duration-500 transform group-hover:scale-110" alt="">
                 </div>
-                <div class="w-full sm:w-1/2 flex grow">
+                <div class="w-full sm:w-1/2 flex grow group relative overflow-hidden">
                     <div class="w-full">
-                        <img src="{{ asset('new_frontend/Assets/1.png') }}" class="w-full" alt="">
+                        <img src="{{ asset('new_frontend/Assets/1.png') }}" class="w-full transition-all duration-500 transform group-hover:scale-110" alt="">
                     </div>
                 </div>
                 <div class="w-full sm:w-1/2 py-10 sm:py-20 px-10 flex flex-col gap-5 sm:gap-10">
@@ -405,7 +405,7 @@
         </section>
 
         <!-- Gallery Section -->
-        <section class="pb-4 bg-white" id="gallery">
+        <section class="py-1 bg-white" id="gallery">
            
 
             <div class="w-full flex-wrap sm:flex-nowrap flex">

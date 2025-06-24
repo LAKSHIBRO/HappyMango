@@ -207,8 +207,9 @@
                     <div class="col-12 mb-3">
                         <label for="categoryUpdateType" class="form-label">Type</label>
                         <select class="form-select" id="categoryUpdateType">
-                            <option value="1">Post</option>
-                            <option value="2">Gallery</option>
+                            @foreach ($categoryTypes as $categoryType)
+                                <option value="{{ $categoryType->id }}">{{ $categoryType->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="col-12 mb-4">
