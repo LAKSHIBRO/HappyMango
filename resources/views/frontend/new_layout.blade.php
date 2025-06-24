@@ -28,6 +28,7 @@
 
         @yield('content')
 
+        <x-frontend.gallery />
         @include('frontend.components.new_footer')
     </div>
 
