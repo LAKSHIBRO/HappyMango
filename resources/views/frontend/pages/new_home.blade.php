@@ -121,7 +121,7 @@
                 </div>
                 <div class="w-full sm:w-1/2 flex grow group relative overflow-hidden">
                     <div class="w-full">
-                        <img src="{{ asset('new_frontend/Assets/1.png') }}" class="w-full transition-all duration-500 transform group-hover:scale-110" alt="">
+                        <img src="{{ asset('new_frontend/Assets/1.png') }}" class="w-full" alt="">
                     </div>
                 </div>
                 <div class="w-full sm:w-1/2 py-10 sm:py-20 px-10 flex flex-col gap-5 sm:gap-10">
