@@ -2,117 +2,82 @@
 
 @section('content')
 <div class="page-header">
-    <div class="page-leftheader">
-        <h4 class="page-title mb-0">Tour Inquiries</h4>
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/admin/dashboard"><i class="fe fe-home mr-2 fs-14"></i>Dashboard</a></li>
+    <h1 class="page-title my-auto">Tour Inquiries</h1>
+    <div>
+        <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item">
+                <a href="/admin/dashboard">Home</a>
+            </li>
             <li class="breadcrumb-item active" aria-current="page">Inquiries</li>
         </ol>
     </div>
 </div>
-
-<div class="row">
-    <div class="col-xl-3 col-lg-6 col-md-6">
-        <div class="card">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-8">
-                        <div class="mt-0 text-left">
-                            <span class="fs-20 font-weight-semibold">{{ $totalInquiries }}</span>
-                            <p class="text-muted mt-1 mb-0">Total Inquiries</p>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="icon1 bg-primary my-auto float-right">
-                            <i class="fi fi-rr-envelope"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-3 col-lg-6 col-md-6">
-        <div class="card">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-8">
-                        <div class="mt-0 text-left">
-                            <span class="fs-20 font-weight-semibold">{{ $newInquiries }}</span>
-                            <p class="text-muted mt-1 mb-0">New Inquiries</p>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="icon1 bg-warning my-auto float-right">
-                            <i class="fi fi-rr-clock"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-3 col-lg-6 col-md-6">
-        <div class="card">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-8">
-                        <div class="mt-0 text-left">
-                            <span class="fs-20 font-weight-semibold">{{ $processingInquiries }}</span>
-                            <p class="text-muted mt-1 mb-0">Processing</p>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="icon1 bg-info my-auto float-right">
-                            <i class="fi fi-rr-refresh"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-3 col-lg-6 col-md-6">
-        <div class="card">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-8">
-                        <div class="mt-0 text-left">
-                            <span class="fs-20 font-weight-semibold">{{ $confirmedInquiries }}</span>
-                            <p class="text-muted mt-1 mb-0">Confirmed</p>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="icon1 bg-success my-auto float-right">
-                            <i class="fi fi-rr-check"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">All Inquiries</h3>
-                <div class="card-options">
-                    <a href="{{ route('admin.inquiry.create') }}" class="btn btn-primary btn-sm">
-                        <i class="fi fi-rr-plus"></i> Add New Inquiry
+<div class="row top-row">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 d-inline-block mb-3">
+                <div class="d-inline-flex float-end">
+                    <a href="{{ route('admin.inquiry.create') }}" class="btn btn-primary d-flex align-items-center gap-2">
+                        <i class="fi fi-rr-plus"></i>
+                        Add New Inquiry
                     </a>
                 </div>
             </div>
-            <div class="card-body">
-                @if(session('success'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        {{ session('success') }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+            <div class="col-12 col-md-3">
+                <div class="card">
+                    <div class="card-body d-flex align-items-center gap-3">
+                        <div class="icon">
+                            <i class="fi fi-rr-envelope"></i>
+                        </div>
+                        <div class="text">
+                            <p>Total Inquiries</p>
+                            <h3>{{ $totalInquiries }}</h3>
+                        </div>
                     </div>
-                @endif
-
-                <div class="table-responsive">
-                    <table class="table table-bordered text-nowrap" id="inquiries-table">
+                </div>
+            </div>
+            <div class="col-12 col-md-3">
+                <div class="card">
+                    <div class="card-body d-flex align-items-center gap-3">
+                        <div class="icon">
+                            <i class="fi fi-rr-clock"></i>
+                        </div>
+                        <div class="text">
+                            <p>New Inquiries</p>
+                            <h3>{{ $newInquiries }}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-3">
+                <div class="card">
+                    <div class="card-body d-flex align-items-center gap-3">
+                        <div class="icon">
+                            <i class="fi fi-rr-refresh"></i>
+                        </div>
+                        <div class="text">
+                            <p>Processing</p>
+                            <h3>{{ $processingInquiries }}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-3">
+                <div class="card">
+                    <div class="card-body d-flex align-items-center gap-3">
+                        <div class="icon">
+                            <i class="fi fi-rr-check"></i>
+                        </div>
+                        <div class="text">
+                            <p>Confirmed</p>
+                            <h3>{{ $confirmedInquiries }}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 mt-4">
+                <div class="overflow-x-auto" style="white-space: nowrap; min-height: 300px">
+                    <table class="table" id="inquiries-table">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -160,29 +125,33 @@
                                     </td>
                                     <td>{{ $inquiry->created_at->format('M d, Y H:i') }}</td>
                                     <td>
-                                        <div class="btn-group">
-                                            <a href="{{ route('admin.inquiry.show', $inquiry->id) }}" 
-                                               class="btn btn-sm btn-info" 
-                                               title="View Details">
-                                                <i class="fi fi-rr-eye"></i>
-                                            </a>
-                                            <a href="{{ route('admin.inquiry.edit', $inquiry->id) }}" 
-                                               class="btn btn-sm btn-warning" 
-                                               title="Edit">
-                                                <i class="fi fi-rr-edit"></i>
-                                            </a>
-                                            <button type="button" 
-                                                    class="btn btn-sm btn-danger delete-inquiry" 
-                                                    data-id="{{ $inquiry->id }}"
-                                                    title="Delete">
-                                                <i class="fi fi-rr-trash"></i>
-                                            </button>
+                                        <div class="d-table-cell justify-content-end">
+                                            <div class="dropdown">
+                                                <a class="dropdown-toggle" type="button" id="dropdownMenuButton"
+                                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="fi fi-rs-menu-dots"></i>
+                                                </a>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <li>
+                                                        <a class="dropdown-item d-flex align-items-center gap-2"
+                                                           href="{{ route('admin.inquiry.show', $inquiry->id) }}"><i class="fi fi-rr-eye"></i> View</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item d-flex align-items-center gap-2"
+                                                           href="{{ route('admin.inquiry.edit', $inquiry->id) }}"><i class="fi fi-rr-edit"></i> Edit</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item d-flex align-items-center gap-2 delete-inquiry"
+                                                           data-id="{{ $inquiry->id }}"><i class="fi fi-rr-trash"></i> Delete</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="10" class="text-center">No inquiries found.</td>
+                                    <td colspan="11" class="text-white text-center">No inquiries found.</td>
                                 </tr>
                             @endforelse
                         </tbody>

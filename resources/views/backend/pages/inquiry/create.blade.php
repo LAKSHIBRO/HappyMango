@@ -43,14 +43,14 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="name">Customer Name <span class="text-danger">*</span></label>
+                                <label for="name" class="text-white">Customer Name <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="name" name="name" 
                                        value="{{ old('name') }}" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="email">Email <span class="text-danger">*</span></label>
+                                <label for="email" class="text-white">Email <span class="text-danger">*</span></label>
                                 <input type="email" class="form-control" id="email" name="email" 
                                        value="{{ old('email') }}" required>
                             </div>
@@ -60,14 +60,14 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="phone">Phone <span class="text-danger">*</span></label>
+                                <label for="phone" class="text-white">Phone <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="phone" name="phone" 
                                        value="{{ old('phone') }}" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="date">Travel Date <span class="text-danger">*</span></label>
+                                <label for="date" class="text-white">Travel Date <span class="text-danger">*</span></label>
                                 <input type="date" class="form-control" id="date" name="date" 
                                        value="{{ old('date') }}" required>
                             </div>
@@ -77,14 +77,14 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="adults">Number of Adults <span class="text-danger">*</span></label>
+                                <label for="adults" class="text-white">Number of Adults <span class="text-danger">*</span></label>
                                 <input type="number" class="form-control" id="adults" name="adults" 
                                        value="{{ old('adults', 1) }}" min="1" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="children">Number of Children</label>
+                                <label for="children" class="text-white">Number of Children</label>
                                 <input type="number" class="form-control" id="children" name="children" 
                                        value="{{ old('children', 0) }}" min="0">
                             </div>
@@ -92,7 +92,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="tour_id">Tour Package <span class="text-danger">*</span></label>
+                        <label for="tour_id" class="text-white">Tour Package <span class="text-danger">*</span></label>
                         <select class="form-control" id="tour_id" name="tour_id" required>
                             <option value="">Select a tour package</option>
                             @foreach(\App\Models\TourPackage::where('active', true)->orderBy('name')->get() as $package)
@@ -105,7 +105,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="status">Status <span class="text-danger">*</span></label>
+                        <label for="status" class="text-white">Status <span class="text-danger">*</span></label>
                         <select class="form-control" id="status" name="status" required>
                             <option value="new" {{ old('status', 'new') == 'new' ? 'selected' : '' }}>New</option>
                             <option value="processing" {{ old('status') == 'processing' ? 'selected' : '' }}>Processing</option>
@@ -116,7 +116,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="message">Message</label>
+                        <label for="message" class="text-white">Message</label>
                         <textarea class="form-control" id="message" name="message" rows="4">{{ old('message') }}</textarea>
                     </div>
 
@@ -159,32 +159,6 @@
                         </small>
                     </div>
                 @endif
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Quick Tips</h3>
-            </div>
-            <div class="card-body">
-                <ul class="list-unstyled">
-                    <li class="mb-2">
-                        <i class="fi fi-rr-info text-info"></i>
-                        <small>All fields marked with * are required</small>
-                    </li>
-                    <li class="mb-2">
-                        <i class="fi fi-rr-calendar text-warning"></i>
-                        <small>Travel date should be in the future</small>
-                    </li>
-                    <li class="mb-2">
-                        <i class="fi fi-rr-users text-success"></i>
-                        <small>At least one adult is required</small>
-                    </li>
-                    <li class="mb-2">
-                        <i class="fi fi-rr-plane text-primary"></i>
-                        <small>Select an active tour package</small>
-                    </li>
-                </ul>
             </div>
         </div>
     </div>

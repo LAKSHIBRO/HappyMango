@@ -132,66 +132,7 @@
             </div>
         </div>
     </div>
-
-    <div class="col-lg-4">
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Current Package</h3>
-            </div>
-            <div class="card-body">
-                @if($inquiry->tourPackage)
-                    <div class="text-center mb-3">
-                        @if($inquiry->tourPackage->image)
-                            <img src="{{ asset('storage/' . $inquiry->tourPackage->image) }}" 
-                                 alt="{{ $inquiry->tourPackage->name }}" 
-                                 class="img-fluid rounded" style="max-height: 150px;">
-                        @else
-                            <div class="bg-light rounded d-flex align-items-center justify-content-center" style="height: 150px;">
-                                <span class="text-muted">No Image</span>
-                            </div>
-                        @endif
-                    </div>
-                    
-                    <h5>{{ $inquiry->tourPackage->name }}</h5>
-                    <p class="text-muted">{{ ucfirst($inquiry->tourPackage->type) }} Package</p>
-                    
-                    <ul class="list-unstyled">
-                        <li><strong>Duration:</strong> {{ $inquiry->tourPackage->duration }}</li>
-                        <li><strong>Price:</strong> ${{ number_format($inquiry->tourPackage->price, 2) }}</li>
-                        <li><strong>Locations:</strong> {{ $inquiry->tourPackage->locations }}</li>
-                        @if($inquiry->tourPackage->category)
-                            <li><strong>Category:</strong> {{ $inquiry->tourPackage->category->name }}</li>
-                        @endif
-                    </ul>
-                    
-                    <a href="{{ route('admin.tour_package.edit', $inquiry->tourPackage->id) }}" 
-                       class="btn btn-sm btn-info">
-                        <i class="fi fi-rr-edit"></i> View Package Details
-                    </a>
-                @else
-                    <div class="alert alert-warning">
-                        <i class="fi fi-rr-exclamation"></i>
-                        The tour package associated with this inquiry could not be found.
-                    </div>
-                @endif
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Inquiry Details</h3>
-            </div>
-            <div class="card-body">
-                <ul class="list-unstyled">
-                    <li><strong>Inquiry ID:</strong> #{{ $inquiry->id }}</li>
-                    <li><strong>Created:</strong> {{ $inquiry->created_at->format('M d, Y \a\t g:i A') }}</li>
-                    <li><strong>Last Updated:</strong> {{ $inquiry->updated_at->format('M d, Y \a\t g:i A') }}</li>
-                </ul>
-            </div>
-        </div>
-    </div>
 </div>
-
 @endsection
 
 @push('scripts')
