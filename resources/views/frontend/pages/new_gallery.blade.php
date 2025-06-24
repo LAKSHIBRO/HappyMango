@@ -19,25 +19,34 @@
                         <p>No images in the gallery yet. Check back soon!</p>
                     </div>
                 @else
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                        @foreach($galleries as $gallery)
-                            <div class="relative group">
-                                @if($gallery->caption || $gallery->description)
-                                <div class="absolute opacity-0 duration-300 group-hover:opacity-100 bg-[#00000077] w-full h-full flex justify-center text-white items-center font-medium flex-col gap-1 p-4">
-                                    @if($gallery->caption)
-                                    <div class="text-lg sm:text-xl text-center font-semibold">{{ $gallery->caption }}</div>
+                    <div id="imageContainer">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                            @foreach($galleries as $gallery)
+                                <div class="relative group">
+                                    @if($gallery->caption || $gallery->description)
+                                    <div class="absolute opacity-0 duration-300 group-hover:opacity-100 bg-[#00000077] w-full h-full flex justify-center text-white items-center font-medium flex-col gap-1 p-4">
+                                        @if($gallery->caption)
+                                        <div class="text-lg sm:text-xl text-center font-semibold">{{ $gallery->caption }}</div>
+                                        @endif
+                                        @if($gallery->description)
+                                        <div class="text-sm sm:text-base text-center mt-1">{{ $gallery->description }}</div>
+                                        @endif
+                                    </div>
                                     @endif
-                                    @if($gallery->description)
-                                    <div class="text-sm sm:text-base text-center mt-1">{{ $gallery->description }}</div>
-                                    @endif
+                                    <img src="{{ asset('uploads/album/'.$gallery->image) }}" alt="{{ $gallery->caption ?? 'Gallery Image' }}" class="w-full h-64 object-cover rounded-lg shadow-md">
                                 </div>
-                                @endif
-                                <img src="{{ asset('uploads/album/'.$gallery->image) }}" alt="{{ $gallery->caption ?? 'Gallery Image' }}" class="w-full h-64 object-cover rounded-lg shadow-md">
-                            </div>
-                        @endforeach
+                            @endforeach
+                        </div>
+                        @if(isset($hasMore) && $hasMore)
+                        <div class="flex justify-center mt-8">
+                            <button class="btn primary-btn" onclick="loadMoreImages();">Load More</button>
+                        </div>
+                        @endif
                     </div>
                 @endif
             </div>
         </div>
     </div>
+    <!-- Gallery Section -->
+    @include('frontend.components.gallery')
 @endsection

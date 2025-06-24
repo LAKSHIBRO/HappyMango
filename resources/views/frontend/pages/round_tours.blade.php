@@ -169,4 +169,7 @@
         </section>
         
     </div>
+
+    <!-- Gallery Section -->
+    @include('frontend.components.gallery')
 @endsection
