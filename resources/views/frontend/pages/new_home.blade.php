@@ -108,7 +108,7 @@
             </div>
             <div class="w-full sm:w-1/2">
                 <div class="w-full flex items-end h-[871px]" style="background-image: url('{{ asset('new_frontend/Assets/img(6).png') }}'); background-size: cover; background-position: center;">
-                    <div class="bg-[#FF9933] hover:bg-[#FFBB55] cursor-pointer duration-300 py-9 px-12 text-xl sm:text-2xl tracking-wider">MORE DETAILS</div>
+                    <a href="{{ route('contact') }}" class="bg-[#FF9933] hover:bg-[#FFBB55] cursor-pointer duration-300 py-9 px-12 text-xl sm:text-2xl tracking-wider">MORE DETAILS</a>
                 </div>
             </div>
         </section>
@@ -130,7 +130,7 @@
                         Happy Mango Tours, we specialize in crafting unforgettable travel experiences tailored just for you. Whether you're looking for a relaxing beach escape, an action-packed adventure, or a deep dive into rich cultural heritage, we have the perfect tour to match your desires. <br><br> With expertly curated packages, experienced local guides, and personalized services, we ensure every journey is seamless, exciting, and filled with incredible memories. Let us take you on an extraordinary adventure—wherever your heart desires!
                     </div>
                     <div class="">
-                        <button class="border hover:scale-105 duration-300 py-2 px-5 cursor-pointer font-pri text-white">LEARN MORE ABOUT</button>
+                        <a href="{{ route('about') }}" class="border hover:scale-105 duration-300 py-2 px-5 cursor-pointer font-pri text-white">LEARN MORE ABOUT</a>
                     </div>
                 </div>
             </div>
@@ -155,7 +155,7 @@
                             @endif
                             <div class="crsl-cont flex flex-col justify-end absolute w-full h-[306px]" style="background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%); bottom: 0; left: 0; z-index: 8;"></div>
                             <div class="bg-black/50 z-[9] opacity-0 group-hover:opacity-100 duration-300 w-full grow flex justify-center items-center text-white">
-                                <a href="{{ url('/tour-package/' . $tour->slug) }}" class="border-2 rounded-full p-4 sm:p-5 duration-300 group-hover:rotate-[-30deg]">
+                                <a href="{{ route('tours.detail', ['slug' => $tour->slug]) }}" class="border-2 rounded-full p-4 sm:p-5 duration-300 group-hover:rotate-[-30deg]">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="text-white" fill="white" width="24" height="24" viewBox="0 0 12.86 8.045">
                                         <g transform="translate(-3 14.045) rotate(-90)">
                                             <g transform="translate(6 3)">
@@ -208,7 +208,7 @@
             
             <!-- Explore More Tours Button -->
             <div class="w-full flex justify-center mt-10">
-                <button class="py-3 px-6 rounded-full text-white font-[600] bg-[#02515A] hover:bg-[#03616B] duration-300 cursor-pointer">EXPLORE MORE TOURS</button>
+                <a href="{{ url('/tour') }}" class="py-3 px-6 rounded-full text-white font-[600] bg-[#02515A] hover:bg-[#03616B] duration-300 cursor-pointer">EXPLORE MORE TOURS</a>
             </div>
         </section>
 
@@ -231,7 +231,7 @@
                             @endif
                             <div class="crsl-cont flex flex-col justify-end absolute w-full h-[306px]" style="background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%); bottom: 0; left: 0; z-index: 8;"></div>
                             <div class="bg-black/50 z-[9] opacity-0 group-hover:opacity-100 duration-300 w-full grow flex justify-center items-center text-white">
-                                <a href="{{ url('/tour-package/' . $tour->slug) }}" class="border-2 rounded-full p-4 sm:p-5 duration-300 group-hover:rotate-[-30deg]">
+                                <a href="{{ route('tours.detail', ['slug' => $tour->slug]) }}" class="border-2 rounded-full p-4 sm:p-5 duration-300 group-hover:rotate-[-30deg]">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="text-white" fill="white" width="24" height="24" viewBox="0 0 12.86 8.045">
                                         <g transform="translate(-3 14.045) rotate(-90)">
                                             <g transform="translate(6 3)">
@@ -284,7 +284,7 @@
             
             <!-- Explore More Tours Button -->
             <div class="w-full flex justify-center mt-10">
-                <button class="py-3 px-6 rounded-full text-white font-[600] bg-[#FF9933] hover:bg-[#FFAB57] duration-300 cursor-pointer">EXPLORE MORE TOURS</button>
+                <a href="{{ url('/tour') }}" class="py-3 px-6 rounded-full text-white font-[600] bg-[#FF9933] hover:bg-[#FFAB57] duration-300 cursor-pointer">EXPLORE MORE TOURS</a>
             </div>
         </section>
 

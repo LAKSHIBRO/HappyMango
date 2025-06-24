@@ -7,7 +7,7 @@
 @section('content')
     <div class="w-full py-20 flex flex-col justify-center items-center gap-5 bg-[#000000aa]">
         <div class="text-5xl sm:text-7xl font-black font-pri">Tour Packages</div>
-        <div class="text-2xl font-black font-pri">HOME - TOURS</div>
+        <div class="text-2xl font-black font-pri"><a href="{{ route('home') }}" class="hover:text-[#FF9933] duration-200">HOME</a> - TOURS</div>
     </div>
     <div class="max-w-[2500px] w-full bg-white grow">
         <div class="py-20 w-full px-5 sm:px-10 flex flex-col bg-white text-black items-center justify-center gap-5">
@@ -56,7 +56,7 @@
             </div>
 
             <div class="w-full flex justify-center py-10">
-                <a href="" class="bg-[#ff9933] hover:bg-[#ffab58] duration-200 text-white font-bold py-2 px-8 rounded-full cursor-pointer">LOAD MORE TOURS</a>
+                <a href="{{ route('tours.tailor-made') }}" class="bg-[#ff9933] hover:bg-[#ffab58] duration-200 text-white font-bold py-2 px-8 rounded-full cursor-pointer">LOAD MORE TOURS</a>
             </div>
 
         </div>

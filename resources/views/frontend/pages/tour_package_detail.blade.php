@@ -97,7 +97,7 @@
         <div class="text-xl sm:text-2xl font-bold font-pri text-white flex items-center gap-2">
             <a href="{{ route('home') }}" class="hover:text-[#FF9933] transition">HOME</a>
             <span>-</span>
-            <a href="{{ route('tours') }}" class="hover:text-[#FF9933] transition">TOURS</a>
+            <a href="{{ route('service') }}" class="hover:text-[#FF9933] transition">TOURS</a>
         </div>
     </div>
 

@@ -7,7 +7,7 @@
 @section('content')
     <div class="w-full py-20 flex flex-col justify-center items-center gap-5 bg-[#000000aa]">
         <div class="text-5xl sm:text-7xl font-black font-pri">Round Tours</div>
-        <div class="text-xl sm:text-2xl font-black font-pri">HOME - TOURS - ROUND TOURS</div>
+        <div class="text-xl sm:text-2xl font-black font-pri"><a href="{{ route('home') }}" class="hover:text-[#FF9933] duration-200">HOME</a> - <a href="{{ route('service') }}" class="hover:text-[#FF9933] duration-200">TOURS</a> - ROUND TOURS</div>
     </div>
 
     <div class="max-w-[2500px] w-full bg-white grow">

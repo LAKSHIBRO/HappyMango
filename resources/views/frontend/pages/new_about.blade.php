@@ -7,7 +7,7 @@
 @section('content')
     <div class="w-full py-20 flex flex-col justify-center items-center gap-5 bg-[#000000aa]">
         <div class="text-7xl font-black font-pri">About</div>
-        <div class="text-2xl font-black font-pri">HOME - ABOUT US</div>
+        <div class="text-2xl font-black font-pri"><a href="{{ route('home') }}" class="hover:text-[#FF9933] duration-200">HOME</a> - ABOUT US</div>
     </div>
     <div class="max-w-[2500px] w-full bg-white grow">
         <!-- Hero Section -->
@@ -18,7 +18,7 @@
                 <div class="text-gray-600">At Happy Mango Tours, we believe travel is more than just visiting places — it's about creating unforgettable memories. Based in Sri Lanka, we specialize in tailor-made and round tours that showcase the island's best. With local expertise, personalized service, and a passion for adventure, we craft journeys that are unique, seamless, and full of authentic experiences.</div>
                 <div class="text-gray-600 mt-5">We are more than travel planners — we are storytellers who help you write your own Sri Lankan adventure. Our experienced local guides, handpicked accommodations, and thoughtfully curated activities guarantee that your time with us will be meaningful, authentic, and full of special moments.</div>
                 <div class="w-full py-5">
-                    <a href="{{ url('/contact') }}">
+                    <a href="{{ route('contact') }}">
                         <button class="bg-[#ff9933] py-3 px-8 rounded-full cursor-pointer hover:bg-[#ffab57] text-white text-sm font-semibold transition duration-300 transform hover:scale-105">Start Your Journey</button>
                     </a>
                 </div>

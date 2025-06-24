@@ -7,11 +7,11 @@
             <div>info@happymangotours.com</div>
         </div>
         <div class="grow px-5 sm:px-20 text-white flex flex-col gap-3 border-white/75 ">
-            <div>HOME</div>
-            <div>ABOUT US</div>
-            <div>TOURS</div>
-            <div>BLOG</div>
-            <div>CONTACT US</div>
+            <div><a href="{{ url('/') }}" class="hover:text-[#FF9933] duration-200">HOME</a></div>
+            <div><a href="{{ url('/about') }}" class="hover:text-[#FF9933] duration-200">ABOUT US</a></div>
+            <div><a href="{{ url('/tour') }}" class="hover:text-[#FF9933] duration-200">TOURS</a></div>
+            <div><a href="{{ url('/blog') }}" class="hover:text-[#FF9933] duration-200">BLOG</a></div>
+            <div><a href="{{ url('/contact') }}" class="hover:text-[#FF9933] duration-200">CONTACT US</a></div>
         </div>
         <div class="grow px-5 sm:px-20 text-white flex flex-col gap-3 border-white/75 sm:border-r sm:border-l">
             <div>AMAZING SRI LANKA</div>
@@ -52,5 +52,5 @@
             </form>
         </div>
     </div>
-    <div class="w-full pb-10 sm:text-md text-xs text-center text-white">© {{ date('Y') }} Happy Mango Tours | Web Design & Solutions By DIGITALNEXT</div>
+    <div class="w-full pb-10 sm:text-md text-xs text-center text-white">© {{ date('Y') }} Happy Mango Tours | Web Design & Solutions By <a href="https://digitalnext.lk" target="_blank" class="hover:text-[#FF9933] duration-200">DIGITALNEXT</a></div>
 </footer>
