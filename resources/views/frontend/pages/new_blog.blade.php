@@ -11,13 +11,13 @@
     </div>
     <div class="max-w-[2500px] w-full bg-slate-300 grow text-white">
         <div class="py-20 w-full px-5 sm:px-10 flex flex-col bg-white text-black items-center justify-center gap-5">
-            <div class="w-full text-4xl sm:text-6xl font-pri font-black text-center">Daily Updates & News</div>
-            <div class="sm:w-3/7 flex justify-center text-center font-pri">Our Blog </div>
+        <div class="w-full font-sec text-xl text-center">Daily Updates & News</div>
+        <div class="sm:w-3/7 flex text-4xl sm:text-6xl font-pri font-black justify-center text-center font-pri">Our Blog </div>
             <div class="w-full sm:px-20 flex flex-wrap">
                 @foreach($posts as $post)
                 <div class="sm:w-1/3 p-5 flex flex-col group">
-                    <div class="relative">
-                        <img src="{{ asset('uploads/post/'.$post->image) }}" class="w-full" alt="{{ $post->title }}">
+                    <div class="relative" style="height: 603px;">
+                        <img src="{{ asset('uploads/post/'.$post->image) }}" class="w-full h-full object-cover" alt="{{ $post->title }}">
                         <div class="absolute top-0 text-white group-hover:bg-[#FF9933] bg-black duration-300 py-3 px-7 font-bold">
                             <div>{{ $post->category->name ?? 'Travel' }}</div>
                         </div>
@@ -25,7 +25,7 @@
                     <div class="py-3 pt-5 sm:pt-10 uppercase">{{ $post->created_at->format('M d, Y') }}</div>
                     <div class="text-xl font-bold border-b py-1 sm:w-4/5">{{ $post->title }}</div>
                     <div class="w-4/5 py-5">{{ Str::limit($post->short_content, 150) }}</div>
-                    <div class="w-full sm:justify-start justify-end flex">
+                    <div class="w-full sm:justify-start justify-end flex mt-auto">
                         <a href="{{ url('blog/'.$post->slug) }}" class="text-white text-sm group-hover:bg-[#FF9933] bg-black duration-300 py-2 px-6 rounded-full">READ MORE</a>
                     </div>
                 </div>
