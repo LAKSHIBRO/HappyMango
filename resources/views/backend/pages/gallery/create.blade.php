@@ -130,8 +130,8 @@
         </div>
     </div>
     <div class="card-footer d-flex justify-content-end gap-3 mt-4 mt-xl-5">
-        <button class="btn btn-secondary" onclick="window.location='/admin/gallery';">Cancel</button>
-        <button id="albumSaveBtn" class="btn btn-primary" onclick="createAlbum();">Upload</button>
+        <button type="button" class="btn btn-secondary" onclick="window.location='/admin/gallery';">Cancel</button>
+        <button type="button" id="albumSaveBtn" class="btn btn-primary" onclick="createAlbum();">Upload</button>
     </div>
 </div>
 @endsection
