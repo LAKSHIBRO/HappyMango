@@ -22,9 +22,14 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                         @foreach($galleries as $gallery)
                             <div class="relative group">
-                                @if($gallery->caption)
-                                <div class="absolute opacity-0 duration-300 group-hover:opacity-100 bg-[#00000077] w-full h-full flex justify-center text-white items-center font-medium flex-col gap-2 p-4">
-                                    <div class="text-lg sm:text-xl text-center">{{ $gallery->caption }}</div>
+                                @if($gallery->caption || $gallery->description)
+                                <div class="absolute opacity-0 duration-300 group-hover:opacity-100 bg-[#00000077] w-full h-full flex justify-center text-white items-center font-medium flex-col gap-1 p-4">
+                                    @if($gallery->caption)
+                                    <div class="text-lg sm:text-xl text-center font-semibold">{{ $gallery->caption }}</div>
+                                    @endif
+                                    @if($gallery->description)
+                                    <div class="text-sm sm:text-base text-center mt-1">{{ $gallery->description }}</div>
+                                    @endif
                                 </div>
                                 @endif
                                 <img src="{{ asset('uploads/album/'.$gallery->image) }}" alt="{{ $gallery->caption ?? 'Gallery Image' }}" class="w-full h-64 object-cover rounded-lg shadow-md">

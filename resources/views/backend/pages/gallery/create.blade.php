@@ -54,6 +54,10 @@
                         <label for="caption" class="form-label">Caption</label>
                         <input type="text" class="form-control" id="caption" name="caption" placeholder="Enter image caption">
                     </div>
+                    <div class="col-xl-12 mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea class="form-control" id="description" name="description" rows="3" placeholder="Enter image description (optional)"></textarea>
+                    </div>
                 </div>
             </div>
         </div>
