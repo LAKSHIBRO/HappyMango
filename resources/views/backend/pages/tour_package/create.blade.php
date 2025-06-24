@@ -89,8 +89,8 @@
                         </div>
 
                         <div class="col-md-6 mb-3">
-                            <label for="locations" class="form-label">Locations <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="locations" name="locations" placeholder="e.g. Kandy | Colombo | Galle" value="{{ old('locations') }}" required>
+                            <label for="locations" class="form-label">Google Maps Embed Code <span class="text-danger">*</span></label>
+                            <textarea class="form-control" id="locations" name="locations" rows="3" placeholder="Paste Google Maps embed code here (iframe)" required>{{ old('locations') }}</textarea>
                             @error('locations')
                             <div class="text-danger mt-1">{{ $message }}</div>
                             @enderror

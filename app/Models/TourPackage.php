@@ -23,7 +23,7 @@ class TourPackage extends Model
         'people_count',
         'featured',
         'active',
-        'locations', // comma-separated locations
+        'locations', // Google Maps embed code
         'included', // JSON encoded list of included items
         'excluded', // JSON encoded list of excluded items
     ];
