@@ -12,7 +12,7 @@
     <div class="max-w-[2500px] w-full bg-slate-300 grow text-white">
         <div class="w-full sm:p-10 sm:py-20 bg-white flex flex-col sm:flex-row">
             <div class="w-full sm:w-5/7 p-10 sm:py-20 flex flex-col gap-5 sm:gap-20 text-black text-sm">
-                <img src="{{ asset('uploads/post/'.$post->image) }}" class="w-full h-[400px] object-cover rounded-lg shadow-lg" alt="{{ $post->title }}">
+                <img src="{{ asset('uploads/post/'.$post->image) }}" class="w-full h-[568px] object-cover rounded-lg shadow-lg" alt="{{ $post->title }}">
 
                 <div class="blog-content prose max-w-none">
                     {!! $post->content !!}

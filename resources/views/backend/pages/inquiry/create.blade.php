@@ -147,7 +147,7 @@
                                 <small class="text-muted">{{ ucfirst($package->type) }}</small>
                             </div>
                             <p class="mb-1">{{ $package->duration }} • ${{ number_format($package->price, 2) }}</p>
-                            <small class="text-muted">{{ $package->locations }}</small>
+                            
                         </div>
                     @endforeach
                 </div>

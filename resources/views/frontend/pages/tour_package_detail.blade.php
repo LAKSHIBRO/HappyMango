@@ -307,9 +307,12 @@
                       <span class="w-3/5 h-[1px] border-dashed border-t border-[#8A8A8A]"></span>
                     <div class="mb-6 mt-6">
                         <div class="text-3xl sm:text-5xl font-black font-pri mb-2">Tour's Location</div>
-                        <div class="text-base sm:text-lg text-gray-700 font-medium">{{ $tourPackage->locations }}</div>
+                        {{-- The line below used to display location names, now the map iframe will be directly embedded --}}
+                        {{-- <div class="text-base sm:text-lg text-gray-700 font-medium">{{ $tourPackage->locations }}</div> --}}
                     </div>
-                    <div id="google-map" class="w-full h-96 rounded-lg shadow-md"></div>
+                    <div class="w-full h-auto rounded-lg shadow-md overflow-hidden">
+                        {!! $tourPackage->locations !!}
+                    </div>
                 </div>
             </div>
 
@@ -357,193 +360,10 @@
     </div>
     <!-- Gallery Section -->
     @include('frontend.components.gallery')
-
-    <!-- JavaScript for Smooth Scroll, Notifications, and Map -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize Tour Package Gallery Slider
-            initializeTourGallery();
-            
-            // Initialize other functionality
-            initializeSmoothScroll();
-            initializeNotifications();
-        });
-
-        function initializeTourGallery() {
-            const gallerySlider = document.querySelector(".tour-gallery-swiper");
-
-            if (!gallerySlider) return;
-
-            // Initialize main gallery slider
-            const galleryConfig = {
-                spaceBetween: 0,
-                navigation: {
-                    nextEl: ".custom-swiper-next",
-                    prevEl: ".custom-swiper-prev",
-                },
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true,
-                    dynamicBullets: true,
-                },
-                autoplay: {
-                    delay: 5000,
-                    disableOnInteraction: false,
-                    pauseOnMouseEnter: true,
-                },
-                effect: "slide",
-                speed: 600,
-                loop: false,
-                grabCursor: true,
-            };
-
-            const gallerySwiper = new Swiper(".tour-gallery-swiper", galleryConfig);
-
-            // Add click to zoom functionality
-            const galleryImages = document.querySelectorAll('.tour-gallery-swiper .swiper-slide img');
-            galleryImages.forEach(function(img) {
-                img.addEventListener('click', function() {
-                    openLightbox(this.src, this.alt);
-                });
-            });
-        }
-
-        function initializeSmoothScroll() {
-            // Smooth scroll for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 100,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-        }
-
-        function initializeNotifications() {
-            // Auto-hide success notification after 5 seconds
-            const successAlert = document.querySelector('.bg-green-600');
-            if (successAlert) {
-                // Scroll to the notification
-                successAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-                // Add click handler to dismiss
-                successAlert.addEventListener('click', function() {
-                    fadeOut(successAlert);
-                });
-
-                // Auto hide after 5 seconds
-                setTimeout(() => {
-                    fadeOut(successAlert);
-                }, 5000);
-            }
-        }
-
-        function openLightbox(imgSrc, imgAlt) {
-            // Create lightbox element
-            const lightbox = document.createElement('div');
-            lightbox.className = 'fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center p-4';
-            lightbox.innerHTML = `
-                <div class="relative max-w-5xl w-full">
-                    <button class="absolute top-4 right-4 text-white text-4xl hover:text-yellow-500 z-10 transition-colors duration-200">&times;</button>
-                    <img src="${imgSrc}" alt="${imgAlt}" class="max-w-full max-h-[90vh] mx-auto rounded-lg shadow-2xl">
-                </div>
-            `;
-
-            // Add click event to close lightbox
-            lightbox.addEventListener('click', function(e) {
-                if (e.target === lightbox || e.target.tagName === 'BUTTON') {
-                    this.remove();
-                }
-            });
-
-            // Add escape key to close lightbox
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    lightbox.remove();
-                }
-            });
-
-            // Add lightbox to body
-            document.body.appendChild(lightbox);
-        }
-
-        function fadeOut(element) {
-            element.style.transition = 'opacity 0.5s ease';
-            element.style.opacity = '0';
-            setTimeout(() => {
-                element.style.display = 'none';
-            }, 500);
-        }
-    </script>
-
-    <!-- Google Maps Script -->
-    @php
-        $apiKey = config('services.google.maps_api_key');
-    @endphp
-
-    @if($apiKey)
-        <script src="https://maps.googleapis.com/maps/api/js?key={{ $apiKey }}&callback=initMap&libraries=places&v=weekly" defer></script>
-        <script>
-            // Initialize the Google Map
-            function initMap() {
-                // Get location from tourPackage
-                const locationName = "{{ $tourPackage->locations }}, Sri Lanka";
-                const mapDiv = document.getElementById("google-map");
-
-                // Create a new map instance
-                const map = new google.maps.Map(mapDiv, {
-                    zoom: 10,
-                    center: { lat: 7.8731, lng: 80.7718 }, // Default to Sri Lanka center
-                });
-
-                // Create a geocoder to convert the location name to coordinates
-                const geocoder = new google.maps.Geocoder();
-                geocoder.geocode({ address: locationName }, (results, status) => {
-                    if (status === "OK") {
-                        // Center map on the found location
-                        map.setCenter(results[0].geometry.location);
-
-                        // Add a marker for the location
-                        new google.maps.Marker({
-                            map: map,
-                            position: results[0].geometry.location,
-                            title: "{{ $tourPackage->name }}"
-                        });
-                    } else {
-                        console.error(`Geocode failed: ${status}`);
-                    }
-                });
-            }
-        </script>
-    @else
-        <!-- Fallback when no API key is available -->
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const mapDiv = document.getElementById("google-map");
-                mapDiv.innerHTML = `
-                    <div class="flex flex-col items-center justify-center h-full bg-gray-100 rounded-lg p-6 text-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-gray-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                        <h3 class="text-lg font-semibold mb-2">Location: {{ $tourPackage->locations }}</h3>
-                        <p class="text-gray-600">Google Maps preview is currently unavailable.</p>
-                    </div>
-                `;
-            });
-        </script>
-    @endif
 @endsection
 
 @section('scripts')
+    <!-- JavaScript for Smooth Scroll, Notifications -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Initialize Tour Package Gallery Slider

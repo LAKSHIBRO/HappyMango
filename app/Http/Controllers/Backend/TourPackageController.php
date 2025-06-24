@@ -56,6 +56,7 @@ class TourPackageController extends Controller
                 'description' => $request->description,
                 'image' => $imagePath,
                 'locations' => $request->locations,
+                'map_embed_code' => $request->map_embed_code,
                 'category_id' => $request->category_id,
                 'people_count' => $request->people_count ?? 0,
                 'gallery_images' => $galleryImagePaths,
@@ -160,6 +161,7 @@ class TourPackageController extends Controller
                 'description' => $request->description,
                 'image' => $imagePath,
                 'locations' => $request->locations,
+                'map_embed_code' => $request->map_embed_code,
                 'category_id' => $request->category_id,
                 'people_count' => $request->people_count ?? 0,
                 'gallery_images' => array_values($galleryImagePaths), // Re-index array
@@ -326,6 +328,7 @@ class TourPackageController extends Controller
             'category_id' => 'nullable|exists:categories,id',
             'people_count' => 'nullable|integer|min:0',
             'locations' => 'required|string',
+            'map_embed_code' => 'nullable|string',
             'included' => 'required|array',
             'included.*' => 'required|string',
             'excluded' => 'required|array',

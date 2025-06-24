@@ -24,6 +24,7 @@ class TourPackage extends Model
         'featured',
         'active',
         'locations', // comma-separated locations
+        'map_embed_code', // Google Maps embed code
         'included', // JSON encoded list of included items
         'excluded', // JSON encoded list of excluded items
     ];

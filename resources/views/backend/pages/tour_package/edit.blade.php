@@ -286,179 +286,167 @@
 
 @push('scripts')
 <script>
-    // Initialize TinyMCE
-    tinymce.init({
-        selector: '.tinymce',
-        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-        height: 400
-    });
-
-    // Initialize TinyMCE for itinerary descriptions
-    function initTinyMCEForItinerary() {
-        tinymce.init({
-            selector: '.itinerary-description',
-            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-            height: 200
-        });
-    }    // Make sure to add these event listeners after the DOM is fully loaded
+    // Ensure TinyMCE content is synchronized with textareas before form submission
     document.addEventListener('DOMContentLoaded', function() {
-        // Add more included items
-        document.getElementById('addIncludedItem').addEventListener('click', function() {
-            const container = document.getElementById('includedItemsContainer');
-            const newItem = document.createElement('div');
-            newItem.classList.add('input-group', 'mb-3');
-
-            newItem.innerHTML = `
-                <input type="text" class="form-control" name="included[]" placeholder="Enter included item" required>
-                <button class="btn btn-danger remove-item" type="button">
-                    <i class="fi fi-rr-trash"></i>
-                </button>
-            `;
-            container.appendChild(newItem);
-
-            // Enable all remove buttons if there's more than one item
-            if (container.children.length > 1) {
-                const buttons = container.querySelectorAll('.remove-item');
-                buttons.forEach(btn => btn.disabled = false);
-            }
-        });
-
-        // Add more excluded items
-        document.getElementById('addExcludedItem').addEventListener('click', function() {
-            const container = document.getElementById('excludedItemsContainer');
-            const newItem = document.createElement('div');
-            newItem.classList.add('input-group', 'mb-3');
-
-            newItem.innerHTML = `
-                <input type="text" class="form-control" name="excluded[]" placeholder="Enter excluded item" required>
-                <button class="btn btn-danger remove-item" type="button">
-                    <i class="fi fi-rr-trash"></i>
-                </button>
-            `;
-        container.appendChild(newItem);
-
-        // Enable all remove buttons if there's more than one item
-        if (container.children.length > 1) {
-            const buttons = container.querySelectorAll('.remove-item');
-            buttons.forEach(btn => btn.disabled = false);
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', function() {
+                if (typeof tinymce !== 'undefined') {
+                    tinymce.triggerSave();
+                }
+            });
         }
     });
 
-    // Event delegation for removing included/excluded items
-    document.addEventListener('click', function(e) {
-        if (e.target.closest('.remove-item')) {
-            const button = e.target.closest('.remove-item');
-            const container = button.closest('.input-group').parentElement;
-            button.closest('.input-group').remove();
-
-            // If only one item remains, disable its remove button
-            if (container.children.length === 1) {
-                const lastButton = container.querySelector('.remove-item');
-                if (lastButton) lastButton.disabled = true;
-            }
-        }
-    });
-
-    // Itinerary Days
-    let dayCounter = {{ count($tourPackage->itinerary) }};
-
-    document.getElementById('addItineraryDay').addEventListener('click', function() {
-        dayCounter++;
-        const container = document.getElementById('itineraryContainer');
-        const newDay = document.createElement('div');
-        newDay.classList.add('itinerary-item', 'card', 'mb-4');
-
-        newDay.innerHTML = `
-            <div class="card-header bg-light d-flex justify-content-between align-items-center">
-                <h5 class="mb-0">Day ${dayCounter}</h5>
-                <button type="button" class="btn btn-sm btn-danger remove-itinerary">
-                    <i class="fi fi-rr-trash"></i> Remove
-                </button>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <input type="hidden" name="itinerary[${dayCounter-1}][day]" value="${dayCounter}" class="day-number">
-
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">Title <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" name="itinerary[${dayCounter-1}][title]" required>
-                    </div>
-
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">Location <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" name="itinerary[${dayCounter-1}][location]" required>
-                    </div>
-
-                    <div class="col-12 mb-3">
-                        <label class="form-label">Description <span class="text-danger">*</span></label>
-                        <textarea class="form-control itinerary-description" name="itinerary[${dayCounter-1}][description]" rows="4" required></textarea>
-                    </div>
-
-                    <div class="col-12">
-                        <label class="form-label">Image (Optional)</label>
-                        <input type="file" class="form-control itinerary-image" name="itinerary[${dayCounter-1}][image]" accept="image/*">
-                    </div>
-                </div>
-            </div>
-        `;
-
-        container.appendChild(newDay);
-
-        // Enable all remove buttons if there's more than one day
-        if (container.children.length > 1) {
-            const buttons = container.querySelectorAll('.remove-itinerary');
-            buttons.forEach(btn => btn.disabled = false);
-        }
-
-        // Initialize TinyMCE for the new textarea
-        setTimeout(function() {
+    // Initialize TinyMCE
+    function initTinyMCE(selector = '.tinymce, .itinerary-description') {
+        if (typeof tinymce !== 'undefined') {
             tinymce.init({
-                selector: `textarea[name="itinerary[${dayCounter-1}][description]"]`,
+                selector: selector,
                 plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
                 toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
                 height: 200
             });
-        }, 0);
-    });
-
-    // Remove itinerary day
-    document.addEventListener('click', function(e) {
-        if (e.target.closest('.remove-itinerary')) {
-            const button = e.target.closest('.remove-itinerary');
-            const container = document.getElementById('itineraryContainer');
-            button.closest('.itinerary-item').remove();
-
-            // If only one day remains, disable its remove button
-            if (container.children.length === 1) {
-                const lastButton = container.querySelector('.remove-itinerary');
-                if (lastButton) lastButton.disabled = true;
-            }
-
-            // Renumber the days
-            const days = container.querySelectorAll('.itinerary-item');
-            days.forEach((day, index) => {
-                const dayNumber = index + 1;
-                day.querySelector('h5').textContent = `Day ${dayNumber}`;
-                day.querySelector('.day-number').value = dayNumber;
-
-                // Update the name attributes to maintain the correct array indexing
-                day.querySelectorAll('input, textarea').forEach(input => {
-                    if (input.name) {
-                        input.name = input.name.replace(/itinerary\[\d+\]/, `itinerary[${index}]`);
-                    }
-                });
-            });
-
-            // Update the day counter
-            dayCounter = days.length;
         }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        initTinyMCE();
     });
 
-    // Initialize TinyMCE for the first itinerary day
-    document.addEventListener('DOMContentLoaded', function() {
-        initTinyMCEForItinerary();
-    });
+    // Included Items
+    const addIncludedBtn = document.getElementById('addIncludedItem');
+    const includedContainer = document.getElementById('includedItemsContainer');
+    if (addIncludedBtn && includedContainer) {
+        addIncludedBtn.addEventListener('click', () => {
+            const group = document.createElement('div');
+            group.className = 'input-group mb-3';
+            group.innerHTML = `
+                <input type="text" class="form-control" name="included[]" placeholder="Enter included item" required>
+                <button type="button" class="btn btn-danger remove-item">
+                    <i class="fi fi-rr-trash"></i>
+                </button>
+            `;
+            includedContainer.appendChild(group);
+            updateRemoveButtons(includedContainer);
+        });
+        includedContainer.addEventListener('click', function (e) {
+            if (e.target.closest('.remove-item')) {
+                e.target.closest('.input-group').remove();
+                updateRemoveButtons(includedContainer);
+            }
+        });
+        function updateRemoveButtons(container) {
+            const buttons = container.querySelectorAll('.remove-item');
+            buttons.forEach(btn => btn.disabled = (buttons.length <= 1));
+        }
+        updateRemoveButtons(includedContainer);
+    }
+
+    // Excluded Items
+    const addExcludedBtn = document.getElementById('addExcludedItem');
+    const excludedContainer = document.getElementById('excludedItemsContainer');
+    if (addExcludedBtn && excludedContainer) {
+        addExcludedBtn.addEventListener('click', () => {
+            const group = document.createElement('div');
+            group.className = 'input-group mb-3';
+            group.innerHTML = `
+                <input type="text" class="form-control" name="excluded[]" placeholder="Enter excluded item" required>
+                <button type="button" class="btn btn-danger remove-item">
+                    <i class="fi fi-rr-trash"></i>
+                </button>
+            `;
+            excludedContainer.appendChild(group);
+            updateRemoveButtons(excludedContainer);
+        });
+        excludedContainer.addEventListener('click', function (e) {
+            if (e.target.closest('.remove-item')) {
+                e.target.closest('.input-group').remove();
+                updateRemoveButtons(excludedContainer);
+            }
+        });
+        function updateRemoveButtons(container) {
+            const buttons = container.querySelectorAll('.remove-item');
+            buttons.forEach(btn => btn.disabled = (buttons.length <= 1));
+        }
+        updateRemoveButtons(excludedContainer);
+    }
+
+    // Itinerary Days
+    const addItineraryBtn = document.getElementById('addItineraryDay');
+    const itineraryContainer = document.getElementById('itineraryContainer');
+    function updateAllItineraryDays() {
+        const items = itineraryContainer.querySelectorAll('.itinerary-item');
+        items.forEach((item, i) => {
+            // Update day number in heading
+            const dayHeading = item.querySelector('h5');
+            if (dayHeading) {
+                dayHeading.textContent = `Day ${i + 1}`;
+            }
+            // Update hidden day input value
+            const dayInput = item.querySelector('.day-number');
+            if (dayInput) {
+                dayInput.value = i + 1;
+                dayInput.name = `itinerary[${i}][day]`;
+            }
+            // Update all input and textarea names
+            item.querySelectorAll('input:not(.day-number), textarea').forEach(el => {
+                if (el.name) {
+                    const fieldMatch = el.name.match(/\[\d+\]\[([^\]]+)\]/);
+                    if (fieldMatch && fieldMatch[1]) {
+                        const fieldType = fieldMatch[1];
+                        el.name = `itinerary[${i}][${fieldType}]`;
+                    }
+                }
+            });
+            // Enable/disable remove buttons based on total count
+            const removeBtn = item.querySelector('.remove-itinerary');
+            if (removeBtn) {
+                removeBtn.disabled = (items.length <= 1);
+            }
+        });
+    }
+    if (addItineraryBtn && itineraryContainer) {
+        addItineraryBtn.addEventListener('click', () => {
+            const items = itineraryContainer.querySelectorAll('.itinerary-item');
+            if (items.length === 0) return;
+            const lastItem = items[items.length - 1];
+            const newItem = lastItem.cloneNode(true);
+            const newIndex = items.length;
+            // Clear all input values and update names
+            newItem.querySelectorAll('input:not(.day-number), textarea').forEach(el => {
+                if (el.name) {
+                    const fieldMatch = el.name.match(/\[\d+\]\[([^\]]+)\]/);
+                    if (fieldMatch && fieldMatch[1]) {
+                        const fieldType = fieldMatch[1];
+                        el.name = `itinerary[${newIndex}][${fieldType}]`;
+                        if (el.type === 'file') el.value = '';
+                        if (el.type === 'text' || el.tagName === 'TEXTAREA') el.value = '';
+                    }
+                }
+            });
+            // Remove image preview if present
+            const img = newItem.querySelector('img');
+            if (img) img.remove();
+            itineraryContainer.appendChild(newItem);
+            updateAllItineraryDays();
+            // Re-initialize TinyMCE for new textarea
+            setTimeout(() => {
+                initTinyMCE('textarea[name="itinerary[' + newIndex + '][description]"]');
+            }, 0);
+        });
+        itineraryContainer.addEventListener('click', function(e) {
+            const removeBtn = e.target.closest('.remove-itinerary');
+            if (!removeBtn) return;
+            const itemToRemove = removeBtn.closest('.itinerary-item');
+            const items = itineraryContainer.querySelectorAll('.itinerary-item');
+            if (items.length <= 1) {
+                alert('At least one itinerary day is required.');
+                return;
+            }
+            itemToRemove.remove();
+            updateAllItineraryDays();
+        });
+        updateAllItineraryDays();
+    }
 </script>
 @endpush
