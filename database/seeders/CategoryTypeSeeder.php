@@ -22,5 +22,8 @@ class CategoryTypeSeeder extends Seeder
         CategoryType::factory()->create([
             'name' => 'Video',
         ]);
+        CategoryType::factory()->create([
+            'name' => 'Tour',
+        ]);
     }
 }

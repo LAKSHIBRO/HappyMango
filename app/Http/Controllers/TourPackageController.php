@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\TourPackage;
 use App\Models\Inquiry;
 use Illuminate\Http\Request;
@@ -10,9 +11,11 @@ class TourPackageController extends Controller
 {
     public function index()
     {
+        // Assuming 'Tour' category type has ID 4
+        $tourCategories = Category::where('category_type_id', 4)->where('status_id', 1)->get();
+        $tours = TourPackage::where('active', true)->orderBy('created_at', 'desc')->get();
 
-
-        return view('frontend.pages.tpd',);
+        return view('frontend.pages.tpd', compact('tours', 'tourCategories'));
     }
 
     public function show($slug)

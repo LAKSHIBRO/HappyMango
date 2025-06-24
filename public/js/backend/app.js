@@ -393,8 +393,40 @@ function editCategory(categoryId) {
                 if (categoryResponce.success) {
                     document.getElementById('categoryUpdateId').value = categoryId;
                     document.getElementById("categoryUpdateTitle").value = categoryResponce.data.name;
-                    document.getElementById("categoryUpdateType").options[categoryResponce.data.category_type_id - 1].selected = true;
-                    document.getElementById("categoryUpdateStatus").options[categoryResponce.data.status].selected = true;
+
+                    // Robustly select category type
+                    const categoryTypeId = categoryResponce.data.category_type_id;
+                    const categoryUpdateTypeSelect = document.getElementById("categoryUpdateType");
+                    if (categoryUpdateTypeSelect && categoryTypeId !== null && categoryTypeId !== undefined) {
+                        for (let i = 0; i < categoryUpdateTypeSelect.options.length; i++) {
+                            if (categoryUpdateTypeSelect.options[i].value == categoryTypeId) {
+                                categoryUpdateTypeSelect.options[i].selected = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    // Robustly select category status
+                    // Assuming status is 0 for inactive, 1 for active, and option values match this.
+                    // Or, if status_id is used directly from the model and matches option values:
+                    const statusId = categoryResponce.data.status_id; // Assuming status_id is available
+                    const categoryUpdateStatusSelect = document.getElementById("categoryUpdateStatus");
+                    if (categoryUpdateStatusSelect && statusId !== null && statusId !== undefined) {
+                        for (let i = 0; i < categoryUpdateStatusSelect.options.length; i++) {
+                            if (categoryUpdateStatusSelect.options[i].value == statusId) {
+                                categoryUpdateStatusSelect.options[i].selected = true;
+                                break;
+                            }
+                        }
+                    } else if (categoryUpdateStatusSelect && categoryResponce.data.status !== null && categoryResponce.data.status !== undefined) {
+                        // Fallback to old logic if status_id is not directly available and `status` is 0 or 1
+                         for (let i = 0; i < categoryUpdateStatusSelect.options.length; i++) {
+                            if (categoryUpdateStatusSelect.options[i].value == categoryResponce.data.status) {
+                                categoryUpdateStatusSelect.options[i].selected = true;
+                                break;
+                            }
+                        }
+                    }
 
                     var overlay = document.getElementById("overlay");
                     var editCategoryModal = document.getElementById("editCategoryModal");
