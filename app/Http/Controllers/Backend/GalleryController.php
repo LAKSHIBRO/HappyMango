@@ -182,16 +182,6 @@ class GalleryController extends Controller
             $galleryImage->delete();
         }
 
-        // $album = Album::find($id);
-
-        // if (!empty($album->image)) {
-        //     $filePath = public_path('uploads/album/' . $album->image);
-        //     if (file_exists($filePath)) {
-        //         File::delete($filePath);
-        //     }
-        // }
-
-        // $album->delete();
         return response()->json(['success' => true, 'message' => 'Image deleted successfully.']);
     }
 }
