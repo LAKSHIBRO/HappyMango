@@ -148,50 +148,44 @@
                 <div class="swiper-wrapper">
                     @forelse($tailorMadeTours as $tour)
                     <div class="swiper-slide">
-                        <div class="w-full h-[500px] sm:h-[650px] bg-slate-300 flex flex-col justify-end relative group bg-cover bg-center" style="background-image: url('{{ asset('storage/'.$tour->image) }}');">
-                            <div class="absolute bg-[#ff9933] top-0 right-4 sm:right-7 rounded-b-xl text-white text-xs font-bold px-3 py-2 z-10">TAILOR MADE TOURS</div>
-                            @if($tour->featured)
-                            <div class="absolute bg-[#02515A] top-0 left-4 rounded-b-xl text-white text-xs font-bold px-3 py-2 z-10">FEATURED</div>
-                            @endif
-                            <div class="crsl-cont flex flex-col justify-end absolute w-full h-[306px]" style="background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%); bottom: 0; left: 0; z-index: 8;"></div>
+                        <div class="sm:w-[578px] sm:h-[736px] h-[500px] bg-slate-300 flex flex-col justify-end relative group bg-cover bg-center" style="background-image: url('{{ asset('storage/' . $tour->image) }}');">
+                            <div class="absolute bg-[#ff9933] top-0 right-7 rounded-b-xl text-white text-xs font-bold px-3 py-2 z-10">TAILOR MADE TOURS</div>
+                            <div class="crsl-cont flex flex-col justify-end absolute w-full h-[306px]"></div>
                             <div class="bg-black/50 z-[9] opacity-0 group-hover:opacity-100 duration-300 w-full grow flex justify-center items-center text-white">
-                                <a href="{{ url('/tour-package/' . $tour->slug) }}" class="border-2 rounded-full p-4 sm:p-5 duration-300 group-hover:rotate-[-30deg]">
+                                <a href="{{ url('/tours/' . $tour->slug) }}" class="border-2 rounded-full p-5 duration-300 group-hover:rotate-[-30deg]">
+                                    <!-- Arrow Icon -->
                                     <svg xmlns="http://www.w3.org/2000/svg" class="text-white" fill="white" width="24" height="24" viewBox="0 0 12.86 8.045">
-                                        <g transform="translate(-3 14.045) rotate(-90)">
-                                            <g transform="translate(6 3)">
-                                                <path d="M4.022,0a.525.525,0,0,1,.525.525V6.26H7.52a.524.524,0,0,1,.443.8l-3.5,5.551a.524.524,0,0,1-.888,0L.081,7.063a.524.524,0,0,1,.444-.8H3.5V.525A.525.525,0,0,1,4.022,0ZM6.569,7.309H1.475l2.547,4.042Z" fill-rule="evenodd"/>
+                                        <g id="Iconly_Light-Outline_Arrow---Down-3" data-name="Iconly/Light-Outline/Arrow---Down-3" transform="translate(-3 14.045) rotate(-90)">
+                                            <g id="Arrow---Down-3" transform="translate(6 3)">
+                                                <path id="Combined-Shape" d="M4.022,0a.525.525,0,0,1,.525.525V6.26H7.52a.524.524,0,0,1,.443.8l-3.5,5.551a.524.524,0,0,1-.888,0L.081,7.063a.524.524,0,0,1,.444-.8H3.5V.525A.525.525,0,0,1,4.022,0ZM6.569,7.309H1.475l2.547,4.042Z" transform="translate(0 0)" fill-rule="evenodd"/>
                                             </g>
                                         </g>
                                     </svg>
                                 </a>
                             </div>
-                            <div class="p-5 sm:p-10 font-semibold w-full text-white z-10 group-hover:bg-[#ff9933] duration-300 text-sm sm:text-base">
-                                <div class="uppercase">{{ $tour->name }}</div>
-                                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-                                    <span class="text-xl sm:text-3xl">PRICE ${{ number_format($tour->price) }}/ </span>
-                                    <span class="mt-1 sm:mt-0">{{ $tour->duration }}</span>
-                                </div>
-                                <div class="text-sm mt-2 line-clamp-2 font-normal opacity-90">{{ $tour->locations }}</div>
+                            <div class="p-10 font-[600] w-full text-white z-10 group-hover:bg-[#ff9933] duration-300">
+                                <div>{{ $tour->name }}</div>
+                                <div><span class="text-xl sm:text-3xl">PRICE ${{ number_format($tour->price) }}/ </span> <span class="text-xs sm:text-md">{{ $tour->duration }} DAYS</span></div>
                             </div>
                         </div>
                     </div>
                     @empty
                     <div class="swiper-slide">
                         <div class="w-full h-[500px] sm:h-[650px] bg-slate-300 flex flex-col justify-end relative group bg-cover bg-center" style="background-image: url('{{ asset('new_frontend/Assets/img(7).png') }}');">
-                            <div class="absolute bg-[#ff9933] top-0 right-4 sm:right-7 rounded-b-xl text-white text-xs font-bold px-3 py-2 z-10">TAILOR MADE TOURS</div>
-                            <div class="crsl-cont flex flex-col justify-end absolute w-full h-[306px]" style="background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%); bottom: 0; left: 0; z-index: 8;"></div>
+                            <div class="absolute bg-[#ff9933] top-0 right-7 rounded-b-xl text-white text-xs font-bold px-3 py-2 z-10">TAILOR MADE TOURS</div>
+                            <div class="crsl-cont flex flex-col justify-end absolute w-full h-[306px]"></div>
                             <div class="bg-black/50 z-[9] opacity-0 group-hover:opacity-100 duration-300 w-full grow flex justify-center items-center text-white">
-                                <div class="border-2 rounded-full p-4 sm:p-5 duration-300 group-hover:rotate-[-30deg]">
+                                <div class="border-2 rounded-full p-5 duration-300 group-hover:rotate-[-30deg]">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="text-white" fill="white" width="24" height="24" viewBox="0 0 12.86 8.045">
-                                        <g transform="translate(-3 14.045) rotate(-90)">
-                                            <g transform="translate(6 3)">
-                                                <path d="M4.022,0a.525.525,0,0,1,.525.525V6.26H7.52a.524.524,0,0,1,.443.8l-3.5,5.551a.524.524,0,0,1-.888,0L.081,7.063a.524.524,0,0,1,.444-.8H3.5V.525A.525.525,0,0,1,4.022,0ZM6.569,7.309H1.475l2.547,4.042Z" fill-rule="evenodd"/>
+                                        <g id="Iconly_Light-Outline_Arrow---Down-3" data-name="Iconly/Light-Outline/Arrow---Down-3" transform="translate(-3 14.045) rotate(-90)">
+                                            <g id="Arrow---Down-3" transform="translate(6 3)">
+                                                <path id="Combined-Shape" d="M4.022,0a.525.525,0,0,1,.525.525V6.26H7.52a.524.524,0,0,1,.443.8l-3.5,5.551a.524.524,0,0,1-.888,0L.081,7.063a.524.524,0,0,1,.444-.8H3.5V.525A.525.525,0,0,1,4.022,0ZM6.569,7.309H1.475l2.547,4.042Z" transform="translate(0 0)" fill-rule="evenodd"/>
                                             </g>
                                         </g>
                                     </svg>
                                 </div>
                             </div>
-                            <div class="p-5 sm:p-10 font-semibold w-full text-white z-10 group-hover:bg-[#ff9933] duration-300 text-sm sm:text-base">
+                            <div class="p-10 font-[600] w-full text-white z-10 group-hover:bg-[#ff9933] duration-300">
                                 <div>No tours available at the moment</div>
                                 <div><span class="text-xl sm:text-3xl">Coming Soon</span></div>
                             </div>
@@ -208,7 +202,7 @@
             
             <!-- Explore More Tours Button -->
             <div class="w-full flex justify-center mt-10">
-                <button class="py-3 px-6 rounded-full text-white font-[600] bg-[#02515A] hover:bg-[#03616B] duration-300 cursor-pointer">EXPLORE MORE TOURS</button>
+                <a href="/tours" class="py-3 px-6 rounded-full text-white font-[600] bg-[#02515A] hover:bg-[#03616B] duration-300 cursor-pointer block text-center">EXPLORE MORE TOURS</a>
             </div>
         </section>
 
@@ -224,50 +218,45 @@
                 <div class="swiper-wrapper">
                     @forelse($roundTours as $tour)
                     <div class="swiper-slide">
-                        <div class="w-full h-[500px] sm:h-[650px] bg-slate-300 flex flex-col justify-end relative group bg-cover bg-center" style="background-image: url('{{ asset('storage/'.$tour->image) }}');">
-                            <div class="absolute bg-[#ff9933] top-0 right-4 sm:right-7 rounded-b-xl text-white text-xs font-bold px-3 py-2 z-10">ROUND TOURS</div>
-                            @if($tour->featured)
-                            <div class="absolute bg-[#02515A] top-0 left-4 rounded-b-xl text-white text-xs font-bold px-3 py-2 z-10">FEATURED</div>
-                            @endif
-                            <div class="crsl-cont flex flex-col justify-end absolute w-full h-[306px]" style="background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%); bottom: 0; left: 0; z-index: 8;"></div>
+                        <div class="sm:w-[578px] sm:h-[736px] h-[500px] bg-slate-300 flex flex-col justify-end relative group bg-cover bg-center" style="background-image: url('{{ asset('storage/' . $tour->image) }}');">
+                            <div class="absolute bg-[#ff9933] top-0 right-7 rounded-b-xl text-white text-xs font-bold px-3 py-2 z-10">ROUND TOURS</div>
+                            <div class="crsl-cont flex flex-col justify-end absolute w-full h-[306px]"></div>
                             <div class="bg-black/50 z-[9] opacity-0 group-hover:opacity-100 duration-300 w-full grow flex justify-center items-center text-white">
-                                <a href="{{ url('/tour-package/' . $tour->slug) }}" class="border-2 rounded-full p-4 sm:p-5 duration-300 group-hover:rotate-[-30deg]">
+                                <a href="{{ url('/tours/' . $tour->slug) }}" class="border-2 rounded-full p-5 duration-300 group-hover:rotate-[-30deg]">
+                                    <!-- Arrow Icon -->
                                     <svg xmlns="http://www.w3.org/2000/svg" class="text-white" fill="white" width="24" height="24" viewBox="0 0 12.86 8.045">
-                                        <g transform="translate(-3 14.045) rotate(-90)">
-                                            <g transform="translate(6 3)">
-                                                <path d="M4.022,0a.525.525,0,0,1,.525.525V6.26H7.52a.524.524,0,0,1,.443.8l-3.5,5.551a.524.524,0,0,1-.888,0L.081,7.063a.524.524,0,0,1,.444-.8H3.5V.525A.525.525,0,0,1,4.022,0ZM6.569,7.309H1.475l2.547,4.042Z" fill-rule="evenodd"/>
+                                        <g id="Iconly_Light-Outline_Arrow---Down-3" data-name="Iconly/Light-Outline/Arrow---Down-3" transform="translate(-3 14.045) rotate(-90)">
+                                            <g id="Arrow---Down-3" transform="translate(6 3)">
+                                                <path id="Combined-Shape" d="M4.022,0a.525.525,0,0,1,.525.525V6.26H7.52a.524.524,0,0,1,.443.8l-3.5,5.551a.524.524,0,0,1-.888,0L.081,7.063a.524.524,0,0,1,.444-.8H3.5V.525A.525.525,0,0,1,4.022,0ZM6.569,7.309H1.475l2.547,4.042Z" transform="translate(0 0)" fill-rule="evenodd"/>
                                             </g>
                                         </g>
                                     </svg>
                                 </a>
                             </div>
-                            <div class="p-5 sm:p-10 font-semibold w-full text-white z-10 group-hover:bg-[#ff9933] duration-300 text-sm sm:text-base">
-                                <div class="uppercase">{{ $tour->name }}</div>
-                                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-                                    <span class="text-xl sm:text-3xl">PRICE ${{ number_format($tour->price) }}/ </span>
-                                    <span class="mt-1 sm:mt-0">{{ $tour->duration }}</span>
-                                </div>
+                            <div class="p-10 font-[600] w-full text-white z-10 group-hover:bg-[#ff9933] duration-300">
+                                <div>{{ $tour->name }}</div>
+                                <div><span class="text-xl sm:text-3xl">PRICE ${{ number_format($tour->price) }}/ </span> <span class="text-xs sm:text-md">{{ $tour->duration }} DAYS</span></div>
                                 <div class="text-sm mt-2 line-clamp-2 font-normal opacity-90">{{ $tour->locations }}</div>
                             </div>
                         </div>
                     </div>
                     @empty
                     <div class="swiper-slide">
-                        <div class="w-full h-[500px] sm:h-[650px] bg-slate-300 flex flex-col justify-end relative group bg-cover bg-center" style="background-image: url('{{ asset('new_frontend/Assets/img(7).png') }}');">
-                            <div class="absolute bg-[#ff9933] top-0 right-4 sm:right-7 rounded-b-xl text-white text-xs font-bold px-3 py-2 z-10">ROUND TOURS</div>
-                            <div class="crsl-cont flex flex-col justify-end absolute w-full h-[306px]" style="background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%); bottom: 0; left: 0; z-index: 8;"></div>
+                        <div class="sm:w-[578px] sm:h-[736px] h-[500px] bg-slate-300 flex flex-col justify-end relative group bg-cover bg-center" style="background-image: url('{{ asset('new_frontend/Assets/img(7).png') }}');">
+                            <div class="absolute bg-[#ff9933] top-0 right-7 rounded-b-xl text-white text-xs font-bold px-3 py-2 z-10">ROUND TOURS</div>
+                            <div class="crsl-cont flex flex-col justify-end absolute w-full h-[306px]"></div>
                             <div class="bg-black/50 z-[9] opacity-0 group-hover:opacity-100 duration-300 w-full grow flex justify-center items-center text-white">
-                                <div class="border-2 rounded-full p-4 sm:p-5 duration-300 group-hover:rotate-[-30deg]">
+                                <div class="border-2 rounded-full p-5 duration-300 group-hover:rotate-[-30deg]">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="text-white" fill="white" width="24" height="24" viewBox="0 0 12.86 8.045">
-                                        <g transform="translate(-3 14.045) rotate(-90)">
-                                            <g transform="translate(6 3)">
-                                                <path d="M4.022,0a.525.525,0,0,1,.525.525V6.26H7.52a.524.524,0,0,1,.443.8l-3.5,5.551a.524.524,0,0,1-.888,0L.081,7.063a.524.524,0,0,1,.444-.8H3.5V.525A.525.525,0,0,1,4.022,0ZM6.569,7.309H1.475l2.547,4.042Z" fill-rule="evenodd"/>
+                                        <g id="Iconly_Light-Outline_Arrow---Down-3" data-name="Iconly/Light-Outline/Arrow---Down-3" transform="translate(-3 14.045) rotate(-90)">
+                                            <g id="Arrow---Down-3" transform="translate(6 3)">
+                                                <path id="Combined-Shape" d="M4.022,0a.525.525,0,0,1,.525.525V6.26H7.52a.524.524,0,0,1,.443.8l-3.5,5.551a.524.524,0,0,1-.888,0L.081,7.063a.524.524,0,0,1,.444-.8H3.5V.525A.525.525,0,0,1,4.022,0ZM6.569,7.309H1.475l2.547,4.042Z" transform="translate(0 0)" fill-rule="evenodd"/>
                                             </g>
                                         </g>
                                     </svg>
                                 </div>
                             </div>
-                            <div class="p-5 sm:p-10 font-semibold w-full text-white z-10 group-hover:bg-[#ff9933] duration-300 text-sm sm:text-base">
+                            <div class="p-10 font-[600] w-full text-white z-10 group-hover:bg-[#ff9933] duration-300">
                                 <div>No tours available at the moment</div>
                                 <div><span class="text-xl sm:text-3xl">Coming Soon</span></div>
                             </div>
@@ -284,8 +273,9 @@
             
             <!-- Explore More Tours Button -->
             <div class="w-full flex justify-center mt-10">
-                <button class="py-3 px-6 rounded-full text-white font-[600] bg-[#FF9933] hover:bg-[#FFAB57] duration-300 cursor-pointer">EXPLORE MORE TOURS</button>
+                <a href="/tours/round-tour" class="py-3 px-6 rounded-full text-white font-[600] bg-[#FF9933] hover:bg-[#FFAB57]  duration-300 cursor-pointer block text-center">EXPLORE MORE TOURS</a>
             </div>
+            
         </section>
 
         <!-- Testimonials Section -->

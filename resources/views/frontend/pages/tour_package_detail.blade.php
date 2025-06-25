@@ -156,8 +156,6 @@
                                 @endif
                             </div>
 
-                            <!-- Pagination -->
-                            <div class="swiper-pagination"></div>
                         </div>
 
                         <!-- Navigation arrows outside the image -->
@@ -362,130 +360,139 @@
     @include('frontend.components.gallery')
 @endsection
 
-@section('scripts')
-    <!-- JavaScript for Smooth Scroll, Notifications -->
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Initialize Tour Package Gallery Slider
-        initializeTourGallery();
-        
-        // Initialize other functionality
-        initializeSmoothScroll();
-        initializeNotifications();
-    });
-
-    function initializeTourGallery() {
-        const gallerySlider = document.querySelector(".tour-gallery-swiper");
-
-        if (!gallerySlider) return;
-
-        // Initialize main gallery slider
-        const galleryConfig = {
-            spaceBetween: 0,
-            navigation: {
-                nextEl: ".custom-swiper-next",
-                prevEl: ".custom-swiper-prev",
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-                dynamicBullets: true,
-            },
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true,
-            },
-            effect: "slide",
-            speed: 600,
-            loop: false,
-            grabCursor: true,
-        };
-
-        const gallerySwiper = new Swiper(".tour-gallery-swiper", galleryConfig);
-
-        // Add click to zoom functionality
-        const galleryImages = document.querySelectorAll('.tour-gallery-swiper .swiper-slide img');
-        galleryImages.forEach(function(img) {
-            img.addEventListener('click', function() {
-                openLightbox(this.src, this.alt);
-            });
+@section('additional_js')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Tour Package Gallery Slider
+            initializeTourGallery();
+            
+            // Initialize other functionality
+            initializeSmoothScroll();
+            initializeNotifications();
         });
-    }
 
-    function initializeSmoothScroll() {
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
+        function initializeTourGallery() {
+            const gallerySlider = document.querySelector(".tour-gallery-swiper");
 
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
+            if (!gallerySlider) {
+                console.log("Gallery slider not found");
+                return;
+            }
 
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 100,
-                        behavior: 'smooth'
+            console.log("Initializing gallery slider...");
+
+            // Initialize main gallery slider
+            const galleryConfig = {
+                spaceBetween: 0,
+                navigation: {
+                    nextEl: ".custom-swiper-next",
+                    prevEl: ".custom-swiper-prev",
+                },
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                    dynamicBullets: true,
+                },
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                },
+                effect: "slide",
+                speed: 600,
+                loop: false,
+                grabCursor: true,
+            };
+
+            try {
+                const gallerySwiper = new Swiper(".tour-gallery-swiper", galleryConfig);
+                console.log("Gallery slider initialized successfully");
+                
+                // Add click to zoom functionality
+                const galleryImages = document.querySelectorAll('.tour-gallery-swiper .swiper-slide img');
+                galleryImages.forEach(function(img) {
+                    img.addEventListener('click', function() {
+                        openLightbox(this.src, this.alt);
                     });
+                });
+            } catch (error) {
+                console.error("Error initializing gallery slider:", error);
+            }
+        }
+
+        function initializeSmoothScroll() {
+            // Smooth scroll for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        function initializeNotifications() {
+            // Auto-hide success notification after 5 seconds
+            const successAlert = document.querySelector('.bg-green-600');
+            if (successAlert) {
+                // Scroll to the notification
+                successAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                // Add click handler to dismiss
+                successAlert.addEventListener('click', function() {
+                    fadeOut(successAlert);
+                });
+
+                // Auto hide after 5 seconds
+                setTimeout(() => {
+                    fadeOut(successAlert);
+                }, 5000);
+            }
+        }
+
+        function openLightbox(imgSrc, imgAlt) {
+            // Create lightbox element
+            const lightbox = document.createElement('div');
+            lightbox.className = 'fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center p-4';
+            lightbox.innerHTML = `
+                <div class="relative max-w-5xl w-full">
+                    <button class="absolute top-4 right-4 text-white text-4xl hover:text-yellow-500 z-10 transition-colors duration-200">&times;</button>
+                    <img src="${imgSrc}" alt="${imgAlt}" class="max-w-full max-h-[90vh] mx-auto rounded-lg shadow-2xl">
+                </div>
+            `;
+
+            // Add click event to close lightbox
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox || e.target.tagName === 'BUTTON') {
+                    this.remove();
                 }
             });
-        });
-    }
 
-    function initializeNotifications() {
-        // Auto-hide success notification after 5 seconds
-        const successAlert = document.querySelector('.bg-green-600');
-        if (successAlert) {
-            // Scroll to the notification
-            successAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-            // Add click handler to dismiss
-            successAlert.addEventListener('click', function() {
-                fadeOut(successAlert);
+            // Add escape key to close lightbox
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    lightbox.remove();
+                }
             });
 
-            // Auto hide after 5 seconds
-            setTimeout(() => {
-                fadeOut(successAlert);
-            }, 5000);
+            // Add lightbox to body
+            document.body.appendChild(lightbox);
         }
-    }
 
-    function openLightbox(imgSrc, imgAlt) {
-        // Create lightbox element
-        const lightbox = document.createElement('div');
-        lightbox.className = 'fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center p-4';
-        lightbox.innerHTML = `
-            <div class="relative max-w-5xl w-full">
-                <button class="absolute top-4 right-4 text-white text-4xl hover:text-yellow-500 z-10 transition-colors duration-200">&times;</button>
-                <img src="${imgSrc}" alt="${imgAlt}" class="max-w-full max-h-[90vh] mx-auto rounded-lg shadow-2xl">
-            </div>
-        `;
-
-        // Add click event to close lightbox
-        lightbox.addEventListener('click', function(e) {
-            if (e.target === lightbox || e.target.tagName === 'BUTTON') {
-                this.remove();
-            }
-        });
-
-        // Add escape key to close lightbox
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                lightbox.remove();
-            }
-        });
-
-        // Add lightbox to body
-        document.body.appendChild(lightbox);
-    }
-
-    function fadeOut(element) {
-        element.style.transition = 'opacity 0.5s ease';
-        element.style.opacity = '0';
-        setTimeout(() => {
-            element.style.display = 'none';
-        }, 500);
-    }
-</script>
+        function fadeOut(element) {
+            element.style.transition = 'opacity 0.5s ease';
+            element.style.opacity = '0';
+            setTimeout(() => {
+                element.style.display = 'none';
+            }, 500);
+        }
+    </script>
 @endsection

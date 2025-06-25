@@ -13,13 +13,13 @@
         <!-- Hero Section -->
         <div class="w-full flex flex-col sm:flex-row bg-white text-black">
             <div class="sm:w-1/2 h-auto p-10 sm:p-20 flex flex-col justify-center gap-5">
-                <div class="font-sec text-xl sm:text-2xl text-[#02515A]">Welcome to Happy Mango Tours</div>
-                <div class="text-4xl sm:text-7xl font-pri font-black sm:w-2/3">We Make Your Travel Adventures</div>
+                
+                <div class="text-4xl sm:text-7xl font-pri font-black sm:w-2/3">We Make <br> Your <br> Travel <br> Adventures</div>
                 <div class="text-gray-600">At Happy Mango Tours, we believe travel is more than just visiting places — it's about creating unforgettable memories. Based in Sri Lanka, we specialize in tailor-made and round tours that showcase the island's best. With local expertise, personalized service, and a passion for adventure, we craft journeys that are unique, seamless, and full of authentic experiences.</div>
-                <div class="text-gray-600 mt-5">We are more than travel planners — we are storytellers who help you write your own Sri Lankan adventure. Our experienced local guides, handpicked accommodations, and thoughtfully curated activities guarantee that your time with us will be meaningful, authentic, and full of special moments.</div>
+                <div class="text-gray-600 font-bold mt-5">We are more than travel planners — we are storytellers who help you write your own Sri Lankan adventure. Our experienced local guides, handpicked accommodations, and thoughtfully curated activities guarantee that your time with us will be meaningful, authentic, and full of special moments.</div>
                 <div class="w-full py-5">
                     <a href="{{ url('/contact') }}">
-                        <button class="bg-[#ff9933] py-3 px-8 rounded-full cursor-pointer hover:bg-[#ffab57] text-white text-sm font-semibold transition duration-300 transform hover:scale-105">Start Your Journey</button>
+                        <button class="bg-[#ff9933] py-3 px-8 rounded-full cursor-pointer hover:bg-[#ffab57] text-white text-sm font-semibold transition duration-300 transform hover:scale-105">START YOUR TRIP</button>
                     </a>
                 </div>
             </div>
