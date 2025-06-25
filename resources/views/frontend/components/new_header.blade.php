@@ -25,11 +25,11 @@
     </div>
 </div>
 
-<div class="w-full flex justify-between px-5 sm:px-0 sm:justify-center bg-white text-black font-bold text-xs sm:text-sm items-center py-5 relative">
+<div class="w-full flex justify-between px-5 sm:px-0 sm:justify-center bg-white text-black font-semibold font-pri items-center py-5 relative" style="font-size:14px;">
     <div class="hidden sm:flex order-2 sm:order-1">
-        <a href="{{ route('home') }}" class="sm:px-10">HOME</a>
-        <a href="{{ route('about') }}" class="sm:px-10">ABOUT</a>
-        <a href="{{ route('service') }}" class="sm:px-10">TOUR PACKAGES</a>
+        <a href="{{ route('home') }}" class="sm:px-10 font-semibold font-pri" style="font-size:14px;">HOME</a>
+        <a href="{{ route('about') }}" class="sm:px-10 font-semibold font-pri" style="font-size:14px;">ABOUT</a>
+        <a href="{{ route('service') }}" class="sm:px-10 font-semibold font-pri" style="font-size:14px;">TOUR PACKAGES</a>
     </div>
     <a href="{{ route('home') }}" class="sm:px-42 sm:order-2 flex justify-center items-center">
         <img class="h-full w-full" src="{{ asset('new_frontend/Assets/logo.png') }}" alt="">
@@ -41,18 +41,18 @@
         </svg>
     </button>
     <div class="hidden sm:flex order-3">
-        <a href="{{ route('gallery') }}" class="sm:px-10">GALLERY</a>
-        <a href="{{ route('blog') }}" class="sm:px-10">BLOG</a>
-        <a href="{{ route('contact') }}" class="sm:px-10">CONTACT</a>
+        <a href="{{ route('gallery') }}" class="sm:px-10 font-semibold font-pri" style="font-size:14px;">GALLERY</a>
+        <a href="{{ route('blog') }}" class="sm:px-10 font-semibold font-pri" style="font-size:14px;">BLOG</a>
+        <a href="{{ route('contact') }}" class="sm:px-10 font-semibold font-pri" style="font-size:14px;">CONTACT</a>
     </div>
 </div>
 <div class="relative w-full z-1 hidden" id="navbar-default">
-    <div class="absolute top-0 flex flex-col p-5 right-0 gap-10 bg-white text-black w-full">
-        <a href="{{ route('home') }}" class="sm:px-10">HOME</a>
-        <a href="{{ route('about') }}" class="sm:px-10">ABOUT</a>
-        <a href="{{ route('service') }}" class="sm:px-10">TOUR PACKAGES</a>
-        <a href="{{ route('gallery') }}" class="sm:px-10">GALLERY</a>
-        <a href="{{ route('blog') }}" class="sm:px-10">BLOG</a>
-        <a href="{{ route('contact') }}" class="sm:px-10">CONTACT</a>
+    <div class="absolute top-0 flex flex-col p-5 right-0 gap-10 bg-white text-black w-full font-semibold font-pri" style="font-size:14px;">
+        <a href="{{ route('home') }}" class="sm:px-10 font-semibold font-pri" style="font-size:14px;">HOME</a>
+        <a href="{{ route('about') }}" class="sm:px-10 font-semibold font-pri" style="font-size:14px;">ABOUT</a>
+        <a href="{{ route('service') }}" class="sm:px-10 font-semibold font-pri" style="font-size:14px;">TOUR PACKAGES</a>
+        <a href="{{ route('gallery') }}" class="sm:px-10 font-semibold font-pri" style="font-size:14px;">GALLERY</a>
+        <a href="{{ route('blog') }}" class="sm:px-10 font-semibold font-pri" style="font-size:14px;">BLOG</a>
+        <a href="{{ route('contact') }}" class="sm:px-10 font-semibold font-pri" style="font-size:14px;">CONTACT</a>
     </div>
 </div>

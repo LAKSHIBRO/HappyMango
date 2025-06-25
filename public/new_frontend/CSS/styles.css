@@ -1,16 +1,36 @@
-@import url('https://fonts.googleapis.com/css2?family=Mansalva&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Palanquin:wght@100;200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mansalva&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 @font-face {
     font-family: 'Palanquin Dark';
-    src: url('../fonts/palanquin-dark-regular.woff2') format('woff2'),
-         url('../fonts/palanquin-dark-regular.woff') format('woff');
-    font-weight: normal;
+    src: url('../fonts/PalanquinDark-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Palanquin Dark';
+    src: url('../fonts/PalanquinDark-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Palanquin Dark';
+    src: url('../fonts/PalanquinDark-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Palanquin Dark';
+    src: url('../fonts/PalanquinDark-Bold.ttf') format('truetype');
+    font-weight: 700;
     font-style: normal;
     font-display: swap;
 }
 
 .font-pri{
-    font-family: "Palanquin", sans-serif !important;
+    font-family: "Palanquin Dark", sans-serif !important;
 }
 
 .font-sec{
@@ -18,7 +38,7 @@
 }
 
 body {
-    font-family: "Palanquin Dark", "Montserrat", sans-serif; /* Apply Palanquin Dark, fallback to Montserrat */
+    font-family:  "Montserrat", sans-serif; /* Apply Palanquin Dark, fallback to Montserrat */
 }
 
 /* Ensure elements specifically wanting Montserrat still get it.
