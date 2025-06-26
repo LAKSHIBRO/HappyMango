@@ -1,3 +1,4 @@
+
 $(document).ready(function() {
     $('.select2').select2();
 });
@@ -393,8 +394,39 @@ function editCategory(categoryId) {
                 if (categoryResponce.success) {
                     document.getElementById('categoryUpdateId').value = categoryId;
                     document.getElementById("categoryUpdateTitle").value = categoryResponce.data.name;
-                    document.getElementById("categoryUpdateType").options[categoryResponce.data.category_type_id - 1].selected = true;
-                    document.getElementById("categoryUpdateStatus").options[categoryResponce.data.status].selected = true;
+
+                    // Robustly select category type
+                    const categoryTypeId = categoryResponce.data.category_type_id;
+                    const categoryUpdateTypeSelect = document.getElementById("categoryUpdateType");
+                    if (categoryUpdateTypeSelect && categoryTypeId !== null && categoryTypeId !== undefined) {
+                        for (let i = 0; i < categoryUpdateTypeSelect.options.length; i++) {
+                            if (categoryUpdateTypeSelect.options[i].value == categoryTypeId) {
+                                categoryUpdateTypeSelect.options[i].selected = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    // Robustly select category status
+                    const statusId = categoryResponce.data.status_id; // Prefer status_id if available
+                    const categoryUpdateStatusSelect = document.getElementById("categoryUpdateStatus");
+                    if (categoryUpdateStatusSelect && statusId !== null && statusId !== undefined) {
+                        for (let i = 0; i < categoryUpdateStatusSelect.options.length; i++) {
+                            if (categoryUpdateStatusSelect.options[i].value == statusId) {
+                                categoryUpdateStatusSelect.options[i].selected = true;
+                                break;
+                            }
+                        }
+                    } else if (categoryUpdateStatusSelect && categoryResponce.data.status !== null && categoryResponce.data.status !== undefined) {
+                        // Fallback to `status` (0 or 1) if status_id is not available or not what's used in options
+                         for (let i = 0; i < categoryUpdateStatusSelect.options.length; i++) {
+                            // Assuming option values for status are '0' and '1'
+                            if (categoryUpdateStatusSelect.options[i].value == categoryResponce.data.status) {
+                                categoryUpdateStatusSelect.options[i].selected = true;
+                                break;
+                            }
+                        }
+                    }
 
                     var overlay = document.getElementById("overlay");
                     var editCategoryModal = document.getElementById("editCategoryModal");

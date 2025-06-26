@@ -22,7 +22,7 @@
                             <div>{{ $post->category->name ?? 'Travel' }}</div>
                         </div>
                     </div>
-                    <div class="py-3 pt-5 sm:pt-10 uppercase">{{ $post->slug }}</div>
+                    <div class="py-3 pt-5 sm:pt-10 uppercase">{{ str_replace('_', ' ', $post->slug) }}</div>
                     <div class="text-xl font-bold border-b py-1 sm:w-4/5">{{ $post->title }}</div>
                     <div class="w-4/5 py-5">{{ Str::limit($post->short_content, 150) }}</div>
                     <div class="w-full sm:justify-start justify-end flex mt-auto">

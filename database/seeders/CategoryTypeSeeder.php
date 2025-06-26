@@ -1,3 +1,4 @@
+
 <?php
 
 namespace Database\Seeders;
@@ -14,13 +15,16 @@ class CategoryTypeSeeder extends Seeder
     public function run(): void
     {
         CategoryType::factory()->create([
-            'name' => 'Post',
+            'name' => 'Tour', // Will be ID 1
         ]);
         CategoryType::factory()->create([
-            'name' => 'Gallery',
+            'name' => 'Post', // Will be ID 2 (for Blog)
         ]);
         CategoryType::factory()->create([
-            'name' => 'Video',
+            'name' => 'Gallery', // Will be ID 3
+        ]);
+        CategoryType::factory()->create([
+            'name' => 'Video', // Will be ID 4
         ]);
     }
 }

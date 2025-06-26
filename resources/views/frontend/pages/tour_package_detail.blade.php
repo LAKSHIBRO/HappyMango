@@ -86,7 +86,13 @@
         transform: scale(1.01);
     }
 
-    
+    /* Location iframe styling */
+    #location iframe {
+        width: 100% !important;
+        height: 100% !important;
+        border: none;
+        border-radius: 8px;
+    }
 </style>
 @endsection
 
@@ -308,7 +314,7 @@
                         {{-- The line below used to display location names, now the map iframe will be directly embedded --}}
                         {{-- <div class="text-base sm:text-lg text-gray-700 font-medium">{{ $tourPackage->locations }}</div> --}}
                     </div>
-                    <div class="w-full h-auto rounded-lg shadow-md overflow-hidden">
+                    <div class="w-full h-[400px] sm:h-[500px] rounded-lg shadow-md overflow-hidden">
                         {!! $tourPackage->locations !!}
                     </div>
                 </div>

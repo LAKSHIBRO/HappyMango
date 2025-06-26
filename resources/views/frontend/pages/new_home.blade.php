@@ -165,7 +165,7 @@
                             </div>
                             <div class="p-10 font-[600] w-full text-white z-10 group-hover:bg-[#ff9933] duration-300">
                                 <div>{{ $tour->name }}</div>
-                                <div><span class="text-xl sm:text-3xl">PRICE ${{ number_format($tour->price) }}/ </span> <span class="text-xs sm:text-md">{{ $tour->duration }} DAYS</span></div>
+                                <div><span class="text-xl sm:text-3xl">PRICE ${{ number_format($tour->price) }}/ </span> <span class="text-xs sm:text-md">{{ $tour->duration }}</span></div>
                             </div>
                         </div>
                     </div>
@@ -235,8 +235,8 @@
                             </div>
                             <div class="p-10 font-[600] w-full text-white z-10 group-hover:bg-[#ff9933] duration-300">
                                 <div>{{ $tour->name }}</div>
-                                <div><span class="text-xl sm:text-3xl">PRICE ${{ number_format($tour->price) }}/ </span> <span class="text-xs sm:text-md">{{ $tour->duration }} DAYS</span></div>
-                                <div class="text-sm mt-2 line-clamp-2 font-normal opacity-90">{{ $tour->locations }}</div>
+                                <div><span class="text-xl sm:text-3xl">PRICE ${{ number_format($tour->price) }}/ </span> <span class="text-xs sm:text-md">{{ $tour->duration }}</span></div>
+                                
                             </div>
                         </div>
                     </div>
