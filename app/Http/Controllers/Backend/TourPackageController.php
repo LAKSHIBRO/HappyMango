@@ -316,17 +316,17 @@ class TourPackageController extends Controller
      */
     private function getValidationRules($isUpdate = false)
     {
-        $imageRule = $isUpdate ? 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048' : 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048';
+        $imageRule = $isUpdate ? 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:10240' : 'required|image|mimes:jpeg,png,jpg,gif,webp|max:10240';
 
         return [
             'name' => 'required|string|max:255',
             'type' => 'required|string|in:tailor-made,round-tour',
             'price' => 'required|numeric',
             'duration' => 'required|string|max:100',
-            'short_description' => 'required|string',
+            'short_description' => 'required|string|max:255',
             'description' => 'required|string',
             'image' => $imageRule,
-            'gallery_images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048', // For new gallery images
+            'gallery_images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:10240', // For new gallery images
             'category_id' => 'nullable|exists:categories,id',
             'people_count' => 'nullable|integer|min:0',
             'locations' => 'required|string',
@@ -341,7 +341,7 @@ class TourPackageController extends Controller
             'itinerary.*.title' => 'required|string|max:255',
             'itinerary.*.location' => 'required|string|max:255',
             'itinerary.*.description' => 'required|string',
-            'itinerary.*.image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'itinerary.*.image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:10240',
         ];
     }
 }

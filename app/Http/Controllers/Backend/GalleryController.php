@@ -47,7 +47,7 @@ class GalleryController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Max 2MB
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:10240', // Max 10MB
             'caption' => 'nullable|string|max:255',
             'description' => 'nullable|string', // Added validation for description
         ];
@@ -56,7 +56,7 @@ class GalleryController extends Controller
             'image.required' => 'An image file is required.',
             'image.image' => 'The file must be an image.',
             'image.mimes' => 'The image must be a jpeg, png, jpg, or gif file.',
-            'image.max' => 'The image file must not exceed 2048 kilobytes.',
+            'image.max' => 'The image file must not exceed 10240 kilobytes (10MB).',
             'caption.string' => 'The caption must be a string.',
             'caption.max' => 'The caption may not be greater than 255 characters.',
             'description.string' => 'The description must be a string.', // Optional message

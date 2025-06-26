@@ -71,7 +71,7 @@ class PostController extends Controller
             'content' => 'required',
             'category' => 'required',
             'visibility' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg',
+            'image' => 'image|mimes:jpeg,png,jpg|max:10240',
         ], [
             'title.required' => 'The title field is required.',
             'slug.required' => 'The slug field is required.',
@@ -82,6 +82,7 @@ class PostController extends Controller
             'category.required' => 'The category field is required.',
             'visibility.required' => 'The visibility field is required.',
             'image.image' => 'The file must be an image.',
+            'image.max' => 'The image file must not exceed 10240 kilobytes (10MB).',
         ]);
 
         if ($validator->fails()) {
@@ -155,6 +156,7 @@ class PostController extends Controller
             'content' => 'required',
             'category' => 'required',
             'visibility' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg|max:10240',
         ];
 
         $messages = [
@@ -166,6 +168,8 @@ class PostController extends Controller
             'content.required' => 'The content field is required.',
             'category.required' => 'The category field is required.',
             'visibility.required' => 'The visibility field is required.',
+            'image.image' => 'The file must be an image.',
+            'image.max' => 'The image file must not exceed 10240 kilobytes (10MB).',
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
