@@ -459,6 +459,10 @@
         const tailorMadeTourSwiper = new Swiper('.tailor-made-tours-swiper', {
             loop: true,
             spaceBetween: 30,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
             pagination: {
                 el: ".tailor-made-tours-swiper .swiper-pagination",
                 clickable: true,
@@ -484,6 +488,10 @@
         const roundToursSwiper = new Swiper('.round-tours-swiper', {
             loop: true,
             spaceBetween: 30,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
             pagination: {
                 el: ".round-tours-swiper .swiper-pagination",
                 clickable: true,
