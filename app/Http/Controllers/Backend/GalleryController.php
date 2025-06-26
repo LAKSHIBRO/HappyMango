@@ -49,6 +49,7 @@ class GalleryController extends Controller
         $rules = [
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Max 2MB
             'caption' => 'nullable|string|max:255',
+            'description' => 'nullable|string', // Added validation for description
         ];
 
         $messages = [
@@ -58,6 +59,7 @@ class GalleryController extends Controller
             'image.max' => 'The image file must not exceed 2048 kilobytes.',
             'caption.string' => 'The caption must be a string.',
             'caption.max' => 'The caption may not be greater than 255 characters.',
+            'description.string' => 'The description must be a string.', // Optional message
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
@@ -74,6 +76,7 @@ class GalleryController extends Controller
             $galleryImageModel = new GalleryImages();
             $galleryImageModel->image = $galleryImageFilename;
             $galleryImageModel->caption = $request->input('caption');
+            $galleryImageModel->description = $request->input('description'); // Save description
             $galleryImageModel->save();
 
             return response()->json(['success' => true, 'message' => 'Image uploaded successfully.']);
