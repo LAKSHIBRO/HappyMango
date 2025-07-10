@@ -98,7 +98,7 @@
 
 @section('content')
     <!-- Hero Section with Package Name -->
-    <div class="w-full py-24 flex flex-col justify-center items-center gap-5 bg-[#000000aa] bg-blend-multiply bg-cover bg-center">
+    <div data-aos="fade-down" class="w-full py-24 flex flex-col justify-center items-center gap-5 bg-[#000000aa] bg-blend-multiply bg-cover bg-center">
         <div class="text-5xl sm:text-7xl font-black font-pri text-center text-white drop-shadow-lg">{{ $tourPackage->name }}</div>
         <div class="text-xl sm:text-2xl font-bold font-pri text-white flex items-center gap-2">
             <a href="{{ route('home') }}" class="hover:text-[#FF9933] transition">HOME</a>
@@ -107,7 +107,7 @@
         </div>
     </div>
 
-    <div class="max-w-[2500px] w-full bg-white grow">
+    <div data-aos="fade-down" class="max-w-[2500px] w-full bg-white grow">
         <!-- Tour Navigation and Hero Image Section -->
         <div class="w-full p-10 bg-white">
             <div class="flex flex-col sm:flex-row gap-5 sm:gap-0">

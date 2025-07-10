@@ -5,11 +5,11 @@
 @section('keywords', 'Happy Mango Tours contact, Sri Lanka tour contact, travel agency contact, book a tour, travel inquiry')
 
 @section('content')
-    <div class="w-full py-20 flex flex-col justify-center items-center gap-5 bg-[#000000aa]">
+    <div data-aos="fade-down" class="w-full py-20 flex flex-col justify-center items-center gap-5 bg-[#000000aa]">
         <div class="text-7xl font-black font-pri">CONTACT</div>
         <div class="text-2xl font-black font-pri">HOME - CONTACT</div>
     </div>
-    <div class="max-w-[2500px] w-full bg-white grow text-white">
+    <div data-aos="fade-down" class="max-w-[2500px] w-full bg-white grow text-white">
         
         <div class="w-full sm:p-20 bg-white flex flex-col items-center justify-center">
             <div class="w-full max-w-[1000px] text-xl sm:text-3xl px-5 sm:px-0 py-15  text-black font-black">Have a question or comment? <br> Use the form below to send us a message. </div>

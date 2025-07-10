@@ -5,11 +5,11 @@
 @section('keywords', 'Happy Mango Tours, {{ $post->title }}, Sri Lanka travel blog, {{ $post->category->name ?? "travel" }}')
 
 @section('content')
-    <div class="w-full py-20 flex flex-col justify-center items-center gap-5 bg-[#000000aa]">
+    <div data-aos="fade-down" class="w-full py-20 flex flex-col justify-center items-center gap-5 bg-[#000000aa]">
         <div class="text-5xl sm:text-7xl text-center font-black font-pri">{{ $post->title }}</div>
         <div class="text-xl sm:text-2xl font-black font-pri">Home - Blog</div>
     </div>
-    <div class="max-w-[2500px] w-full bg-slate-300 grow text-white">
+    <div data-aos="fade-down" class="max-w-[2500px] w-full bg-slate-300 grow text-white">
         <div class="w-full sm:p-10 sm:py-20 bg-white flex flex-col sm:flex-row">
             <div class="w-full sm:w-5/7 p-10 sm:py-20 flex flex-col gap-5 sm:gap-20 text-black text-sm">
                 <img src="{{ asset('uploads/post/'.$post->image) }}" class="w-full h-[568px] object-cover rounded-lg shadow-lg" alt="{{ $post->title }}">

@@ -13,52 +13,52 @@
             <div class="text-md sm:text-2xl w-4/5 sm:w-2/3 text-center">Unforgettable journeys, breathtaking destinations, and personalized experiences await you!</div>
         </div>
     </section>
-    <div class="max-w-[2500px] w-full bg-slate-300 grow text-white">
+    <div data-aos="fade-down" class="max-w-[2500px] w-full bg-slate-300 grow text-white">
 
         <!-- Header -->
 
         <section class="w-full bg-white text-black pb-40" id="1">
             <div class="w-full flex pt-28 pb-10 flex-col justify-center">
-                <div class="text-xl sm:text-3xl flex justify-center font-sec">Enjoy with your love</div>
-                <div class="text-3xl sm:text-5xl font-black flex justify-center font-pri ">Adventures Travels</div>
+                <div data-aos="fade-down" class="text-xl sm:text-3xl flex justify-center font-sec">Enjoy with your love</div>
+                <div data-aos="fade-down" class="text-3xl sm:text-5xl font-black flex justify-center font-pri ">Adventures Travels</div>
             </div>
 
-            <div class="w-full flex-col sm:flex-row flex justify-center items-center gap-10">
-                <div class="flex flex-col items-center justify-center sm:w-1/5 gap-3 sm:gap-10 group/item">
-                    <div class="sm:p-10 px-10 py-5">
-                        <div class="w-full rounded-full group-hover/item:border-[#FF9933] border-8 border-[#00000000] duration-300 group relative overflow-hidden">
+            <div data-aos="fade-down" class="w-full flex-col sm:flex-row flex justify-center items-center gap-10">
+                <div data-aos="fade-down" class="flex flex-col items-center justify-center sm:w-1/5 gap-3 sm:gap-10 group/item">
+                    <div data-aos="fade-down" class="sm:p-10 px-10 py-5">
+                        <div data-aos="fade-down" class="w-full rounded-full group-hover/item:border-[#FF9933] border-8 border-[#00000000] duration-300 group relative overflow-hidden">
                             <img src="{{ asset('new_frontend/Assets/av1.png') }}" class="transition-all duration-500 transform group-hover:scale-110" alt="">
                         </div>
                     </div>
-                    <div class="w-fit text-2xl text-center duration-200 cursor-pointer group-hover/item:text-[#FF9933] font-bold">Beach & Island</div>
-                    <div class="w-full text-center px-5 sm:px-0 ">Relax on Sri Lanka's golden beaches and explore breathtaking tropical islands.</div>
+                    <div data-aos="fade-down" class="w-fit text-2xl text-center duration-200 cursor-pointer group-hover/item:text-[#FF9933] font-bold">Beach & Island</div>
+                    <div data-aos="fade-down" class="w-full text-center px-5 sm:px-0 ">Relax on Sri Lanka's golden beaches and explore breathtaking tropical islands.</div>
                 </div>
-                <div class="flex flex-col items-center justify-center sm:w-1/5 gap-3 sm:gap-10 group/item">
-                    <div class="sm:p-10 px-10 py-5">
-                        <div class="w-full rounded-full group-hover/item:border-[#FF9933] border-8 border-[#00000000] duration-300 group relative overflow-hidden">
+                <div data-aos="fade-down" class="flex flex-col items-center justify-center sm:w-1/5 gap-3 sm:gap-10 group/item">
+                    <div data-aos="fade-down" class="sm:p-10 px-10 py-5">
+                        <div data-aos="fade-down" class="w-full rounded-full group-hover/item:border-[#FF9933] border-8 border-[#00000000] duration-300 group relative overflow-hidden">
                             <img src="{{ asset('new_frontend/Assets/img(3).png') }}" class="transition-all duration-500 transform group-hover:scale-110" alt="">
                         </div>
                     </div>
-                    <div class="w-fit text-2xl text-center duration-200 cursor-pointer group-hover/item:text-[#FF9933] font-bold">Adventure & Wildlife</div>
-                    <div class="w-full text-center px-5 sm:px-0 ">Experience thrilling safaris, jungle treks, and adrenaline-filled adventures.</div>
+                    <div data-aos="fade-down" class="w-fit text-2xl text-center duration-200 cursor-pointer group-hover/item:text-[#FF9933] font-bold">Adventure & Wildlife</div>
+                    <div data-aos="fade-down" class="w-full text-center px-5 sm:px-0 ">Experience thrilling safaris, jungle treks, and adrenaline-filled adventures.</div>
                 </div>
-                <div class="flex flex-col items-center justify-center sm:w-1/5 gap-3 sm:gap-10 group/item">
-                    <div class="sm:p-10 px-10 py-5">
-                        <div class="w-full rounded-full group-hover/item:border-[#FF9933] border-8 border-[#00000000] duration-300 group relative overflow-hidden">
+                <div data-aos="fade-down" class="flex flex-col items-center justify-center sm:w-1/5 gap-3 sm:gap-10 group/item">
+                    <div data-aos="fade-down" class="sm:p-10 px-10 py-5">
+                        <div data-aos="fade-down" class="w-full rounded-full group-hover/item:border-[#FF9933] border-8 border-[#00000000] duration-300 group relative overflow-hidden">
                             <img src="{{ asset('new_frontend/Assets/img(4).png') }}" class="transition-all duration-500 transform group-hover:scale-110" alt="">
                         </div>
                     </div>
-                    <div class="w-fit text-2xl text-center duration-200 cursor-pointer group-hover/item:text-[#FF9933] font-bold">Cultural & Heritage</div>
-                    <div class="w-full text-center px-5 sm:px-0 ">Discover ancient temples, historic cities, and Sri Lanka's rich traditions.</div>
+                    <div data-aos="fade-down" class="w-fit text-2xl text-center duration-200 cursor-pointer group-hover/item:text-[#FF9933] font-bold">Cultural & Heritage</div>
+                    <div data-aos="fade-down" class="w-full text-center px-5 sm:px-0 ">Discover ancient temples, historic cities, and Sri Lanka's rich traditions.</div>
                 </div>
-                <div class="flex flex-col items-center justify-center sm:w-1/5 gap-3 sm:gap-10 group/item">
-                    <div class="sm:p-10 px-10 py-5">
-                        <div class="w-full rounded-full group-hover/item:border-[#FF9933] border-8 border-[#00000000] duration-300 group relative overflow-hidden">
+                <div data-aos="fade-down" class="flex flex-col items-center justify-center sm:w-1/5 gap-3 sm:gap-10 group/item">
+                    <div data-aos="fade-down" class="sm:p-10 px-10 py-5">
+                        <div data-aos="fade-down" class="w-full rounded-full group-hover/item:border-[#FF9933] border-8 border-[#00000000] duration-300 group relative overflow-hidden">
                             <img src="{{ asset('new_frontend/Assets/img(5).png') }}" class="transition-all duration-500 transform group-hover:scale-110" alt="">
                         </div>
                     </div>
-                    <div class="w-fit text-2xl text-center duration-200 cursor-pointer group-hover/item:text-[#FF9933] font-bold">Ayurvedic & Spa</div>
-                    <div class="w-full text-center px-5 sm:px-0 ">Rejuvenate with traditional healing treatments and luxurious spa experiences.</div>
+                    <div data-aos="fade-down" class="w-fit text-2xl text-center duration-200 cursor-pointer group-hover/item:text-[#FF9933] font-bold">Ayurvedic & Spa</div>
+                    <div data-aos="fade-down" class="w-full text-center px-5 sm:px-0 ">Rejuvenate with traditional healing treatments and luxurious spa experiences.</div>
                 </div>
             </div>
         </section>
@@ -67,40 +67,40 @@
         <section class="w-full bg-[#02515A] flex flex-col sm:flex-row" id="why-choose-us">
             <div class="w-full sm:w-1/2 text-white py-20 px-10 sm:px-20">
                 <div class="w-full flex flex-col gap-2">
-                    <div class="text-xl sm:text-3xl font-sec">Unforgettable Journeys</div>
-                    <div class="text-4xl sm:text-6xl font-extrabold font-pri">Why Choose Us?</div>
-                    <div class="my-5 sm:my-10 flex flex-col gap-5 sm:gap-10">
-                        <div class="flex sm:flex-row flex-col gap-4 sm:gap-10 py-5 px-3 border border-white/0">
-                            <div class="">
-                                <div class="w-[112px] h-[112px] bg-[#FF9933] rounded-full flex justify-center items-center group relative overflow-hidden">
-                                    <img class="w-auto transition-all duration-500 transform group-hover:scale-110" src="{{ asset('new_frontend/Assets/guide.png') }}" alt="">
+                    <div data-aos="fade-down" class="text-xl sm:text-3xl font-sec">Unforgettable Journeys</div>
+                    <div data-aos="fade-down" class="text-4xl sm:text-6xl font-extrabold font-pri">Why Choose Us?</div>
+                    <div data-aos="fade-down" class="my-5 sm:my-10 flex flex-col gap-5 sm:gap-10">
+                        <div data-aos="fade-down" class="flex sm:flex-row flex-col gap-4 sm:gap-10 py-5 px-3 border border-white/0">
+                            <div data-aos="fade-down">
+                                <div data-aos="fade-down" class="w-[112px] h-[112px] bg-[#FF9933] rounded-full flex justify-center items-center group relative overflow-hidden">
+                                    <img data-aos="fade-down" class="w-auto transition-all duration-500 transform group-hover:scale-110" src="{{ asset('new_frontend/Assets/guide.png') }}" alt="">
                                 </div>
                             </div>
-                            <div class="flex flex-col justify-center">
-                                <div class="text-xl sm:text-3xl font-black">Local & Experienced Guides</div>
-                                <div class="text-sm sm:text-md">Knowledgeable guides to ensure an immersive and hassle-free journey.</div>
+                            <div data-aos="fade-down" class="flex flex-col justify-center">
+                                <div data-aos="fade-down" class="text-xl sm:text-3xl font-black">Local & Experienced Guides</div>
+                                <div data-aos="fade-down" class="text-sm sm:text-md">Knowledgeable guides to ensure an immersive and hassle-free journey.</div>
                             </div>
                         </div>
-                        <div class="flex sm:flex-row flex-col gap-4 sm:gap-10 py-5 px-3 border border-white/0">
-                            <div class="">
-                                <div class="w-[112px] h-[112px] bg-[#FF9933] rounded-full flex justify-center items-center group relative overflow-hidden">
-                                    <img class="w-auto transition-all duration-500 transform group-hover:scale-110" src="{{ asset('new_frontend/Assets/tags.png') }}" alt="">
+                        <div data-aos="fade-down" class="flex sm:flex-row flex-col gap-4 sm:gap-10 py-5 px-3 border border-white/0">
+                            <div data-aos="fade-down">
+                                <div data-aos="fade-down" class="w-[112px] h-[112px] bg-[#FF9933] rounded-full flex justify-center items-center group relative overflow-hidden">
+                                    <img data-aos="fade-down" class="w-auto transition-all duration-500 transform group-hover:scale-110" src="{{ asset('new_frontend/Assets/tags.png') }}" alt="">
                                 </div>
                             </div>
-                            <div class="flex flex-col justify-center">
-                                <div class="text-xl sm:text-3xl font-black">Flexible & Affordable Pricing</div>
-                                <div class="text-sm sm:text-md">Customizable packages to suit every budget and preference.</div>
+                            <div data-aos="fade-down" class="flex flex-col justify-center">
+                                <div data-aos="fade-down" class="text-xl sm:text-3xl font-black">Flexible & Affordable Pricing</div>
+                                <div data-aos="fade-down" class="text-sm sm:text-md">Customizable packages to suit every budget and preference.</div>
                             </div>
                         </div>
-                        <div class="flex sm:flex-row flex-col gap-4 sm:gap-10 py-5 px-3 border border-white/0">
-                            <div class="">
-                                <div class="w-[112px] h-[112px] bg-[#FF9933] rounded-full flex justify-center items-center group relative overflow-hidden">
-                                    <img class="w-auto transition-all duration-500 transform group-hover:scale-110" src="{{ asset('new_frontend/Assets/user-headset.png') }}" alt="">
+                        <div data-aos="fade-down" class="flex sm:flex-row flex-col gap-4 sm:gap-10 py-5 px-3 border border-white/0">
+                            <div data-aos="fade-down">
+                                <div data-aos="fade-down" class="w-[112px] h-[112px] bg-[#FF9933] rounded-full flex justify-center items-center group relative overflow-hidden">
+                                    <img data-aos="fade-down" class="w-auto transition-all duration-500 transform group-hover:scale-110" src="{{ asset('new_frontend/Assets/user-headset.png') }}" alt="">
                                 </div>
                             </div>
-                            <div class="flex flex-col justify-center">
-                                <div class="text-xl sm:text-3xl font-black"> 24/7 Customer Support</div>
-                                <div class="text-sm sm:text-md">Dedicated assistance whenever you need it, day or night.</div>
+                            <div data-aos="fade-down" class="flex flex-col justify-center">
+                                <div data-aos="fade-down" class="text-xl sm:text-3xl font-black"> 24/7 Customer Support</div>
+                                <div data-aos="fade-down" class="text-sm sm:text-md">Dedicated assistance whenever you need it, day or night.</div>
                             </div>
                         </div>
                     </div>
@@ -129,7 +129,7 @@
                     <div class="text-sm sm:text-xl leading-10 text-white">
                         Happy Mango Tours, we specialize in crafting unforgettable travel experiences tailored just for you. Whether you're looking for a relaxing beach escape, an action-packed adventure, or a deep dive into rich cultural heritage, we have the perfect tour to match your desires. <br><br> With expertly curated packages, experienced local guides, and personalized services, we ensure every journey is seamless, exciting, and filled with incredible memories. Let us take you on an extraordinary adventure—wherever your heart desires!
                     </div>
-                    <div class="">
+                    <div data-aos="fade-down" class="">
                         <button class="border hover:scale-105 duration-300 py-2 px-5 cursor-pointer font-pri text-white">LEARN MORE ABOUT</button>
                     </div>
                 </div>
@@ -139,16 +139,16 @@
     <!-- Tailor-Made Tours Section -->
        <section class="sm:block w-full bg-white text-black px-5 sm:px-20 pb-10 sm:pb-40" id="tailor-made-tours">
             <div class="w-full flex pt-28 pb-10 flex-col justify-center items-center gap-5">
-                <div class="text-xl sm:text-3xl flex justify-center font-sec">Enjoy with your love</div>
-                <div class="text-3xl sm:text-5xl font-black flex justify-center font-pri ">Tailor-Made Tours</div>
-                <div class="sm:w-3/7 flex justify-center text-center font-pri ">Customize your dream vacation! Our tailor-made tours let you design your perfect itinerary, choosing destinations, activities, and experiences that match your interests and travel style.</div>
+                <div data-aos="fade-down" class="text-xl sm:text-3xl flex justify-center font-sec">Enjoy with your love</div>
+                <div data-aos="fade-down" class="text-3xl sm:text-5xl font-black flex justify-center font-pri ">Tailor-Made Tours</div>
+                <div data-aos="fade-down" class="sm:w-3/7 flex justify-center text-center font-pri ">Customize your dream vacation! Our tailor-made tours let you design your perfect itinerary, choosing destinations, activities, and experiences that match your interests and travel style.</div>
             </div>
 
             <div class="swiper-container tailor-made-tours-swiper">
                 <div class="swiper-wrapper">
                     @forelse($tailorMadeTours as $tour)
                     <div class="swiper-slide">
-                        <div class="sm:w-[578px] sm:h-[736px] h-[500px] bg-slate-300 flex flex-col justify-end relative group bg-cover bg-center" style="background-image: url('{{ asset('storage/' . $tour->image) }}');">
+                        <div data-aos="fade-down" class="sm:w-[578px] sm:h-[736px] h-[500px] bg-slate-300 flex flex-col justify-end relative group bg-cover bg-center" style="background-image: url('{{ asset('storage/' . $tour->image) }}');">
                             <div class="absolute bg-[#ff9933] top-0 right-7 rounded-b-xl text-white text-xs font-bold px-3 py-2 z-10">TAILOR MADE TOURS</div>
                             <div class="crsl-cont flex flex-col justify-end absolute w-full h-[306px]"></div>
                             <div class="bg-black/50 z-[9] opacity-0 group-hover:opacity-100 duration-300 w-full grow flex justify-center items-center text-white">
@@ -171,7 +171,7 @@
                     </div>
                     @empty
                     <div class="swiper-slide">
-                        <div class="w-full h-[500px] sm:h-[650px] bg-slate-300 flex flex-col justify-end relative group bg-cover bg-center" style="background-image: url('{{ asset('new_frontend/Assets/img(7).png') }}');">
+                        <div data-aos="fade-down" class="sm:w-[578px] sm:h-[736px] h-[500px] bg-slate-300 flex flex-col justify-end relative group bg-cover bg-center" style="background-image: url('{{ asset('new_frontend/Assets/img(7).png') }}');">
                             <div class="absolute bg-[#ff9933] top-0 right-7 rounded-b-xl text-white text-xs font-bold px-3 py-2 z-10">TAILOR MADE TOURS</div>
                             <div class="crsl-cont flex flex-col justify-end absolute w-full h-[306px]"></div>
                             <div class="bg-black/50 z-[9] opacity-0 group-hover:opacity-100 duration-300 w-full grow flex justify-center items-center text-white">
@@ -209,16 +209,16 @@
         <!-- Round Tours Section -->
         <section class="sm:block w-full bg-white text-black px-5 sm:px-20 pb-10 sm:pb-40" id="round-tours">
             <div class="w-full flex sm:pt-28 pb-10 flex-col justify-center items-center gap-5">
-                <div class="text-xl sm:text-3xl flex justify-center font-sec">Enjoy with your love</div>
-                <div class="text-3xl sm:text-5xl text-center font-black flex justify-center font-pri ">Round Tours - Explore Sri Lanka in a seamless journey! </div>
-                <div class="sm:w-3/7 flex justify-center text-center font-pri text-sm sm:text-md">Discover Sri Lanka's most breathtaking destinations with our expertly curated round tours cover the island's top attractions, offering a perfect blend of adventure, culture, and relaxation.</div>
+                <div data-aos="fade-down" class="text-xl sm:text-3xl flex justify-center font-sec">Enjoy with your love</div>
+                <div data-aos="fade-down" class="text-3xl sm:text-5xl text-center font-black flex justify-center font-pri ">Round Tours - Explore Sri Lanka in a seamless journey! </div>
+                <div data-aos="fade-down" class="sm:w-3/7 flex justify-center text-center font-pri text-sm sm:text-md">Discover Sri Lanka's most breathtaking destinations with our expertly curated round tours cover the island's top attractions, offering a perfect blend of adventure, culture, and relaxation.</div>
             </div>
 
             <div class="swiper-container round-tours-swiper">
                 <div class="swiper-wrapper">
                     @forelse($roundTours as $tour)
                     <div class="swiper-slide">
-                        <div class="sm:w-[578px] sm:h-[736px] h-[500px] bg-slate-300 flex flex-col justify-end relative group bg-cover bg-center" style="background-image: url('{{ asset('storage/' . $tour->image) }}');">
+                        <div data-aos="fade-down" class="sm:w-[578px] sm:h-[736px] h-[500px] bg-slate-300 flex flex-col justify-end relative group bg-cover bg-center" style="background-image: url('{{ asset('storage/' . $tour->image) }}');">
                             <div class="absolute bg-[#ff9933] top-0 right-7 rounded-b-xl text-white text-xs font-bold px-3 py-2 z-10">ROUND TOURS</div>
                             <div class="crsl-cont flex flex-col justify-end absolute w-full h-[306px]"></div>
                             <div class="bg-black/50 z-[9] opacity-0 group-hover:opacity-100 duration-300 w-full grow flex justify-center items-center text-white">
@@ -242,7 +242,7 @@
                     </div>
                     @empty
                     <div class="swiper-slide">
-                        <div class="sm:w-[578px] sm:h-[736px] h-[500px] bg-slate-300 flex flex-col justify-end relative group bg-cover bg-center" style="background-image: url('{{ asset('new_frontend/Assets/img(7).png') }}');">
+                        <div data-aos="fade-down" class="sm:w-[578px] sm:h-[736px] h-[500px] bg-slate-300 flex flex-col justify-end relative group bg-cover bg-center" style="background-image: url('{{ asset('new_frontend/Assets/img(7).png') }}');">
                             <div class="absolute bg-[#ff9933] top-0 right-7 rounded-b-xl text-white text-xs font-bold px-3 py-2 z-10">ROUND TOURS</div>
                             <div class="crsl-cont flex flex-col justify-end absolute w-full h-[306px]"></div>
                             <div class="bg-black/50 z-[9] opacity-0 group-hover:opacity-100 duration-300 w-full grow flex justify-center items-center text-white">
@@ -286,47 +286,47 @@
             <div class="flex w-full sm:w-1/2 p-10 sm:p-20">
                 <div class="flex flex-col gap-10 ">
                     <div class="text-black flex gap-3 sm:gap-8 flex-col">
-                        <div class="font-sec text-xl sm:text-3xl">Enjoy with your love</div>
-                        <div class="font-pri text-4xl sm:text-6xl font-[1000]">FAQ</div>
+                        <div data-aos="fade-down" class="font-sec text-xl sm:text-3xl">Enjoy with your love</div>
+                        <div data-aos="fade-down" class="font-pri text-4xl sm:text-6xl font-[1000]">FAQ</div>
                     </div>
-                    <div class="text-black">
+                    <div data-aos="fade-down" class="text-black">
                         Got questions? We've got answers! Here are some common queries to help you plan your perfect trip with Happy Mango Tours.
                     </div>
                     <div class="w-full">
-                        <div class="space-y-4">
-                            <div class="border border-gray-200 rounded-lg">
-                                <button class="flex justify-between w-full p-4 text-left font-medium text-gray-900 focus:outline-none">
+                        <div data-aos="fade-down" class="space-y-4">
+                            <div data-aos="fade-down" class="border border-gray-200 rounded-lg">
+                                <button data-aos="fade-down" class="flex justify-between w-full p-4 text-left font-medium text-gray-900 focus:outline-none">
                                     <span>What types of tours do you offer?</span>
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <svg data-aos="fade-down" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                                     </svg>
                                 </button>
-                                <div class="p-4 border-t border-gray-200 hidden">
-                                    <p class="text-gray-700">We offer a variety of tour types including tailor-made private tours, round tours covering multiple destinations, adventure tours, cultural & heritage tours, wildlife safaris, beach getaways, and special interest tours such as photography, culinary, or Ayurvedic experiences.</p>
+                                <div data-aos="fade-down" class="p-4 border-t border-gray-200 hidden">
+                                    <p data-aos="fade-down" class="text-gray-700">We offer a variety of tour types including tailor-made private tours, round tours covering multiple destinations, adventure tours, cultural & heritage tours, wildlife safaris, beach getaways, and special interest tours such as photography, culinary, or Ayurvedic experiences.</p>
                                 </div>
                             </div>
 
-                            <div class="border border-gray-200 rounded-lg">
-                                <button class="flex justify-between w-full p-4 text-left font-medium text-gray-900 focus:outline-none">
+                            <div data-aos="fade-down" class="border border-gray-200 rounded-lg">
+                                <button data-aos="fade-down" class="flex justify-between w-full p-4 text-left font-medium text-gray-900 focus:outline-none">
                                     <span>Can I customize my travel itinerary?</span>
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <svg data-aos="fade-down" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                                     </svg>
                                 </button>
-                                <div class="p-4 border-t border-gray-200 hidden">
-                                    <p class="text-gray-700">Absolutely! Our tailor-made tours are specifically designed to be customized according to your preferences, interests, timeframe, and budget. Just let us know what you're looking for, and our travel experts will create the perfect itinerary for you.</p>
+                                <div data-aos="fade-down" class="p-4 border-t border-gray-200 hidden">
+                                    <p data-aos="fade-down" class="text-gray-700">Absolutely! Our tailor-made tours are specifically designed to be customized according to your preferences, interests, timeframe, and budget. Just let us know what you're looking for, and our travel experts will create the perfect itinerary for you.</p>
                                 </div>
                             </div>
 
-                            <div class="border border-gray-200 rounded-lg">
-                                <button class="flex justify-between w-full p-4 text-left font-medium text-gray-900 focus:outline-none">
+                            <div data-aos="fade-down" class="border border-gray-200 rounded-lg">
+                                <button data-aos="fade-down" class="flex justify-between w-full p-4 text-left font-medium text-gray-900 focus:outline-none">
                                     <span>Do you provide transportation and accommodation?</span>
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <svg data-aos="fade-down" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                                     </svg>
                                 </button>
-                                <div class="p-4 border-t border-gray-200 hidden">
-                                    <p class="text-gray-700">Yes, our tour packages include private transportation with experienced drivers and carefully selected accommodations ranging from boutique hotels to luxury resorts based on your preferences and budget. We handle all the logistics so you can simply enjoy your journey.</p>
+                                <div data-aos="fade-down" class="p-4 border-t border-gray-200 hidden">
+                                    <p data-aos="fade-down" class="text-gray-700">Yes, our tour packages include private transportation with experienced drivers and carefully selected accommodations ranging from boutique hotels to luxury resorts based on your preferences and budget. We handle all the logistics so you can simply enjoy your journey.</p>
                                 </div>
                             </div>
                         </div>
@@ -334,14 +334,14 @@
                 </div>
             </div>
             <div class="w-full sm:w-1/2">
-                <img src="{{ asset('new_frontend/Assets/img(8).png') }}" class="w-full h-full object-cover" alt="">
+                <img data-aos="fade-down" src="{{ asset('new_frontend/Assets/img(8).png') }}" class="w-full h-full object-cover" alt="">
             </div>
         </section>
 
         <!-- Get in Touch Section -->
         <section class="bg-white flex sm:flex-row flex-col w-full" id="get-in-touch">
             <div class="w-full sm:w-3/8 bg-black flex gap-20 flex-col py-20 px-10 sm:px-20">
-                <div class="text-3xl sm:text-5xl font-pri font-black text-wrap text-white">Get in Touch With Us</div>
+                <div data-aos="fade-down" class="text-3xl sm:text-5xl font-pri font-black text-wrap text-white">Get in Touch With Us</div>
                 <div class="flex flex-col gap-10 text-sm sm:text-md text-white">
                     <div class="flex gap-10 items-center">
                         <img src="{{ asset('new_frontend/Assets/Icon Container.png') }}" class="w-[50px] h-[50px]" alt="">

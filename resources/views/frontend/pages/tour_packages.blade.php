@@ -5,11 +5,11 @@
 @section('keywords', 'Happy Mango Tours, Sri Lanka tours, tailor-made tours, round tours, travel packages')
 
 @section('content')
-    <div class="w-full py-20 flex flex-col justify-center items-center gap-5 bg-[#000000aa]">
+    <div data-aos="fade-down" class="w-full py-20 flex flex-col justify-center items-center gap-5 bg-[#000000aa]">
         <div class="text-5xl sm:text-7xl font-black font-pri">Tour Packages</div>
         <div class="text-xl sm:text-2xl font-black font-pri">HOME - TOURS</div>
     </div>
-    <div class="max-w-[2500px] w-full bg-slate-300 grow text-white">
+    <div data-aos="fade-down" class="max-w-[2500px] w-full bg-slate-300 grow text-white">
         <div class="py-20 w-full px-5 sm:px-10 flex flex-col bg-white text-black items-center justify-center gap-5">
             <div class="w-full justify-center flex gap-5 text-xs sm:text-md">
                 <a href="{{ route('tours.tailor-made') }}" class="bg-[#FF9933] text-white py-2 px-8 rounded-full font-bold duration-300 text-center">TAILOR MADE TOURS</a>

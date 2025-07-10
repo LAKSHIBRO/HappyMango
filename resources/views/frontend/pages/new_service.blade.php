@@ -44,7 +44,7 @@
                             </div>
                             <div class="p-10 font-[600] w-full text-white z-10 group-hover:bg-[#ff9933] duration-300">
                                 <div>{{ $tour->name }}</div>
-                                <div><span class="text-xl sm:text-3xl">PRICE ${{ number_format($tour->price) }}/ </span> <span class="text-xs sm:text-md">{{ $tour->duration }} DAYS</span></div>
+                                <div><span class="text-xl sm:text-3xl">PRICE ${{ number_format($tour->price) }}/ </span> <span class="text-xs sm:text-md">{{ $tour->duration }}</span></div>
                             </div>
                         </div>
                     </div>
@@ -112,52 +112,6 @@
             </div>
             </div>
         </div>
-
-        <!-- Round Tours Section -->
-        {{-- <div class="w-full bg-white text-black py-20">
-            <div class="w-full flex flex-col justify-center items-center gap-5 px-5 sm:px-20">
-                <div class="text-3xl sm:text-5xl font-black font-pri text-center mb-6">Round Tours – Complete Sri Lankan Experience</div>
-                <div class="sm:w-3/4 mx-auto flex justify-center text-center font-pri text-sm sm:text-md mb-10">
-                    Our carefully designed Round Tours offer comprehensive journeys covering Sri Lanka's highlights in a single trip. These ready-made itineraries combine the best destinations, attractions, and experiences at great value.
-                </div>
-
-                <div class="flex justify-center gap-5 flex-wrap">
-                    @forelse($roundTours as $tour)
-                        <div class="">
-                            <div class="sm:w-[578px] sm:h-[736px] h-[500px] bg-slate-300 flex flex-col justify-end relative group bg-cover bg-center" style="background-image: url('{{ asset('storage/' . $tour->image) }}');">
-                                <div class="absolute bg-[#02515A] top-0 right-7 rounded-b-xl text-white text-xs font-bold px-3 py-2 z-10">ROUND TOUR</div>
-                                <div class="crsl-cont flex flex-col justify-end absolute w-full h-[306px]"></div>
-                                <div class="bg-black/50 z-[9] opacity-0 group-hover:opacity-100 duration-300 w-full grow flex justify-center items-center text-white">
-                                    <a href="{{ route('tours.detail', $tour->slug) }}" class="border-2 rounded-full p-5 duration-300 group-hover:rotate-[-30deg]">
-                                        <!-- Arrow Icon -->
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="text-white" fill="white" width="24" height="24" viewBox="0 0 12.86 8.045">
-                                        <g id="Iconly_Light-Outline_Arrow---Down-3" data-name="Iconly/Light-Outline/Arrow---Down-3" transform="translate(-3 14.045) rotate(-90)">
-                                            <g id="Arrow---Down-3" transform="translate(6 3)">
-                                            <path id="Combined-Shape" d="M4.022,0a.525.525,0,0,1,.525.525V6.26H7.52a.524.524,0,0,1,.443.8l-3.5,5.551a.524.524,0,0,1-.888,0L.081,7.063a.524.524,0,0,1,.444-.8H3.5V.525A.525.525,0,0,1,4.022,0ZM6.569,7.309H1.475l2.547,4.042Z" transform="translate(0 0)" fill-rule="evenodd"/>
-                                            </g>
-                                        </g>
-                                        </svg>
-                                    </a>
-                                </div>
-                                <div class="p-10 font-[600] w-full text-white z-10 group-hover:bg-[#02515A] duration-300">
-                                    <div>{{ $tour->name }}</div>
-                                    <div><span class="text-xl sm:text-3xl">PRICE ${{ number_format($tour->price) }}/ </span> <span class="text-xs sm:text-md">{{ $tour->duration }} DAYS</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    @empty
-                        <div class="text-center py-10 w-full">
-                            <p>No round tours available at the moment. Please check back later.</p>
-                        </div>
-                    @endforelse
-                </div>
-
-                <div class="w-full flex justify-center mt-10">
-                    <a href="{{ route('tours.round-tour') }}" class="bg-[#02515A] hover:bg-[#03697a] duration-200 text-white font-bold py-2 px-8 rounded-full cursor-pointer">VIEW ALL ROUND TOURS</a>
-                </div>
-            </div>
-
-        </div> --}}
 
         <!-- Gallery Section -->
         @include('frontend.components.gallery')
